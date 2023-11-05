@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../axios';
@@ -42,9 +43,9 @@ const SinglePage = () => {
   const { name, phone, rating, reviews, website, images, location, rank } =
     selectedCategory;
 
-  let locationName, locationAddress;
+  let locationName;
   if (location) {
-    ({ locationName, locationAddress } = location);
+    ({ locationName} = location);
   }
 
   console.log(selectedCategory);
@@ -74,7 +75,7 @@ const SinglePage = () => {
           <div className="row">
             {location && (
               <div className="col-12 singlePage-address-header">
-                <img src={map} className="singlePageIcon" />
+                <img src={map} className="singlePageIcon" alt='map' />
                 {locationName}
               </div>
             )}
@@ -87,7 +88,7 @@ const SinglePage = () => {
                   className="singlePageIcon"
                   alt="singlePageIcon"
                 />
-                <a className="website-link" href={website} target="_blank">
+                <a className="website-link" href={website} target="_blank" rel="noreferrer">
                   Visit hotel website
                 </a>
               </div>
