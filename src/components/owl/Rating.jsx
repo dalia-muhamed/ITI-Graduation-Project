@@ -40,7 +40,7 @@ function Rating({rating, reviews, rank }) {
   }, [rating]);
 
   return (
-    <div className="result-details">
+    <div className="">
         <div className="rate-section d-flex justify-content-start mb-2">
           <div className="rating">{coloredCircles}</div>
           <p className="my-0 mx-2">
