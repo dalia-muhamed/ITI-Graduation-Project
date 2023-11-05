@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Hotel from './icon/bed.png';
 import todo from './icon/ticket.png';
 import Restaurants from './icon/fork.png';
@@ -15,7 +14,7 @@ const SearchComponent = () => {
   const [searchPath, setSearchPath] = useState('');
   const [searchVal, setSearchVal] = useState('');
   const [category, setCategory] = useState('');
-  const [warning, setWarning] = useState(null);
+  const [warning] = useState(null);
 
   const handleTabClick = tabId => {
     setActiveTab(tabId);
@@ -76,7 +75,6 @@ const SearchComponent = () => {
         const hotelsData = hotelsResponse.data.hotels;
         const restaurantsData = restaurantsResponse.data.restaurants;
         const todosData = todosResponse.data.todos;
-        console.log(todosData);
 
         setCities(citiesData);
         setHotels(hotelsData);
@@ -93,7 +91,6 @@ const SearchComponent = () => {
   const cityNames = cities.map(city => city.name.toLowerCase());
   const hotelNames = hotels.map(hotel => hotel.name.toLowerCase());
   const todoNames = todos.map(todo => todo.name.toLowerCase());
-  console.log(todos);
   const restaurantNames = restaurants.map(restaurant =>
     restaurant.name.toLowerCase()
   );

@@ -5,12 +5,14 @@ import Hotels from '../pages/hotels/Hotels';
 import ThingsToDo from '../pages/thingsToDo/ThingsToDo';
 import Resturants from '../pages/restaurants/Resturants';
 import SinglePage from '../pages/singlePage/SinglePage';
+import HotelReservation from '../pages/reservation/hotel-reservation/hotel-reservation';
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cities/hotels" element={<Hotels />} />
+        <Route path="/cities/hotels/reservation" element={<HotelReservation />} />
         <Route path="/cities/restaurants" element={<Resturants />} />
         <Route path="/cities/thingsToDo" element={<ThingsToDo />} />
         <Route

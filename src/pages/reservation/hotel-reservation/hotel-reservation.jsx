@@ -16,7 +16,7 @@ const HotelReservation = () => {
     postalCode: "",
     cardNumber: "",
     csv: "",
-    check:""
+    check: false
   });
 
   const [formErrs, setFormErrs] = useState({
@@ -34,44 +34,11 @@ const HotelReservation = () => {
   });
 
   const handleChange = (e) => {
-    // console.log("validation");
-    switch (e.target.id) {
-      case "firstNameGuest":
-        setFormInputs({ ...formInputs, firstNameGuest: e.target.value });
-        break;
-      case "lastNameGuest":
-        setFormInputs({ ...formInputs, lastNameGuest: e.target.value });
-        break;
-      case "firstNameBilling":
-        setFormInputs({ ...formInputs, firstNameBilling: e.target.value });
-        break;
-      case "lastNameBilling":
-        setFormInputs({ ...formInputs, lastNameBilling: e.target.value });
-        break;
-      case "email":
-        setFormInputs({ ...formInputs, email: e.target.value });
-        break;
-      case "phone":
-        setFormInputs({ ...formInputs, phone: e.target.value });
-        break;
-      case "city":
-        setFormInputs({ ...formInputs, city: e.target.value });
-        break;
-      case "postalCode":
-        setFormInputs({ ...formInputs, postalCode: e.target.value });
-        break;
-      case "cardNumber":
-        setFormInputs({ ...formInputs, cardNumber: e.target.value });
-        break;
-      case "csv":
-        setFormInputs({ ...formInputs, csv: e.target.value });
-        break;
-      case "check":
-        setFormInputs({ ...formInputs, check: !formInputs.check });
-        break;
-      default:
-        return;
-    }
+      if (e.target.type === "checkbox") {
+        setFormInputs({ ...formInputs, [e.target.name]: e.target.checked });
+      } else {
+        setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
+      }
   };
 
 const validateErrors = () =>{
@@ -94,7 +61,7 @@ const handleSubmit = (e) => {
   e.preventDefault();
   validateErrors();
 
-  // Check if there are any form errors
+  // // Check if there are any form errors
   const hasErrors = Object.values(formErrs).some((error) => error !== "");
 
   if (!hasErrors) {
@@ -130,35 +97,35 @@ const handleSubmit = (e) => {
     }
 
     // Reset form inputs and errors
-    setFormInputs({
-      firstNameGuest: "",
-      lastNameGuest: "",
-      firstNameBilling: "",
-      lastNameBilling: "",
-      email: "",
-      phone: "",
-      city: "",
-      postalCode: "",
-      cardNumber: "",
-      csv: "",
-      check: ""
-    });
-    setFormErrs({
-      firstNameGuestErr: "",
-      lastNameGuestErr: "",
-      firstNameBillingErr: "",
-      lastNameBillingErr: "",
-      emailErr: "",
-      phoneErr: "",
-      cityErr: "",
-      postalCodeErr: "",
-      cardNumberErr: "",
-      csvErr: "",
-      checkErr: ""
-    });
+    // setFormInputs({
+    //   firstNameGuest: "",
+    //   lastNameGuest: "",
+    //   firstNameBilling: "",
+    //   lastNameBilling: "",
+    //   email: "",
+    //   phone: "",
+    //   city: "",
+    //   postalCode: "",
+    //   cardNumber: "",
+    //   csv: "",
+    //   check: ""
+    // });
+    // setFormErrs({
+    //   firstNameGuestErr: "",
+    //   lastNameGuestErr: "",
+    //   firstNameBillingErr: "",
+    //   lastNameBillingErr: "",
+    //   emailErr: "",
+    //   phoneErr: "",
+    //   cityErr: "",
+    //   postalCodeErr: "",
+    //   cardNumberErr: "",
+    //   csvErr: "",
+    //   checkErr: ""
+    // });
 
-    // Redirect or perform any other actions after successful form submission
-    // ...
+  //   // Redirect or perform any other actions after successful form submission
+  //   // ...
   }
 };
 
@@ -182,6 +149,7 @@ const handleSubmit = (e) => {
                         value={formInputs.firstNameGuest}
                         handleChange={handleChange}
                         className="form-control"
+                        name="firstNameGuest"
                       />
                       {formErrs.firstNameGuestErr && <span className="text-danger">{formErrs.firstNameGuestErr}</span>}
                     </div>
@@ -196,6 +164,7 @@ const handleSubmit = (e) => {
                         value={formInputs.lastNameGuest}
                         handleChange={handleChange}
                         className="form-control"
+                        name="lastNameGuest"
                       />
                       {formErrs.lastNameGuestErr && <span className="text-danger">{formErrs.lastNameGuestErr}</span>}
                     </div>
@@ -245,6 +214,7 @@ const handleSubmit = (e) => {
                         value={formInputs.firstNameBilling}
                         handleChange={handleChange}
                         className="form-control"
+                        name="firstNameBilling"
                       />
                       {formErrs.firstNameBillingErr && <span className="text-danger">{formErrs.firstNameBillingErr}</span>}
                     </div>
@@ -259,6 +229,7 @@ const handleSubmit = (e) => {
                         value={formInputs.lastNameBilling}
                         handleChange={handleChange}
                         className="form-control"
+                        name="lastNameBilling"
                       />
                       {formErrs.lastNameBillingErr && <span className="text-danger">{formErrs.lastNameBillingErr}</span>}
                     </div>
@@ -273,6 +244,7 @@ const handleSubmit = (e) => {
                         value={formInputs.email}
                         handleChange={handleChange}
                         className="form-control"
+                        name="email"
                       />
                       {formErrs.emailErr && <span className="text-danger">{formErrs.emailErr}</span>}
                     </div>
@@ -287,6 +259,7 @@ const handleSubmit = (e) => {
                         value={formInputs.phone}
                         handleChange={handleChange}
                         className="form-control"
+                        name="phone"
                       />
                       {formErrs.phoneErr && <span className="text-danger">{formErrs.phoneErr}</span>}
                     </div>
@@ -299,6 +272,7 @@ const handleSubmit = (e) => {
                         id="formGroupExampleInput"
                         placeholder="Billing address"
                         className="form-control"
+                        
                       />
                     </div>
                   </div>
@@ -312,6 +286,7 @@ const handleSubmit = (e) => {
                         value={formInputs.city}
                         handleChange={handleChange}
                         className="form-control"
+                        name="city"
                       />
                         {formErrs.cityErr && <span className="text-danger">{formErrs.cityErr}</span>}
                     </div>
@@ -341,6 +316,7 @@ const handleSubmit = (e) => {
                         value={formInputs.postalCode}
                         handleChange={handleChange}
                         className="form-control"
+                        name="postalCode"
                       />
                         {formErrs.postalCodeErr && <span className="text-danger">{formErrs.postalCodeErr}</span>} 
                     </div>
@@ -385,6 +361,7 @@ const handleSubmit = (e) => {
                         value={formInputs.cardNumber}
                         handleChange={handleChange}
                         className="form-control"
+                        name="cardNumber"
                       />
                         {formErrs.cardNumberErr && <span className="text-danger">{formErrs.cardNumberErr}</span>} 
                     </div>
@@ -399,6 +376,7 @@ const handleSubmit = (e) => {
                         value={formInputs.csv}
                         handleChange={handleChange}
                         className="form-control"
+                        name="csv"
                       />
                         {formErrs.csvErr && <span className="text-danger">{formErrs.csvErr}</span>}
                     </div>
@@ -412,6 +390,7 @@ const handleSubmit = (e) => {
                         id="formGroupExampleInput"
                         placeholder="oct/2023"
                         className="form-control"
+                        
                       />
                     </div>
                   </div>
@@ -420,10 +399,11 @@ const handleSubmit = (e) => {
                       <InputHolder
                         type="checkbox"
                         id="check"
-                        checked
+                        checked = {formInputs.check}
                         value={formInputs.check}
                         handleChange={handleChange}
                         className="form-check-input d-inline-block"
+                        name="check"
                       />
                       {formErrs.checkErr && <span className="text-danger">{formErrs.checkErr}</span>}
                       <label
