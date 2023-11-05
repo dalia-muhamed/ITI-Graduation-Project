@@ -77,8 +77,11 @@ const SinglePage = () => {
           <div className="row">
             {location && (
               <div className="col-12 singlePage-address-header">
-                <FontAwesomeIcon icon={faLocationDot} />
-                {locationName}
+                <FontAwesomeIcon
+                  icon={faLocationDot}
+                  className="singlePageAddressIcon"
+                />
+                <span> {locationName}</span>
                 {/* <img src={map} className="singlePageIcon" alt="map" />
                 {locationName} */}
               </div>
@@ -129,17 +132,33 @@ const SinglePage = () => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row d-flex singlePage-randomImages-row">
             <>
               {images &&
                 Array.isArray(images) && (
-                  <div className="col-6 singlePage-main-image">
-                    <img src={images[0]} alt="singlePage-main-image" />
+                  <div className=" singlePage-main-image-container">
+                    {/* <div style={{ backgroundColor: 'red' }}>
+                      <img
+                        src="https://static.tacdn.com/img2/travelers_choice/2023/TC_L.svg"
+                        alt="logo"
+                        className="w-100"
+                        style={{ backgroundColor: 'red' }}
+                      />
+                    </div> */}
+                    <img
+                      src={images[0]}
+                      alt="singlePage-main-image"
+                      className="w-100 "
+                    />
                   </div>
                 ) &&
                 images.map(image => (
-                  <div className="col-lg-4 flex-column">
-                    <img src={image} alt="Small Picture 1" className="w-100 " />
+                  <div className="singlePage-secondary-images-container">
+                    <img
+                      src={image}
+                      alt="secondary-images"
+                      className="w-100 "
+                    />
                   </div>
                 ))}
             </>
