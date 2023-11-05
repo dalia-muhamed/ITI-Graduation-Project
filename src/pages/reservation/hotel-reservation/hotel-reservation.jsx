@@ -2,7 +2,7 @@ import React from "react";
 import InputHolder from "../../../components/input/input";
 import "./hotel-reservation.css";
 import Hotelbg from "./header-bg.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
@@ -73,8 +73,10 @@ const validateErrors = () =>{
 const handleSubmit = (e) => {
   e.preventDefault();
   validateErrors();
+};
 
-  // // Check if there are any form errors
+useEffect(() => {
+  // Check if there are any form errors
   const hasErrors = Object.values(formErrs).some((error) => error !== "");
 
   if (!hasErrors) {
@@ -99,7 +101,7 @@ const handleSubmit = (e) => {
         postalCode: formInputs.postalCode,
         cardNumber: formInputs.cardNumber,
         csv: formInputs.csv,
-        month:formInputs.month,
+        month: formInputs.month,
         check: formInputs.check
       };
 
@@ -108,10 +110,10 @@ const handleSubmit = (e) => {
 
       // Save the updated data to local storage
       localStorage.setItem("formData", JSON.stringify(newData));
-      console.log(formErrs)
+      console.log(formErrs);
     }
   }
-};
+}, [formErrs]);
 
   return (
     <div className="container hotel-custom">
