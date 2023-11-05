@@ -10,6 +10,8 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SinglePage = () => {
   const params = useParams();
@@ -45,7 +47,7 @@ const SinglePage = () => {
 
   let locationName;
   if (location) {
-    ({ locationName} = location);
+    ({ locationName } = location);
   }
 
   console.log(selectedCategory);
@@ -75,8 +77,10 @@ const SinglePage = () => {
           <div className="row">
             {location && (
               <div className="col-12 singlePage-address-header">
-                <img src={map} className="singlePageIcon" alt='map' />
+                <FontAwesomeIcon icon={faLocationDot} />
                 {locationName}
+                {/* <img src={map} className="singlePageIcon" alt="map" />
+                {locationName} */}
               </div>
             )}
           </div>
@@ -88,7 +92,12 @@ const SinglePage = () => {
                   className="singlePageIcon"
                   alt="singlePageIcon"
                 />
-                <a className="website-link" href={website} target="_blank" rel="noreferrer">
+                <a
+                  className="website-link"
+                  href={website}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Visit hotel website
                 </a>
               </div>
