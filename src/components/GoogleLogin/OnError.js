@@ -2,4 +2,4 @@ function onError(){
     console.log('Login Failed');
 }
 
-export default onError
+export default onError

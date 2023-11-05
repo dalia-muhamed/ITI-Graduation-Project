@@ -1,5 +1,4 @@
 import React from 'react';
-
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import Navbar from '../../components/navbar/Navbar';
 import Owl from '../../components/owl/Owl';
