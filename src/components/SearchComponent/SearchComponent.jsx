@@ -159,7 +159,7 @@ const SearchComponent = () => {
             className={`tab ${activeTab === 1 ? 'active' : ''}`}
             onClick={() => handleTabClick(1)}
           >
-            <img className="searchIcon" src={Hotel} />
+            <img className="searchIcon" src={Hotel} alt='icon' />
             Hotel
           </div>
           <div
@@ -180,7 +180,6 @@ const SearchComponent = () => {
         <div
           style={{ textAlign: 'center', color: 'red', marginBottom: '10px' }}
         >
-          {warning}
         </div>
         <div className="search-bar">
           <FontAwesomeIcon

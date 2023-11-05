@@ -26,7 +26,6 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="nav-right-side col-md-4 d-flex align-items-center mb-2">
-              {/* <button>Sign in</button> */}
               <GoogleLogin onSuccess={onSuccess} onError={onError} />
             </div>
           </div>

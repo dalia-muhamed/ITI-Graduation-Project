@@ -5,7 +5,6 @@
   width: 100%;
   background-color: #fff;
   z-index: 99999;
-  /* padding: 1rem 2rem; */
   border-bottom: 1px solid rgb(212, 211, 211);
   padding: 0.9rem 0rem;
 }
@@ -15,7 +14,7 @@
 }
 .nav-left-side {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 .nav-inner-side ul {
