@@ -14,7 +14,6 @@ const SearchComponent = () => {
   const [searchPath, setSearchPath] = useState('');
   const [searchVal, setSearchVal] = useState('');
   const [category, setCategory] = useState('');
-  const [warning] = useState(null);
 
   const handleTabClick = tabId => {
     setActiveTab(tabId);
@@ -181,7 +180,6 @@ const SearchComponent = () => {
         <div
           style={{ textAlign: 'center', color: 'red', marginBottom: '10px' }}
         >
-          {warning}
         </div>
         <div className="search-bar">
           <FontAwesomeIcon

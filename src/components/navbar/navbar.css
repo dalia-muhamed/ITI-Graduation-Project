@@ -5,9 +5,8 @@
   width: 100%;
   background-color: #fff;
   z-index: 99999;
-  /* padding: 1rem 2rem; */
   border-bottom: 1px solid rgb(212, 211, 211);
-  padding: 0.9rem 0rem;
+  padding: 0.5rem 0rem;
 }
 .nav-logo-container .navbar-logo {
   font-family: 'Open Sans', sans-serif;
