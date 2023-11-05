@@ -139,18 +139,19 @@ const SinglePage = () => {
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">
               <>
-                {images && Array.isArray(images) && (
+                {images && (
                   <div className="singlePage-main-image-container">
                     <div className="row">
-                      <div className="col-lg-8 px-0 mb-1">
-                        <img
+                      <div className="col-lg-8 px-0 mb-1 h-100" style={{ height: "100%" }}>
+                        {/* <img
                           src={images[0]}
                           alt="singlePage-main-imag"
-                          className="w-100"
+                          className="w-100 h-100"
                           height="100%"
-                        />
+                          style={{height:"100%"}}
+                        /> */}
                       </div>
-                      <div className="col-lg-4">
+                      <div className="col-lg-4 h-100">
                         {slidingImages.map((img) => (
                           <div className="d-flex flex-column my-1">
                             <img src={img} height={130} />
@@ -162,6 +163,8 @@ const SinglePage = () => {
                 )}
               </>
             </div>
+
+            
             <div className="row">
               <div className="col-lg-6">
                 <h2>About</h2>
