@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../axios';
 import './SinglePage.css';
 import pen from './singlePageIcons/pen.png';
