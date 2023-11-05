@@ -1,0 +1,21 @@
+@media screen and (min-width: 993px) {
+    .hotel-custom .reserve-modify {
+      flex-direction: row;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .hotel-custom .reserve-modify {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: 993px) {
+    .hotel-custom .reserve-modify .inputs-modify{
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .hotel-custom .reserve-modify .inputs-modify{
+     width:100%;
+    }
+  }

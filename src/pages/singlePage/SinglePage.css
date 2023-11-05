@@ -1,0 +1,83 @@
+/* Hotel information container */
+.singlePage-container {
+  padding: 0.7rem 0;
+}
+.category-details {
+  padding: 6.8rem 0;
+  max-width: 70% !important;
+  margin: 0 auto;
+}
+
+.category-details .details-heading {
+  font-size: 2.2rem;
+  font-family: TripBold-900;
+  margin-bottom: 1.4rem;
+}
+.singlePage-ratingReview-container {
+  gap: 1.2rem;
+}
+.singlePageRatingReviews {
+  padding-left: 0.8rem;
+  margin-bottom: -1.7rem;
+}
+.singlePageHr {
+  width: 1px;
+  background-color: #ccc;
+  height: 40%;
+}
+.singlePage-heading-contacts-container {
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.singlePage-heading-contacts {
+  gap: 1.1rem;
+  align-items: center;
+}
+.singlePage-address-header {
+  font-family: tripRegular;
+  font-size: 1.1rem;
+}
+.availabilityButton-container {
+  text-align: end;
+}
+.availabilityButton-container .availabilityButton {
+  padding: 0.7rem 1.2rem;
+  background-color: #f2b203;
+  color: #000000;
+  border: none;
+  font-family: tripBold-600;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.availabilityButton:hover {
+  background-color: #fdc735;
+}
+/* Hotel phone number */
+.singlePage-main-image {
+  width: 100%;
+}
+.singlePageIcon {
+  width: 20px;
+  margin: 0px 10px;
+  align-items: center;
+}
+.singlePage-address-header,
+.singlePage-heading-contacts {
+  margin-bottom: -0.7rem;
+}
+.singlePage-website-header .website-link,
+.singlePage-pen-header,
+.singlePage-phone-header .phone-link {
+  font-size: 1rem;
+  font-family: tripBold-700;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Hotel reviews link */
+.hotel-reviews {
+  font-size: 16px;
+  color: darkslategray;
+  text-decoration: none;
+}

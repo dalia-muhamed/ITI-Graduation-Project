@@ -1,0 +1,123 @@
+.search-result-card {
+  text-decoration: none;
+  color: black;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 10px; */
+  border-bottom: 1px solid rgb(188, 188, 190);
+  padding: 0.9rem;
+  overflow-x: hidden;
+}
+.search-result:hover {
+  cursor: pointer;
+}
+.search-result .matched-hotels-img {
+  margin-right: 0.7rem;
+  width: 12rem;
+  min-width: 10rem;
+  height: 10.5rem;
+}
+
+.search-result .matched-hotels-img .result-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.result-details {
+  background-color: #fff;
+  border: 1px solid #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result .result-details .categories-name {
+  width: 450px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.search-result .result-details h5 {
+  margin-top: 0;
+  padding: 0 !important;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: none !important;
+}
+.search-result .result-details h5:hover {
+  text-decoration: underline;
+}
+
+.result-description {
+  margin-bottom: 10px;
+}
+
+.result-url {
+  color: blue;
+}
+
+.result-url:hover {
+  text-decoration: underline;
+}
+.rate-section .rating {
+  display: flex;
+  align-items: center;
+}
+.rate-section p {
+  font-size: 0.8rem;
+
+  font-weight: normal;
+}
+.rate-section p span {
+  font-weight: 600;
+}
+
+.rate-section .rating .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 5px;
+  border: 1px solid #00aa6c;
+}
+
+.result-details .hotelElipsise {
+  white-space: nowrap;
+  max-width: 18.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 25px;
+  font-size: 0.9rem;
+}
+
+.search-result .result-details .address-style {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 400px;
+  display: block;
+}
+
+@media (width<550px) {
+  .search-result {
+    flex-direction: column;
+  }
+  .search-result .matched-hotels-img {
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+  .result-details {
+    align-self: flex-start;
+  }
+  .search-result .result-details .categories-name {
+    width: auto;
+  }
+  .search-result .result-details .address-style {
+    max-width: 300px;
+  }
+}

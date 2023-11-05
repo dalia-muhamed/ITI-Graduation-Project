@@ -1,0 +1,7 @@
+.searchbtn {
+  background-color: #004f32;
+}
+.searchbtn:hover {
+  background-color: #00aa6c;
+  transition: 0.5s;
+}

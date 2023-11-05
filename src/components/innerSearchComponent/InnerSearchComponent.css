@@ -1,0 +1,36 @@
+.innerSearchComponent {
+  width: 100%;
+  padding: 2rem;
+}
+.matched-category-search-input {
+  width: 100%;
+  position: relative;
+}
+
+.matched-category-search-input input {
+  width: 27rem;
+  border: 1px solid rgb(185, 184, 184);
+  padding: 7px 45px;
+  border-radius: 20px;
+  margin-right: 20px;
+  outline: none;
+}
+
+.matched-category-search-input .matchedCategoryIcon {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  color: gray;
+}
+@media(width<800px) {
+    .matched-category-search-input{
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        flex-direction: column;
+    } 
+    .matched-category-search-input input{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+}

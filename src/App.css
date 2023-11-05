@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+  font-family: 'TripRegular';
+  src: local('TripRegular'), url(./Trip-Sans-Font/trip-sans.otf);
+}
+
+@font-face {
+  font-family: 'TripBold-900';
+  src: local('TripBold-900'), url(./Trip-Sans-Font/trip-sans-bold.otf);
+}
+@font-face {
+  font-family: 'TripBold-700';
+  src: local('TripBold-700'), url(./Trip-Sans-Font/trip-sans-medium.otf);
+}
+@font-face {
+  font-family: 'TripBold-600';
+  src: local('TripBold-600'), url(./Trip-Sans-Font/trip-sans-variable.ttf);
+}

@@ -1,0 +1,28 @@
+.owl{
+    margin: 20px;
+}
+.title{
+    padding-left: 16px;
+}
+.carousel{
+    overflow: hidden;
+    cursor: grab;
+}
+.inner-carousel{
+    display: flex;
+}.item{
+    width: 280px;
+    height: 400px;
+    margin: 20px;
+}
+.item img{
+    width: 280px;
+    height: 280px;
+    pointer-events: none;
+}
+.restaurant{
+    font-size: medium;
+    font-weight: bold;
+    padding: 10px 0px;
+    margin: 0%;
+}

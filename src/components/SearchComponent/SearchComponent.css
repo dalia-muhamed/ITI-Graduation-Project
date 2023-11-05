@@ -1,0 +1,96 @@
+.SearchComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem 0rem;
+}
+
+.content {
+  padding: 20px 10px 0;
+  text-align: center;
+}
+
+.content h1 {
+  font-weight: 800;
+  font-family: Arial, Tahoma, sans-serif;
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.search-bar {
+  margin-top: 1.25rem;
+  position: relative;
+  width: 55%;
+  margin: Auto;
+  height: 4rem;
+}
+.search-bar .SearchComponentIcon {
+  position: absolute;
+  top: 1.1rem;
+  left: 1rem;
+  font-size: 17px;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 800px;
+  height: 56px;
+  padding: 0.5rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 55px;
+  font-family: sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.tabsContainer {
+  display: flex;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #0000007a;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+.tabsContainer .tab:hover {
+  color: #000;
+}
+.tabsContainer .tab {
+  padding: 20px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.active {
+  color: #000;
+  border-width: 10px;
+}
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  margin: 0px 8px;
+  align-items: center;
+}
+
+.search-bar .searchLink {
+  margin: 0.3rem;
+  width: 6.25rem;
+  background-color: #34e0a1;
+  color: #000000;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: absolute;
+  right: 0.1rem;
+  top: 0;
+  height: 2.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+}
+.search-bar .searchLink:hover {
+  background-color: #34e0a1d0;
+}
