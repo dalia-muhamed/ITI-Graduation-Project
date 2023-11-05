@@ -82,8 +82,6 @@ const SinglePage = () => {
                   className="singlePageAddressIcon"
                 />
                 <span> {locationName}</span>
-                {/* <img src={map} className="singlePageIcon" alt="map" />
-                {locationName} */}
               </div>
             )}
           </div>
