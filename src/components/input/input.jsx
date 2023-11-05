@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputHolder({ type, placeholder, id, value, handleChange, className}) {
+function InputHolder({ type, placeholder, id, value, handleChange, className, name}) {
 
   return (
     <div>
@@ -11,6 +11,7 @@ function InputHolder({ type, placeholder, id, value, handleChange, className}) {
         defaultValue={value}
         id={id}
         className={className}
+        name= {name}
       />
     </div>
   );

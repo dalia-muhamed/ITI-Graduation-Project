@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { axiosInstance } from "../../axios";
-import "./SinglePage.css";
-import pen from "./singlePageIcons/pen.png";
-import telephone from "./singlePageIcons/telephone.png";
-import map from "./singlePageIcons/map.png";
-import web from "./singlePageIcons/web.png";
-import Navbar from "../../components/navbar/Navbar";
-import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
-import Rating from "../../components/owl/Rating";
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { axiosInstance } from '../../axios';
+import './SinglePage.css';
+import pen from './singlePageIcons/pen.png';
+import telephone from './singlePageIcons/telephone.png';
+import map from './singlePageIcons/map.png';
+import web from './singlePageIcons/web.png';
+import Navbar from '../../components/navbar/Navbar';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import Rating from '../../components/owl/Rating';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SinglePage = () => {
   const params = useParams();
@@ -51,9 +54,9 @@ const SinglePage = () => {
     description,
   } = selectedCategory;
 
-  let locationName, locationAddress;
+  let locationName;
   if (location) {
-    ({ locationName, locationAddress } = location);
+    ({ locationName } = location);
   }
   let slidingImages;
   if (images) {
@@ -143,13 +146,13 @@ const SinglePage = () => {
                   <div className="singlePage-main-image-container">
                     <div className="row">
                       <div className="col-lg-8 px-0 mb-1 h-100" style={{ height: "100%" }}>
-                        {/* <img
+                        <img
                           src={images[0]}
                           alt="singlePage-main-imag"
                           className="w-100 h-100"
                           height="100%"
                           style={{height:"100%"}}
-                        /> */}
+                        />
                       </div>
                       <div className="col-lg-4 h-100">
                         {slidingImages.map((img) => (

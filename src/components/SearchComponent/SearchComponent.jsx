@@ -150,9 +150,15 @@ const SearchComponent = () => {
     <div className="SearchComponent">
       <div className="container searchComponentInner">
         <div className="content font-weight-bold">
-          {activeTab === 1 && <h1>Stay Somewhere great</h1>}
-          {activeTab === 2 && <h1>Do Something fun</h1>}
-          {activeTab === 3 && <h1>Find places to eat</h1>}
+          {activeTab === 1 && (
+            <h1 className="content-primaryHeading">Stay Somewhere great</h1>
+          )}
+          {activeTab === 2 && (
+            <h1 className="content-primaryHeading">Do Something fun</h1>
+          )}
+          {activeTab === 3 && (
+            <h1 className="content-primaryHeading">Find places to eat</h1>
+          )}
         </div>
 
         <div className="tabsContainer">
@@ -178,9 +184,6 @@ const SearchComponent = () => {
             Restaurants
           </div>
         </div>
-        <div
-          style={{ textAlign: "center", color: "red", marginBottom: "10px" }}
-        ></div>
         <div className="search-bar">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}

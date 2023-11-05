@@ -2,7 +2,7 @@ import React from "react";
 import InputHolder from "../../../components/input/input";
 import "./hotel-reservation.css";
 import Hotelbg from "./header-bg.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
@@ -16,6 +16,7 @@ const HotelReservation = () => {
     postalCode: "",
     cardNumber: "",
     csv: "",
+    month:"",
     check: false
   });
 
@@ -30,18 +31,26 @@ const HotelReservation = () => {
     postalCodeErr: "",
     cardNumberErr: "",
     csvErr: "",
-    checkErr:""
+    checkErr:"",
+    monthErr:""
   });
 
   const handleChange = (e) => {
       if (e.target.type === "checkbox") {
         setFormInputs({ ...formInputs, [e.target.name]: e.target.checked });
-      } else {
+      }
+       else {
         setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
       }
   };
 
 const validateErrors = () =>{
+
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  const [selectedYear, selectedMonth] = formInputs.month.split("-");
+
   setFormErrs({
     firstNameGuestErr:!formInputs.firstNameGuest.length?"This field is required!":'',
     lastNameGuestErr:!formInputs.lastNameGuest.length?"This field is required!":'',
@@ -53,6 +62,10 @@ const validateErrors = () =>{
     postalCodeErr: !formInputs.postalCode.length ?"This field is required!":"",
     cardNumberErr: !formInputs.cardNumber.length ? "This field is required!" : !/^\d{16}$/.test(formInputs.cardNumber) ? "Invalid card number format! (16 Digits)" : "",
     csvErr: !formInputs.csv.length ? "This field is required!" : !/^\d{3}$/.test(formInputs.csv) ? "It should be 3 digits only!" : "",
+    monthErr: !formInputs.month.length ? "This field is required!" : 
+    `${selectedYear}-${selectedMonth}` < `${currentYear}-${currentMonth}`
+      ? "Sorry, can't complete with expired card"
+      : "",
     checkErr: !formInputs.check ?"You must confirm the terms and conditions":"",
   })
 }
@@ -60,8 +73,10 @@ const validateErrors = () =>{
 const handleSubmit = (e) => {
   e.preventDefault();
   validateErrors();
+};
 
-  // // Check if there are any form errors
+useEffect(() => {
+  // Check if there are any form errors
   const hasErrors = Object.values(formErrs).some((error) => error !== "");
 
   if (!hasErrors) {
@@ -86,6 +101,7 @@ const handleSubmit = (e) => {
         postalCode: formInputs.postalCode,
         cardNumber: formInputs.cardNumber,
         csv: formInputs.csv,
+        month: formInputs.month,
         check: formInputs.check
       };
 
@@ -94,40 +110,10 @@ const handleSubmit = (e) => {
 
       // Save the updated data to local storage
       localStorage.setItem("formData", JSON.stringify(newData));
+      console.log(formErrs);
     }
-
-    // Reset form inputs and errors
-    // setFormInputs({
-    //   firstNameGuest: "",
-    //   lastNameGuest: "",
-    //   firstNameBilling: "",
-    //   lastNameBilling: "",
-    //   email: "",
-    //   phone: "",
-    //   city: "",
-    //   postalCode: "",
-    //   cardNumber: "",
-    //   csv: "",
-    //   check: ""
-    // });
-    // setFormErrs({
-    //   firstNameGuestErr: "",
-    //   lastNameGuestErr: "",
-    //   firstNameBillingErr: "",
-    //   lastNameBillingErr: "",
-    //   emailErr: "",
-    //   phoneErr: "",
-    //   cityErr: "",
-    //   postalCodeErr: "",
-    //   cardNumberErr: "",
-    //   csvErr: "",
-    //   checkErr: ""
-    // });
-
-  //   // Redirect or perform any other actions after successful form submission
-  //   // ...
   }
-};
+}, [formErrs]);
 
   return (
     <div className="container hotel-custom">
@@ -386,12 +372,14 @@ const handleSubmit = (e) => {
                       <label for="formGroupExampleInput">Card Expiry</label>
                       <InputHolder
                         type="month"
-                        min="2023-10"
-                        id="formGroupExampleInput"
-                        placeholder="oct/2023"
+                        min="2024-10"
+                        id="month"
+                        value={formInputs.month}
+                        handleChange={handleChange}
+                        name="month"
                         className="form-control"
-                        
                       />
+                      {formErrs.monthErr && <span className="text-danger">{formErrs.monthErr}</span>}
                     </div>
                   </div>
                   <div className="mb-3">
