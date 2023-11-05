@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { axiosInstance } from '../../axios';
-import './SinglePage.css';
-import pen from './singlePageIcons/pen.png';
-import telephone from './singlePageIcons/telephone.png';
-import map from './singlePageIcons/map.png';
-import web from './singlePageIcons/web.png';
-import Navbar from '../../components/navbar/Navbar';
-import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import Rating from '../../components/owl/Rating';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { axiosInstance } from "../../axios";
+import "./SinglePage.css";
+import pen from "./singlePageIcons/pen.png";
+import telephone from "./singlePageIcons/telephone.png";
+import map from "./singlePageIcons/map.png";
+import web from "./singlePageIcons/web.png";
+import Navbar from "../../components/navbar/Navbar";
+import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
+import Rating from "../../components/owl/Rating";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SinglePage = () => {
   const params = useParams();
@@ -144,20 +144,21 @@ const SinglePage = () => {
               <>
                 {images && (
                   <div className="singlePage-main-image-container">
-                    <div className="row">
-                      <div className="col-lg-8 px-0 mb-1 h-100" style={{ height: "100%" }}>
+                    <div
+                      className="row"
+                      style={{ maxHeight: "400px", overflow: "hidden" }}
+                    >
+                      <div className="col-lg-8 px-0 mb-1">
                         <img
                           src={images[0]}
                           alt="singlePage-main-imag"
                           className="w-100 h-100"
-                          height="100%"
-                          style={{height:"100%"}}
                         />
                       </div>
                       <div className="col-lg-4 h-100">
-                        {slidingImages.map((img) => (
-                          <div className="d-flex flex-column my-1">
-                            <img src={img} height={130} />
+                        {slidingImages.map((img, index) => (
+                          <div className="d-flex flex-column mb-1">
+                            <img src={img} height={130} alt={index} />
                           </div>
                         ))}
                       </div>
@@ -167,7 +168,6 @@ const SinglePage = () => {
               </>
             </div>
 
-            
             <div className="row">
               <div className="col-lg-6">
                 <h2>About</h2>
