@@ -6,6 +6,7 @@ import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
 import { axiosInstance } from '../../axios';
+import { useSelector } from 'react-redux';
 
 const Hotels = () => {
   const location = useLocation();
@@ -14,6 +15,9 @@ const Hotels = () => {
   const cityName = params.get('cityName');
   const [filteredHotels, setFilteredHotels] = useState([]);
   const category = 'hotels';
+  const innerSearchState = useSelector(
+    state => state.innerSearch.initialSearchState
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +33,9 @@ const Hotels = () => {
           `cities/hotels/${queryParams}`
         );
         const responseData = response.data.hotels;
-        setFilteredHotels(responseData);
+        const dataToShow =
+          innerSearchState.length > 0 ? innerSearchState : responseData;
+        setFilteredHotels(dataToShow);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
@@ -38,7 +44,7 @@ const Hotels = () => {
     if (hotelName || cityName) {
       fetchData();
     }
-  }, [hotelName, cityName]);
+  }, [hotelName, cityName, innerSearchState]);
 
   const searchValue = hotelName || cityName;
 

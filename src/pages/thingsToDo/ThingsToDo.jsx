@@ -5,6 +5,7 @@ import Navbar from '../../components/navbar/Navbar';
 import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
+import { useSelector } from 'react-redux';
 
 const ThingsToDo = () => {
   const location = useLocation();
@@ -13,6 +14,9 @@ const ThingsToDo = () => {
   const cityName = params.get('cityName');
   const [filteredToDos, setFilteredToDos] = useState([]);
   const category = 'thingsToDo';
+  const innerSearchState = useSelector(
+    state => state.innerSearch.initialSearchState
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +32,9 @@ const ThingsToDo = () => {
 
         const response = await axios.get(url + queryParams);
         const responseData = response.data.todos;
-        setFilteredToDos(responseData);
+        const dataToShow =
+          innerSearchState.length > 0 ? innerSearchState : responseData;
+        setFilteredToDos(dataToShow);
       } catch (error) {
         console.log('Error fetching data:', error);
       }

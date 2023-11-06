@@ -21,27 +21,31 @@ const Owl = () => {
     fetchRestaurants();
   }, []);
   return (
-    <div className="container owl">
-      <h1 className="title">Worldwide Top Rated Restaurants</h1>
-      <motion.div className="carousel">
-        <motion.div
-          drag="x"
-          dragConstraints={{ right: 0, left: -14900 }}
-          className="inner-carousel"
-        >
-          {restaurants.map(restaurant => (
-            <motion.div className="item" key={restaurant.id}>
-              <img src={restaurant.images[0]} alt="Restaurant-img" />
-              <h2 className="restaurant">{restaurant.name}</h2>
-              <Rating
-                rating={restaurant.rating}
-                reviews={restaurant.reviews}
-                rank={restaurant.rank}
-              />
+    <div>
+      {restaurants && (
+        <div className="container owl">
+          <h4 className="owl-title">Worldwide Top Rated Restaurants</h4>
+          <motion.div className="carousel">
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -14900 }}
+              className="inner-carousel"
+            >
+              {restaurants.map(restaurant => (
+                <motion.div className="item" key={restaurant.id}>
+                  <img src={restaurant.images[0]} alt="Restaurant-img" />
+                  <h2 className="restaurant">{restaurant.name}</h2>
+                  <Rating
+                    rating={restaurant.rating}
+                    reviews={restaurant.reviews}
+                    rank={restaurant.rank}
+                  />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+          </motion.div>{' '}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,28 +1,30 @@
-.owl{
-    margin: 20px;
+/* .owl {
+  margin: 20px;
+} */
+.owl-title {
+  padding-left: 16px;
+  font-family: TripBold-700;
 }
-.title{
-    padding-left: 16px;
+.carousel {
+  overflow: hidden;
+  cursor: grab;
 }
-.carousel{
-    overflow: hidden;
-    cursor: grab;
+.inner-carousel {
+  display: flex;
 }
-.inner-carousel{
-    display: flex;
-}.item{
-    width: 280px;
-    height: 400px;
-    margin: 20px;
+.item {
+  width: 280px;
+  height: 400px;
+  margin: 20px;
 }
-.item img{
-    width: 280px;
-    height: 280px;
-    pointer-events: none;
+.item img {
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
 }
-.restaurant{
-    font-size: medium;
-    font-weight: bold;
-    padding: 10px 0px;
-    margin: 0%;
+.restaurant {
+  font-size: medium;
+  font-weight: bold;
+  padding: 10px 0px;
+  margin: 0%;
 }

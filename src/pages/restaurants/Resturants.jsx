@@ -5,6 +5,7 @@ import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
 import { axiosInstance } from '../../axios';
+import { useSelector } from 'react-redux';
 
 const Restaurants = () => {
   const location = useLocation();
@@ -13,6 +14,9 @@ const Restaurants = () => {
   const cityName = params.get('cityName');
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const category = 'restaurants';
+  const innerSearchState = useSelector(
+    state => state.innerSearch.initialSearchState
+  );
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +27,9 @@ const Restaurants = () => {
           },
         });
         const responseData = response.data.restaurants;
-        setFilteredRestaurants(responseData);
+        const dataToShow =
+          innerSearchState.length > 0 ? innerSearchState : responseData;
+        setFilteredRestaurants(dataToShow);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
