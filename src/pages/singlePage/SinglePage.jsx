@@ -21,7 +21,6 @@ const SinglePage = () => {
   const params = useParams();
   const [responseData, setResponseData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState({});
-
   const { category, categoryId } = params;
   useEffect(() => {
     const fetchData = () => {
@@ -38,6 +37,7 @@ const SinglePage = () => {
     };
     fetchData();
   }, [category, responseData]);
+
   useEffect(() => {
     if (responseData.length > 0) {
       const filteredCategoryById = responseData.find(
