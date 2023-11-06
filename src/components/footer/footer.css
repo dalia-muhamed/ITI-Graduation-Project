@@ -1,30 +1,35 @@
-.footer{
-    background-color: rgb(255, 225, 241);
-    padding: 30px;
+.footer-wrapper-all {
+  background-color: #faf1ed;
 }
-.footer-table{
-    display: flex;
 
+.footer-wrapper-all .footer-first-list,
+.footer-wrapper-all .footer-second-list,
+.footer-wrapper-all .footer-third-list,
+.footer-wrapper-all .footer-fourth-list,
+.footer-wrapper-all .footer-inlist {
+  font-size: 14px;
 }
-.table{
-    width:"60%"
+
+.footer-wrapper-all .travellya {
+    width: 38px;
+    height: 35px;
 }
-td{
-    width: 33.33%;
-    font-size:13px;
-}
-td:hover{
-    text-decoration: underline;
-    opacity: 0.6;
-}
-.objective{
-    width: 40%;
-}
-.travellya {
-    width: 60px;
-    height: 50px;
-    border-radius: 50%; 
-}
-.icon-text{
-    display: flex;
-}
+
+
+@media screen and (min-width: 992px) {
+   .footer-wrapper-all .controlled-last-footer{
+      width: 65%;
+    }
+  }
+
+  @media screen and (max-width: 1012px) {
+    .footer-wrapper-all .footer-drops,.footer-wrapper-all .footer-drops .drops-cont{
+       width: 100%;
+     }
+   }
+
+
+/* @font-face {
+    font-family: 'TripRegular';
+    src: local('TripRegular'),url(./Trip-Sans-Font/trip-sans.otf);
+} */
