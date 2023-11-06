@@ -1,6 +1,7 @@
-/* Hotel information container */
 .singlePage-container {
-  padding: 0.7rem 0;
+  padding: 0.7rem 0 !important;
+  background-color: #f2f2f2;
+  
 }
 .category-details {
   padding: 6.8rem 0;
@@ -14,20 +15,18 @@
   margin-bottom: 1.4rem;
 }
 .singlePage-ratingReview-container {
-  gap: 1.2rem;
+  padding-left: 1.3rem 0 !important;
 }
 .singlePageRatingReviews {
-  padding-left: 0.8rem;
   margin-bottom: -1.7rem;
 }
-.singlePageHr {
-  width: 1px;
-  background-color: #ccc;
-  height: 40%;
+.singlePage-main-image-container .single-hotels-left-images {
+  padding-right: 0;
 }
 .singlePage-heading-contacts-container {
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  padding: 0 !important;
 }
 .singlePage-heading-contacts {
   gap: 1.1rem;
@@ -35,10 +34,16 @@
 }
 .singlePage-address-header {
   font-family: tripRegular;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  /* padding-left: 1.5rem !important; */
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
+
 .availabilityButton-container {
-  text-align: end;
+  display: flex ;
+  justify-content: flex-end;
 }
 .availabilityButton-container .availabilityButton {
   padding: 0.7rem 1.2rem;
@@ -53,13 +58,10 @@
 .availabilityButton:hover {
   background-color: #fdc735;
 }
-/* Hotel phone number */
-.singlePage-main-image {
-  width: 100%;
-}
+
 .singlePageIcon {
   width: 20px;
-  margin: 0px 10px;
+  margin-right: 10px;
   align-items: center;
 }
 .singlePage-address-header,
@@ -75,9 +77,11 @@
   text-decoration: none;
 }
 
-/* Hotel reviews link */
-.hotel-reviews {
-  font-size: 16px;
-  color: darkslategray;
-  text-decoration: none;
+@media (width<770px) {
+  .singlePage-main-image-container .single-hotels-left-images {
+    padding: 0 !important;
+  }
+  .availabilityButton-container{
+    justify-content: flex-start;
+  }
 }
