@@ -17,6 +17,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+.nav-left-side h3{
+  font-family: TripBold-900;
+}
 .nav-inner-side ul {
   display: flex;
   justify-content: center;

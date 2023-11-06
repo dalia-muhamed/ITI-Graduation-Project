@@ -94,59 +94,62 @@ const SearchComponent = () => {
     restaurant.name.toLowerCase()
   );
 
+  const searchValidate = () => {
+    const matchedCity = cityNames.find((city) =>
+      searchVal.toLowerCase().includes(city)
+    );
+    const matchedHotels = hotelNames.filter((hotel) =>
+      hotel.includes(searchVal.toLowerCase())
+    );
+    const matchedRestaurants = restaurantNames.filter((restaurant) =>
+      restaurant.includes(searchVal.toLowerCase())
+    );
+    const matchedTodos = todoNames.filter((todo) =>
+      todo.includes(searchVal.toLowerCase())
+    );
+
+    let path = "/cities";
+
+    if (category === "hotels" && matchedCity) {
+      path += `/${category}?cityName=${matchedCity}`;
+    } else if (category === "hotels" && matchedHotels.length === 0) {
+      path = "*";
+      navigate(path);
+    } else if (category === "hotels" && matchedHotels && !matchedCity) {
+      path += `/${category}?hotelName=${searchVal}`;
+    } else if (category === "restaurants" && matchedCity) {
+      path += `/${category}?cityName=${matchedCity}`;
+    } else if (category === "restaurants" && matchedRestaurants.length === 0) {
+      path = "*";
+      navigate(path);
+    } else if (
+      category === "restaurants" &&
+      matchedRestaurants &&
+      !matchedCity
+    ) {
+      path += `/${category}?restaurantName=${searchVal}`;
+    } else if (category === "thingsToDo" && matchedCity) {
+      path += `/${category}?cityName=${matchedCity}`;
+    } else if (category === "thingsToDo" && matchedTodos.length === 0) {
+      path = "*";
+      navigate(path);
+    } else if (category === "thingsToDo" && matchedTodos && !matchedCity) {
+      path += `/${category}?todoName=${searchVal}`;
+    }
+    setSearchPath(path);
+    navigate(path);
+  };
+
+  const searchBtn = () => {
+    searchValidate();
+  };
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
-      const matchedCity = cityNames.find((city) =>
-        searchVal.toLowerCase().includes(city)
-      );
-      const matchedHotels = hotelNames.filter((hotel) =>
-        hotel.includes(searchVal.toLowerCase())
-      );
-      const matchedRestaurants = restaurantNames.filter((restaurant) =>
-        restaurant.includes(searchVal.toLowerCase())
-      );
-      const matchedTodos = todoNames.filter((todo) =>
-        todo.includes(searchVal.toLowerCase())
-      );
-
-      let path = "/cities";
-
-      if (category === "hotels" && matchedCity) {
-        path += `/${category}?cityName=${matchedCity}`;
-      } else if (category === "hotels" && matchedHotels.length === 0) {
-        path = "*";
-        navigate(path);
-      } else if (category === "hotels" && matchedHotels && !matchedCity) {
-        path += `/${category}?hotelName=${searchVal}`;
-      } else if (category === "restaurants" && matchedCity) {
-        path += `/${category}?cityName=${matchedCity}`;
-      } else if (
-        category === "restaurants" &&
-        matchedRestaurants.length === 0
-      ) {
-        path = "*";
-        navigate(path);
-      } else if (
-        category === "restaurants" &&
-        matchedRestaurants &&
-        !matchedCity
-      ) {
-        path += `/${category}?restaurantName=${searchVal}`;
-      } else if (category === "thingsToDo" && matchedCity) {
-        path += `/${category}?cityName=${matchedCity}`;
-      } else if (category === "thingsToDo" && matchedTodos.length === 0) {
-        path = "*";
-        navigate(path);
-      } else if (category === "thingsToDo" && matchedTodos && !matchedCity) {
-        path += `/${category}?todoName=${searchVal}`;
-      }
-      setSearchPath(path);
-      navigate(path);
+      searchValidate();
     }
   };
 
   return (
-    
     <div className="SearchComponent">
       <div className="container searchComponentInner">
         <div className="content font-weight-bold">
@@ -196,19 +199,9 @@ const SearchComponent = () => {
             onChange={handleInputChange}
             value={searchVal}
           />
-          <Link
-            className="searchLink"
-            // to={{
-            //   pathname: searchPath,
-            //   state: {
-            //     searchPath,
-            //     searchVal,
-            //     category,
-            //   },
-            // }}
-          >
+          <button className="searchLink" onClick={searchBtn}>
             Search
-          </Link>
+          </button>
         </div>
       </div>
     </div>
