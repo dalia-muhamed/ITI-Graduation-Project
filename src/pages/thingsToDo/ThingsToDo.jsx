@@ -43,14 +43,14 @@ const ThingsToDo = () => {
     if (cityName || todoName) {
       fetchData();
     }
-  }, [cityName, todoName]);
+  }, [cityName, todoName, innerSearchState]);
 
   const searchValue = todoName || cityName;
   console.log(filteredToDos);
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent searchValue={searchValue} category={category} />
+      <InnerSearchComponent cityName={cityName} category={category} />
       <div
         className="w-100"
         style={{ backgroundColor: '#F2F2F2', padding: '1px' }}

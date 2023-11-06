@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
-  initialSearchState: [],
+  initialSearchState: undefined,
 };
 
 const innerSearchSlice = createSlice({

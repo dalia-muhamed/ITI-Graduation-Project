@@ -7,21 +7,21 @@ import { axiosInstance } from '../../axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { filteredByName } from './innerSearchSlice';
 
-const InnerSearchComponent = ({ searchValue, category }) => {
+const InnerSearchComponent = ({ cityName, category }) => {
   const [innerInput, setInnerInput] = useState('');
   const [responseData, setResponseData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     axiosInstance
-      .get(`/${category}`)
+      .get(`/cities/${category}?cityName=${cityName}`)
       .then(res => {
         const data = res.data.todos || res.data.restaurants || res.data.hotels;
         setResponseData(data);
         dispatch(filteredByName({ innerInput, responseData: data }));
       })
       .catch(err => console.log(err));
-  }, [innerInput, category, dispatch]);
+  }, [innerInput]);
 
   const handleChange = e => {
     setInnerInput(e.target.value);
