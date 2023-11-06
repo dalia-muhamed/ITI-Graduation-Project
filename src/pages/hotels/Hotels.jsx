@@ -45,7 +45,7 @@ const Hotels = () => {
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent searchValue={searchValue} />
+      <InnerSearchComponent searchValue={searchValue} category={category} />
       <div
         className="w-100"
         style={{ backgroundColor: '#F2F2F2', padding: '1px' }}

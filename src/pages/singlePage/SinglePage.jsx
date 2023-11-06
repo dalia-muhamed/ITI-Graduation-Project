@@ -90,9 +90,11 @@ const SinglePage = () => {
             <div className="row">
               {location && (
                 <div className="col-12 singlePage-address-header">
-                  <img src={map} className="singlePageIcon" alt="map" />
-
-                  {locationName}
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className="singlePageAddressIcon"
+                  />
+                  <span> {locationName ? locationName : location}</span>
                 </div>
               )}
             </div>
@@ -144,11 +146,8 @@ const SinglePage = () => {
               <>
                 {images && (
                   <div className="singlePage-main-image-container">
-                    <div
-                      className="row"
-                      style={{ maxHeight: '400px', overflow: 'hidden' }}
-                    >
-                      <div className="col-lg-8 px-0 mb-1">
+                    <div className="row" style={{ maxHeight: '400px' }}>
+                      <div className="col-lg-8 px-0 mb-1 ">
                         <img
                           src={images[0]}
                           alt="singlePage-main-imag"
@@ -158,7 +157,7 @@ const SinglePage = () => {
                       <div className="col-lg-4 h-100">
                         {slidingImages.map((img, index) => (
                           <div className="d-flex flex-column mb-1">
-                            <img src={img} height={130} alt={index} />
+                            <img src={img} height={152} alt={index} />
                           </div>
                         ))}
                       </div>
