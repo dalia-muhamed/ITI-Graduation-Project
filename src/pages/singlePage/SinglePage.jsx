@@ -5,7 +5,6 @@ import { axiosInstance } from "../../axios";
 import "./SinglePage.css";
 import pen from "./singlePageIcons/pen.png";
 import telephone from "./singlePageIcons/telephone.png";
-import map from "./singlePageIcons/map.png";
 import web from "./singlePageIcons/web.png";
 import Navbar from "../../components/navbar/Navbar";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
@@ -90,9 +89,11 @@ const SinglePage = () => {
             <div className="row">
               {location && (
                 <div className="col-12 singlePage-address-header">
-                  <img src={map} className="singlePageIcon" alt="map" />
-
-                  {locationName}
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className="singlePageAddressIcon"
+                  />
+                  <span> {locationName}</span>
                 </div>
               )}
             </div>

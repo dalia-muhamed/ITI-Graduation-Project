@@ -1,11 +1,44 @@
 import logo from './logo.jpg';
 import './navbar.css';
-import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import onSuccess from '../GoogleLogin/OnSuccess';
-import onError from '../GoogleLogin/OnError';
+import { useState, useEffect } from 'react';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import { jwtDecode } from 'jwt-decode';
 
 const Navbar = () => {
+  const [imageSrc, setImageSrc] = useState('');
+  const [hasLogged, setHasLogged] = useState(false);
+
+  // useEffect(() => {
+  //   const userHasLogged = localStorage.getItem('hasLogged');
+  //   setHasLogged(userHasLogged === 'true');
+  
+  //   window.onbeforeunload = () => {
+  //     localStorage.removeItem('hasLogged');
+  //   };
+  // }, []);
+  
+
+  useEffect(() => {
+    const hasLoggedValue = localStorage.getItem('hasLogged');
+    if (hasLoggedValue === 'true') {
+      setHasLogged(true);
+      const userImage = localStorage.getItem('userImage');
+      if (userImage) {
+        setImageSrc(userImage);
+      }
+    }
+  }, []);
+
+
+  const handleLoginSuccess = (credentialResponse) => {
+    const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
+    setImageSrc(credentialResponseDecoded.picture);
+    localStorage.setItem('hasLogged', 'true');
+    localStorage.setItem('userImage', credentialResponseDecoded.picture);
+    setHasLogged(true);
+  };
+
   return (
     <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
       <nav className="NavbarItems-container">
@@ -26,7 +59,12 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="nav-right-side col-md-4 d-flex align-items-center mb-2">
-              {/* <GoogleLogin onSuccess={onSuccess} onError={onError} /> */}
+              {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
+              {hasLogged && <img
+                style={{ position: 'absolute', right: '70px', top: '7px', borderRadius: '50%', width: '50px', height: '50px' }}
+                src={imageSrc}
+                alt='dad'
+              />}
             </div>
           </div>
         </div>
@@ -35,4 +73,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;
