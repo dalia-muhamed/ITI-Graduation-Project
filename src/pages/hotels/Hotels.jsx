@@ -46,8 +46,6 @@ const Hotels = () => {
     }
   }, [hotelName, cityName, innerSearchState]);
 
-  const searchValue = hotelName || cityName;
-
   return (
     <div className="matched-hotels-component">
       <Navbar />

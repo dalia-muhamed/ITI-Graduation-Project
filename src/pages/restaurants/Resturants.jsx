@@ -40,8 +40,6 @@ const Restaurants = () => {
     }
   }, [restaurantName, cityName, innerSearchState]);
 
-  const searchValue = cityName || restaurantName;
-
   return (
     <div className="matched-hotels-component">
       <Navbar />
