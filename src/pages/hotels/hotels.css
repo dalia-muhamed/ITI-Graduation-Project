@@ -3,6 +3,7 @@
   width: 70%;
 }
 .matched-hotels-component .matched-hotel-section-container {
+  margin-bottom: 4rem;
   padding: 2rem;
 }
 .matched-hotels-component .matched-hotel-section .matchedHeaders {
@@ -17,7 +18,7 @@
   font-weight: normal;
   cursor: pointer;
 }
-.notMatchted{
+.notMatchted {
   position: absolute;
   border: 1px solid rgb(187, 187, 187);
 }

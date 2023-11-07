@@ -17,7 +17,7 @@
   justify-content: flex-start;
   align-items: center;
 }
-.nav-left-side h3{
+.nav-left-side h3 {
   font-family: TripBold-900;
 }
 .nav-inner-side ul {
@@ -59,7 +59,7 @@
   justify-content: flex-end;
   align-items: center;
 }
-.nav-right-side img{
+.nav-right-side img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
