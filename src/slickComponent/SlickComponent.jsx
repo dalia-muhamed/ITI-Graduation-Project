@@ -11,7 +11,7 @@ const SlickComponent = () => {
       try {
         const response = await axiosInstance.get("/hotels");
         const allHotels = response.data.hotels;
-        const randomHotels = getRandomHotels(allHotels, 10);
+        const randomHotels = getRandomHotels(allHotels, 12);
         setHotels(randomHotels);
       } catch (error) {
         console.log("Error while fetching hotels:", error);
