@@ -291,7 +291,7 @@ const SinglePage = () => {
                       ></iframe>
                     </div>
                   )}
-                  {}
+                
                 </div>
                 <div>
                   <div>

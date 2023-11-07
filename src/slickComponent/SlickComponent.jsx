@@ -5,6 +5,7 @@ import "./SlickComponent.css";
 import { useNavigate } from "react-router-dom";
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
+
   useEffect(() => {
     const fetchHotels = async () => {
       try {
@@ -13,7 +14,7 @@ const SlickComponent = () => {
         const randomHotels = getRandomHotels(allHotels, 12);
         setHotels(randomHotels);
       } catch (error) {
-        console.log("Error while fetching restaurants:", error);
+        console.log("Error while fetching hotels:", error);
       }
     };
     fetchHotels();
@@ -25,7 +26,7 @@ const SlickComponent = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 0,
+    initialSlide: 5,
     responsive: [
       {
         breakpoint: 1024,
@@ -58,29 +59,30 @@ const SlickComponent = () => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
+
   return (
     <div className="container SlickContainer">
       <h4
-        className="owl-title mb-3"
+        className="owl-title mb-4"
         data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
       >
-        Worldwide Top Rated Hotels
+        Worldwide Top Rated Restaurants
       </h4>
       <Slider {...settings}>
         {hotels &&
           hotels.map((hotel) => (
             <div
+              onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
+              className="SlickItem"
               data-aos="fade-right"
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
-              className="SlickItem"
-              onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
             >
-              <img src={hotel.images[1]} alt="hotelImg"/>
+              <img src={hotel.images[1]} alt={hotel.name} />
               <div className="overlay"></div>
-              <h5>{hotel.name}</h5>
+              <h5 className="text-white">{hotel.name}</h5>
             </div>
           ))}
       </Slider>
