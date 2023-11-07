@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./owl.css";
 import Rating from "./Rating";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../axios";
 
 const Owl = () => {
@@ -20,7 +20,7 @@ const Owl = () => {
     };
     fetchRestaurants();
   }, []);
-
+  const navigate = useNavigate();
   const getRandomRestaurants = (array, count) => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
@@ -51,12 +51,14 @@ const Owl = () => {
                   data-aos="fade-up"
                   data-aos-duration="1800"
                 >
-                  <Link
-                    to={`/cities/restaurants/details/${restaurant.id}`}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <img src={restaurant.images[0]} alt="Restaurant-img" />
-                  </Link>
+                  <img
+                    src={restaurant.images[0]}
+                    alt="Restaurant-img"
+                    onClick={() =>
+                      navigate(`/cities/restaurants/details/${restaurant.id}`)
+                    }
+                  />
+
                   <h2 className="restaurant">{restaurant.name}</h2>
                   <Rating
                     rating={restaurant.rating}
