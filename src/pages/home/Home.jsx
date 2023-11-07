@@ -1,11 +1,11 @@
-import React from "react";
-import SearchComponent from "../../components/SearchComponent/SearchComponent";
-import Navbar from "../../components/navbar/Navbar";
-import Owl from "../../components/owl/Owl";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import React from 'react';
+import SearchComponent from '../../components/SearchComponent/SearchComponent';
+import Navbar from '../../components/navbar/Navbar';
+import Owl from '../../components/owl/Owl';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import Footer from "../../components/footer/footer";
-import SlickComponent from "../../slickComponent/SlickComponent";
+import SlickComponent from '../../slickComponent/SlickComponent';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
   return (

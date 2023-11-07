@@ -1,11 +1,15 @@
-import React from "react";
-import "./footer.css";
-import logo from "../navbar/logo.jpg";
+import React from 'react';
+import './Footer.css';
+import logo from '../navbar/logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faMagic, faShopLock, faAnchor } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMagnifyingGlass,
+  faMagic,
+  faShopLock,
+  faAnchor,
+} from '@fortawesome/free-solid-svg-icons';
 
-
-const footer = () => {
+const Footer = () => {
   return (
     <div className="container-fluid footer-wrapper-all px-3 py-4 p-md-4 px-lg-5">
       <div className="d-flex flex-wrap">
@@ -93,39 +97,34 @@ const footer = () => {
         </div>
         <div className="d-flex footer-drops">
           <div className="mb-3 me-lg-3 drops-cont">
-          <select className="form-select" aria-label="Default select example">
-            <option  defaultValue='United States'>USD</option>
-            <option value="EGP">EGP</option>
-            <option value="POUND">POUND SERLING</option>
-            <option value="EURO">EURO</option>
-            <option value="SAUDI RIAL">SAUDI RIAL</option>
-            <option value="ARGENTINE PISO">ARGENTINE PISO</option>
-          </select>
+            <select className="form-select" aria-label="Default select example">
+              <option defaultValue="United States">USD</option>
+              <option value="EGP">EGP</option>
+              <option value="POUND">POUND SERLING</option>
+              <option value="EURO">EURO</option>
+              <option value="SAUDI RIAL">SAUDI RIAL</option>
+              <option value="ARGENTINE PISO">ARGENTINE PISO</option>
+            </select>
           </div>
           <div className="d-flex flex-column drops-cont">
-          <select className="form-select mb-3" aria-label="Default select example">
-            <option  defaultValue='United States'>United States</option>
-            <option value="مصر">مصر</option>
-            <option value="Italy">Italy</option>
-            <option value="Lebanon">Lebanon</option>
-            <option value="Greece">Greece</option>
-            <option value="Dubai">Dubai</option>
-            <option value="France">France</option>
-          </select>
-          <div className="d-flex justify-content-between">
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-          />
-          <FontAwesomeIcon
-            icon={faMagic}
-          />
-          <FontAwesomeIcon
-            icon={faShopLock}
-          />
-          <FontAwesomeIcon
-            icon={faAnchor}
-          />
-          </div>
+            <select
+              className="form-select mb-3"
+              aria-label="Default select example"
+            >
+              <option defaultValue="United States">United States</option>
+              <option value="مصر">مصر</option>
+              <option value="Italy">Italy</option>
+              <option value="Lebanon">Lebanon</option>
+              <option value="Greece">Greece</option>
+              <option value="Dubai">Dubai</option>
+              <option value="France">France</option>
+            </select>
+            <div className="d-flex justify-content-between">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon icon={faMagic} />
+              <FontAwesomeIcon icon={faShopLock} />
+              <FontAwesomeIcon icon={faAnchor} />
+            </div>
           </div>
         </div>
       </div>
@@ -133,4 +132,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
