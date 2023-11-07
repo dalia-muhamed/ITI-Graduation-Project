@@ -33,7 +33,6 @@ const ThingsToDo = () => {
     }
   }, [cityName, todoName, innerSearchState]);
 
-  const searchValue = todoName || cityName;
   console.log(filteredToDos);
   return (
     <div className="matched-hotels-component">

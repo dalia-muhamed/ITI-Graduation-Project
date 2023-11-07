@@ -34,8 +34,11 @@ const Hotels = () => {
     }
   }, [hotelName, cityName, innerSearchState]);
 
+<<<<<<< HEAD
   // const searchValue = hotelName || cityName;
 
+=======
+>>>>>>> 342a3003a0606a7dde79b09f7db2856323b79deb
   return (
     <div className="matched-hotels-component">
       <Navbar />
