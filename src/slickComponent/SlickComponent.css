@@ -1,0 +1,60 @@
+.SlickContainer {
+  height: 400px;
+  margin: 20px 0;
+  width: 50%;
+}
+.SlickItem {
+  height: 300px; /* Set the height you prefer */
+  display: flex !important;
+  align-items: flex-end;
+  justify-content: flex-start;
+  color: white; /* Color for text to be visible on images */
+  position: relative;
+}
+.SlickItem img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.SlickItem .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: 0.4s;
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 10px;
+}
+
+.slick-next {
+  color: white !important;
+  background-color: lightskyblue !important;
+  border-radius: 50% !important; /* Change the color of the buttons to black */
+  height: 40px !important;
+  width: 40px !important;
+  right: -50px !important;
+}
+.slick-prev {
+  color: white !important;
+  background-color: lightskyblue !important;
+  border-radius: 50% !important; /* Change the color of the buttons to black */
+  height: 40px !important;
+  width: 40px !important;
+  left:-50px !important;
+}
+.SlickItem h5 {
+  font-weight: bold;
+  padding: 10px;
+  z-index: 10;
+}
+.slick-disabled{
+    background-color: lightskyblue !important;
+}
+.SlickItem:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+}
