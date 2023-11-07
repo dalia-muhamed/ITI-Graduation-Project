@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../axios";
 import Slider from "react-slick";
 import "./SlickComponent.css";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
 
