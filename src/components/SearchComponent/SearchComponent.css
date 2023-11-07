@@ -1,9 +1,12 @@
+
 .SearchComponent {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 3rem 0rem;
+  padding: 5rem 0rem;
+  height: 500px;
+  overflow: hidden;
 }
 
 .content {
@@ -93,4 +96,14 @@
 }
 .search-bar .searchLink:hover {
   background-color: #34e0a1d0;
+}
+
+video{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

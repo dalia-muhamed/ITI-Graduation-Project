@@ -6,6 +6,7 @@ import ThingsToDo from '../pages/thingsToDo/ThingsToDo';
 import Resturants from '../pages/restaurants/Resturants';
 import SinglePage from '../pages/singlePage/SinglePage';
 import HotelReservation from '../pages/reservation/hotel-reservation/hotel-reservation';
+import NotFound from '../NotFound/Notfound';
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -19,7 +20,7 @@ const AppRoutes = () => {
           path="/cities/:category/details/:categoryId"
           element={<SinglePage />}
         />
-        <Route path="*" element={<p>error</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

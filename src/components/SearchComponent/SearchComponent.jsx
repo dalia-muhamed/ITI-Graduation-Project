@@ -7,7 +7,7 @@ import todo from "./icon/ticket.png";
 import Restaurants from "./icon/fork.png";
 import "./SearchComponent.css";
 import { axiosInstance } from "../../axios";
-
+import video from "./icon/video5.mp4";
 const SearchComponent = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [searchPlaceholder, setSearchPlaceholder] = useState("");
@@ -151,6 +151,7 @@ const SearchComponent = () => {
 
   return (
     <div className="SearchComponent">
+      <video src={video} loop autoPlay muted />
       <div className="container searchComponentInner">
         <div className="content font-weight-bold">
           {activeTab === 1 && (

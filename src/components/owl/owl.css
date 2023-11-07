@@ -1,6 +1,13 @@
-/* .owl {
-  margin: 20px;
-} */
+
+
+.owl-container {
+  padding: 5rem 0rem;
+}
+
+.owl {
+  margin: 3rem 0rem;
+  overflow: hidden;
+}
 .owl-title {
   padding-left: 16px;
   font-family: TripBold-700;
@@ -23,6 +30,10 @@
   width: 300px;
   height: 280px;
   pointer-events: painted;
+}
+.item img:hover {
+  opacity: 0.7;
+  transition: 0.2s;
 }
 .restaurant {
   font-size: medium;

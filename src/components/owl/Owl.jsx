@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./owl.css";
 import Rating from "./Rating";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../../axios";
 
 const Owl = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get(
-          "https://travelya.onrender.com/restaurants/"
-        );
+        const response = await axiosInstance.get("/restaurants");
         const allRestaurants = response.data.restaurants;
         const randomRestaurants = getRandomRestaurants(allRestaurants, 10);
         setRestaurants(randomRestaurants);
@@ -29,10 +27,17 @@ const Owl = () => {
   };
 
   return (
-    <div>
+    <div className="owl-container">
       {restaurants && (
         <div className="container owl">
-          <h4 className="owl-title">Worldwide Top Rated Restaurants</h4>
+          <h4
+            className="owl-title"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
+            Worldwide Top Rated Restaurants
+          </h4>
           <motion.div className="carousel">
             <motion.div
               drag="x"
@@ -40,7 +45,12 @@ const Owl = () => {
               className="inner-carousel"
             >
               {restaurants.map((restaurant) => (
-                <motion.div className="item" key={restaurant.id}>
+                <motion.div
+                  className="item"
+                  key={restaurant.id}
+                  data-aos="fade-up"
+                  data-aos-duration="1800"
+                >
                   <Link
                     to={`/cities/restaurants/details/${restaurant.id}`}
                     style={{ textDecoration: "none", color: "black" }}
