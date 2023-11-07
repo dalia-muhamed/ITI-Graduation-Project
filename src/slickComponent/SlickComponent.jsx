@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../axios";
 import Slider from "react-slick";
 import "./SlickComponent.css";
-import LeftArrow from "./LeftArrow";
 import { useNavigate } from "react-router-dom";
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
@@ -74,12 +73,12 @@ const SlickComponent = () => {
           hotels.map((hotel) => (
             <div
               data-aos="fade-right"
-              data-aos-offset="700"
+              data-aos-offset="300"
               data-aos-easing="ease-in-sine"
               className="SlickItem"
               onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
             >
-              <img src={hotel.images[1]} />
+              <img src={hotel.images[1]} alt="hotelImg"/>
               <div className="overlay"></div>
               <h5>{hotel.name}</h5>
             </div>
