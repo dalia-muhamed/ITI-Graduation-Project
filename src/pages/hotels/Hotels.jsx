@@ -1,43 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import Navbar from '../../components/navbar/Navbar';
-import './hotels.css';
-import SearchResultPage from '../../components/searchResult/SearchResaultPage';
-import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
-import { axiosInstance } from '../../axios';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Navbar from "../../components/navbar/Navbar";
+import "./hotels.css";
+import SearchResultPage from "../../components/searchResult/SearchResaultPage";
+import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
+import InnerSearchComponent from "../../components/innerSearchComponent/InnerSearchComponent";
+import { axiosInstance } from "../../axios";
+import { useSelector } from "react-redux";
 
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const hotelName = params.get('hotelName');
-  const cityName = params.get('cityName');
+  const hotelName = params.get("hotelName");
+  const cityName = params.get("cityName");
   const [filteredHotels, setFilteredHotels] = useState([]);
-  const category = 'hotels';
+  const category = "hotels";
   const innerSearchState = useSelector(
-    state => state.innerSearch.initialSearchState
+    (state) => state.innerSearch.initialSearchState
   );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let queryParams = '';
-        if (hotelName) {
-          queryParams = `?hotelName=${hotelName}`;
-        } else if (cityName) {
-          queryParams = `?cityName=${cityName}`;
-        }
-
-        const response = await axiosInstance.get(
-          `cities/hotels/${queryParams}`
-        );
-        const responseData = response.data.hotels;
-        const dataToShow =
-          innerSearchState.length > 0 ? innerSearchState : responseData;
+        const dataToShow = innerSearchState.length > 0 ? innerSearchState : [];
         setFilteredHotels(dataToShow);
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.log("Error fetching data:", error);
       }
     };
 
@@ -46,15 +34,20 @@ const Hotels = () => {
     }
   }, [hotelName, cityName, innerSearchState]);
 
-  const searchValue = hotelName || cityName;
+  // const searchValue = hotelName || cityName;
 
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent category={category} cityName={cityName} />
+      <InnerSearchComponent
+        category={category}
+        cityName={cityName}
+        categoryValue={hotelName}
+        categoryName="hotelName"
+      />
       <div
         className="w-100"
-        style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
+        style={{ backgroundColor: "#F2F2F2", padding: "1px" }}
       >
         <div className="matched-hotel-section-container">
           <div className="matched-hotel-section bg-white ">

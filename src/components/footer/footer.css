@@ -1,7 +1,13 @@
 .footer-wrapper-all {
   background-color: #faf1ed;
 }
-
+.footer-wrapper-all li{
+  cursor: pointer;
+}
+.footer-wrapper-all li:hover{
+  color: black;
+  text-decoration: underline;
+}
 .footer-wrapper-all .footer-first-list,
 .footer-wrapper-all .footer-second-list,
 .footer-wrapper-all .footer-third-list,

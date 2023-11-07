@@ -16,7 +16,7 @@ const AppRoutes = () => {
         <Route path="/cities/restaurants" element={<Resturants />} />
         <Route path="/cities/thingsToDo" element={<ThingsToDo />} />
         <Route
-          path="/cities/:category/:name/details/:categoryId"
+          path="/cities/:category/details/:categoryId"
           element={<SinglePage />}
         />
         <Route path="*" element={<p>error</p>} />

@@ -1,42 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import axios from 'axios';
-import Navbar from '../../components/navbar/Navbar';
-import SearchResultPage from '../../components/searchResult/SearchResaultPage';
-import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Navbar from "../../components/navbar/Navbar";
+import SearchResultPage from "../../components/searchResult/SearchResaultPage";
+import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
+import InnerSearchComponent from "../../components/innerSearchComponent/InnerSearchComponent";
+import { useSelector } from "react-redux";
 
 const ThingsToDo = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const todoName = params.get('todoName');
-  const cityName = params.get('cityName');
+  const todoName = params.get("todoName");
+  const cityName = params.get("cityName");
   const [filteredToDos, setFilteredToDos] = useState([]);
-  const category = 'thingsToDo';
+  const category = "thingsToDo";
   const innerSearchState = useSelector(
-    state => state.innerSearch.initialSearchState
+    (state) => state.innerSearch.initialSearchState
   );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `https://travelya.onrender.com/cities/thingsToDo/`;
-        let queryParams = '';
-
-        if (cityName) {
-          queryParams = `?cityName=${cityName}`;
-        } else if (todoName) {
-          queryParams = `?todoName=${todoName}`;
-        }
-
-        const response = await axios.get(url + queryParams);
-        const responseData = response.data.todos;
         const dataToShow =
-          innerSearchState.length > 0 ? innerSearchState : responseData;
+          innerSearchState.length > 0 ? innerSearchState : [];
         setFilteredToDos(dataToShow);
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.log("Error fetching data:", error);
       }
     };
 
@@ -50,10 +38,15 @@ const ThingsToDo = () => {
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent cityName={cityName} category={category} />
+      <InnerSearchComponent
+        cityName={cityName}
+        categoryValue={todoName}
+        category={category}
+        categoryName="todoName"
+      />
       <div
         className="w-100"
-        style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
+        style={{ backgroundColor: "#F2F2F2", padding: "1px" }}
       >
         <div className="matched-hotel-section-container">
           <div className="matched-hotel-section bg-white">
@@ -74,7 +67,7 @@ const ThingsToDo = () => {
                   name={todo.name}
                   rating={todo.rating}
                   reviews={todo.reviews}
-                  money={todo.package}
+                  money={todo.money}
                   image={todo.images[0]}
                   tours={todo.tours}
                   rank={todo.about}

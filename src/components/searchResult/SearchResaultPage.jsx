@@ -59,7 +59,7 @@ function SearchResultPage({
 
   return (
     <Link
-      to={`/cities/${category}/${name}/details/${categoryId}`}
+      to={`/cities/${category}/details/${categoryId}`}
       className="search-result-card"
     >
       <div className="search-result">

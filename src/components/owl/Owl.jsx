@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './owl.css';
-import Rating from './Rating';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./owl.css";
+import Rating from "./Rating";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Owl = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -10,16 +11,23 @@ const Owl = () => {
     const fetchRestaurants = async () => {
       try {
         const response = await axios.get(
-          'https://travelya.onrender.com/restaurants/'
+          "https://travelya.onrender.com/restaurants/"
         );
-        const restaurants = await response.data.restaurants;
-        setRestaurants(restaurants);
+        const allRestaurants = response.data.restaurants;
+        const randomRestaurants = getRandomRestaurants(allRestaurants, 10);
+        setRestaurants(randomRestaurants);
       } catch (error) {
-        console.log('Error while fetching restaurants:', error);
+        console.log("Error while fetching restaurants:", error);
       }
     };
     fetchRestaurants();
   }, []);
+
+  const getRandomRestaurants = (array, count) => {
+    const shuffledArray = array.sort(() => Math.random() - 0.5);
+    return shuffledArray.slice(0, count);
+  };
+
   return (
     <div>
       {restaurants && (
@@ -28,12 +36,17 @@ const Owl = () => {
           <motion.div className="carousel">
             <motion.div
               drag="x"
-              dragConstraints={{ right: 0, left: -14900 }}
+              dragConstraints={{ right: 0, left: -2000 }}
               className="inner-carousel"
             >
-              {restaurants.map(restaurant => (
+              {restaurants.map((restaurant) => (
                 <motion.div className="item" key={restaurant.id}>
-                  <img src={restaurant.images[0]} alt="Restaurant-img" />
+                  <Link
+                    to={`/cities/restaurants/details/${restaurant.id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <img src={restaurant.images[0]} alt="Restaurant-img" />
+                  </Link>
                   <h2 className="restaurant">{restaurant.name}</h2>
                   <Rating
                     rating={restaurant.rating}
@@ -43,7 +56,7 @@ const Owl = () => {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>{' '}
+          </motion.div>{" "}
         </div>
       )}
     </div>

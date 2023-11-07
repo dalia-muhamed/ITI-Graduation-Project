@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import Navbar from '../../components/navbar/Navbar';
-import SearchResultPage from '../../components/searchResult/SearchResaultPage';
-import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
-import { axiosInstance } from '../../axios';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Navbar from "../../components/navbar/Navbar";
+import SearchResultPage from "../../components/searchResult/SearchResaultPage";
+import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
+import InnerSearchComponent from "../../components/innerSearchComponent/InnerSearchComponent";
+import { useSelector } from "react-redux";
 
 const Restaurants = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const restaurantName = params.get('restaurantName');
-  const cityName = params.get('cityName');
+  const restaurantName = params.get("restaurantName");
+  const cityName = params.get("cityName");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const category = 'restaurants';
+  const category = "restaurants";
   const innerSearchState = useSelector(
-    state => state.innerSearch.initialSearchState
+    (state) => state.innerSearch.initialSearchState
   );
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get(`cities/restaurants`, {
-          params: {
-            restaurantName,
-            cityName,
-          },
-        });
-        const responseData = response.data.restaurants;
-        const dataToShow =
-          innerSearchState.length > 0 ? innerSearchState : responseData;
+        const dataToShow = innerSearchState.length > 0 ? innerSearchState : [];
         setFilteredRestaurants(dataToShow);
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.log("Error fetching data:", error);
       }
     };
 
@@ -45,10 +36,15 @@ const Restaurants = () => {
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent cityName={cityName} category={category} />
+      <InnerSearchComponent
+        cityName={cityName}
+        category={category}
+        categoryValue={restaurantName}
+        categoryName="restaurantName"
+      />
       <div
         className="w-100"
-        style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
+        style={{ backgroundColor: "#F2F2F2", padding: "1px" }}
       >
         <div className="matched-hotel-section-container">
           <div className="matched-hotel-section bg-white">
