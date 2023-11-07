@@ -3,6 +3,7 @@ import InputHolder from "../../../components/input/input";
 import "./hotel-reservation.css";
 import Hotelbg from "./header-bg.jpg";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
@@ -17,7 +18,13 @@ const HotelReservation = () => {
     cardNumber: "",
     csv: "",
     month:"",
-    check: false
+    check: false,
+    bed:"King size",
+    smoking:"Non-smoking",
+    room:"1",
+    guest:"1",
+    checkIn:"",
+    checkOut:""
   });
 
   const [formErrs, setFormErrs] = useState({
@@ -32,9 +39,12 @@ const HotelReservation = () => {
     cardNumberErr: "",
     csvErr: "",
     checkErr:"",
-    monthErr:""
+    monthErr:"",
+    checkInErr:"",
+    checkOutErr:""
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
       if (e.target.type === "checkbox") {
         setFormInputs({ ...formInputs, [e.target.name]: e.target.checked });
@@ -50,6 +60,10 @@ const validateErrors = () =>{
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
   const [selectedYear, selectedMonth] = formInputs.month.split("-");
+  const [checkedYear, checkedMonth, checkedDay] = formInputs.checkIn.split("-");
+  const [checkedOutYear, checkedOutMonth, checkedOutDay] = formInputs.checkOut.split("-");
+  const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
+  const checkOutDate = new Date(checkedOutYear, checkedOutMonth - 1, checkedOutDay);
 
   setFormErrs({
     firstNameGuestErr:!formInputs.firstNameGuest.length?"This field is required!":'',
@@ -66,6 +80,14 @@ const validateErrors = () =>{
     `${selectedYear}-${selectedMonth}` < `${currentYear}-${currentMonth}`
       ? "Sorry, can't complete with expired card"
       : "",
+    checkInErr: !formInputs.checkIn.length ? "This field is required!" : 
+    checkInDate<currentDate
+        ? "Sorry, this date is invalid"
+        : "",
+    checkOutErr: !formInputs.checkOut.length ? "This field is required!" : 
+    checkOutDate<checkInDate
+        ? "Sorry, this date is invalid"
+        : "", 
     checkErr: !formInputs.check ?"You must confirm the terms and conditions":"",
   })
 }
@@ -102,7 +124,13 @@ useEffect(() => {
         cardNumber: formInputs.cardNumber,
         csv: formInputs.csv,
         month: formInputs.month,
-        check: formInputs.check
+        check: formInputs.check,
+        bed: formInputs.bed,
+        smoking: formInputs.smoking,
+        room: formInputs.room,
+        guest: formInputs.guest,
+        checkIn:formInputs.checkIn,
+        checkOut:formInputs.checkOut
       };
 
       // Add the new entry to the existing data array
@@ -110,10 +138,10 @@ useEffect(() => {
 
       // Save the updated data to local storage
       localStorage.setItem("formData", JSON.stringify(newData));
-      console.log(formErrs);
+      navigate('/reservation/successfully');
     }
   }
-}, [formErrs]);
+}, [formErrs, navigate]);
 
   return (
     <div className="container hotel-custom">
@@ -161,6 +189,9 @@ useEffect(() => {
                       <select
                         className="form-select"
                         aria-label="Default select example"
+                        value={formInputs.bed}
+                        onChange={handleChange}
+                        name="bed"
                       >
                         <option defaultValue="King size">
                           King size
@@ -179,12 +210,90 @@ useEffect(() => {
                       <select
                         className="form-select"
                         aria-label="Default select example"
+                        value={formInputs.smoking}
+                        onChange={handleChange}
+                        name="smoking"
                       >
                         <option defaultValue="Non-smoking">
                           Non-smoking
                         </option>
                         <option value="Smoking">Smoking</option>
                       </select>
+                    </div>
+                  </div>
+                  <div className="inputs-modify mb-3">
+                    <div className="form-group pe-lg-3">
+                      <label for="formGroupExampleInput2">
+                        Rooms
+                      </label>
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={formInputs.room}
+                        onChange={handleChange}
+                        name="room"
+                      >
+                        <option defaultValue="1">
+                        One
+                        </option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                      </select>
+                    </div>
+                  </div>
+                   <div className="inputs-modify mb-3">
+                    <div className="form-group ps-lg-3">
+                      <label for="formGroupExampleInput2">
+                        Guests
+                      </label>
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={formInputs.guest}
+                        onChange={handleChange}
+                        name="guest"
+                      >
+                        <option defaultValue="1">
+                        One
+                        </option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                        <option value="6">Six</option>
+                        <option value="7">Seven</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="inputs-modify mb-3">
+                    <div className="form-group pe-lg-3">
+                      <label for="formGroupExampleInput">Check-in Date</label>
+                      <InputHolder
+                        type="date"
+                        min="2024-10"
+                        id="date"
+                        value={formInputs.checkIn}
+                        handleChange={handleChange}
+                        name="checkIn"
+                        className="form-control"
+                      />
+                      {formErrs.checkInErr && <span className="text-danger">{formErrs.checkInErr}</span>}
+                    </div>
+                  </div>
+                  <div className="inputs-modify mb-3">
+                    <div className="form-group ps-lg-3">
+                      <label for="formGroupExampleInput">Check-out Date</label>
+                      <InputHolder
+                        type="date"
+                        min="2024-10"
+                        id="date"
+                        value={formInputs.checkOut}
+                        handleChange={handleChange}
+                        name="checkOut"
+                        className="form-control"
+                      />
+                      {formErrs.checkOutErr && <span className="text-danger">{formErrs.checkOutErr}</span>}
                     </div>
                   </div>
                 </div>
@@ -406,7 +515,7 @@ useEffect(() => {
                   </div>
                 </div>
                 <div className="bg-secondary ps-3 py-3  text-white rounded-2 mb-4">
-                  <p className="mb-0  fs-5">Total: $150</p>
+                  <p className="mb-0 fs-5">Total: ${(formInputs.room*100+formInputs.guest*25)+35}</p>
                   <small className="mt-0">
                     Total includes tax recovery charges and service fees.
                   </small>
@@ -436,27 +545,23 @@ useEffect(() => {
             <ul className="list-unstyled px-2 fw-bold">
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Check in:</span>
-                <span>check in date</span>
+                <span>{formInputs.checkIn}</span>
               </li>
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Check out:</span>
-                <span>check out date</span>
+                <span className="text-end">{formInputs.checkOut}</span>
               </li>
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Room type:</span>
-                <span>king size, non smoking</span>
-              </li>
-              <li className="d-flex justify-content-between">
-                <span className="text-muted">Check out:</span>
-                <span>check out date</span>
+                <span className="text-end">{formInputs.bed},{formInputs.smoking}</span>
               </li>
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Rooms:</span>
-                <span>2</span>
+                <span>{formInputs.room}</span>
               </li>
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Guests:</span>
-                <span>3</span>
+                <span>{formInputs.guest}</span>
               </li>
               <li className="d-flex justify-content-between">
                 <span className="text-muted">Refundable:</span>
@@ -474,7 +579,7 @@ useEffect(() => {
               </li>
               <li className="fs-5">$15</li>
               <li className="text-muted">Total:</li>
-              <li className="fs-5">$180</li>
+              <li className="fs-5">${(formInputs.room*150+formInputs.guest*25)+35}</li>
             </ul>
           </div>
         </div>
