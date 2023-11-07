@@ -5,7 +5,6 @@ import "./hotels.css";
 import SearchResultPage from "../../components/searchResult/SearchResaultPage";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
 import InnerSearchComponent from "../../components/innerSearchComponent/InnerSearchComponent";
-import { axiosInstance } from "../../axios";
 import { useSelector } from "react-redux";
 
 const Hotels = () => {

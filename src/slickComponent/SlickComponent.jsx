@@ -27,7 +27,7 @@ const SlickComponent = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 0,
+    initialSlide: 5,
     responsive: [
       {
         breakpoint: 1024,
