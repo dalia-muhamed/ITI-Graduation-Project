@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../axios";
 import Slider from "react-slick";
 import "./SlickComponent.css";
-import LeftArrow from "./LeftArrow";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
+
   useEffect(() => {
     const fetchHotels = async () => {
       try {
         const response = await axiosInstance.get("/hotels");
         const allHotels = response.data.hotels;
-        const randomHotels = getRandomHotels(allHotels, 12);
+        const randomHotels = getRandomHotels(allHotels, 10);
         setHotels(randomHotels);
       } catch (error) {
-        console.log("Error while fetching restaurants:", error);
+        console.log("Error while fetching hotels:", error);
       }
     };
     fetchHotels();
@@ -59,29 +60,30 @@ const SlickComponent = () => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
+
   return (
     <div className="container SlickContainer">
       <h4
-        className="owl-title mb-3"
+        className="owl-title mb-4"
         data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
       >
-        Worldwide Top Rated Hotels
+        Worldwide Top Rated Restaurants
       </h4>
       <Slider {...settings}>
         {hotels &&
           hotels.map((hotel) => (
             <div
-              data-aos="fade-right"
-              data-aos-offset="700"
-              data-aos-easing="ease-in-sine"
-              className="SlickItem"
               onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
+              className="SlickItem"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
             >
-              <img src={hotel.images[1]} />
+              <img src={hotel.images[1]} alt={hotel.name} />
               <div className="overlay"></div>
-              <h5>{hotel.name}</h5>
+              <h5 className="text-white">{hotel.name}</h5>
             </div>
           ))}
       </Slider>
