@@ -1,6 +1,6 @@
 import React from 'react';
 import InputHolder from '../../../components/input/input';
-import './hotel-reservation.css';
+import './things-reservation.css';
 import Hotelbg from './header-bg.jpg';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import Navbar from '../../../components/navbar/Navbar';
 import Footer from '../../../components/footer/Footer';
 
-const HotelReservation = () => {
+const ThingsToDoReservation = () => {
   const [formInputs, setFormInputs] = useState({
     firstNameGuest: '',
     lastNameGuest: '',
@@ -696,4 +696,4 @@ console.log(newSelectedData)
   );
 };
 
-export default HotelReservation;
+export default ThingsToDoReservation;

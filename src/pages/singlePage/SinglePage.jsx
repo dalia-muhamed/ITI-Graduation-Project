@@ -10,7 +10,6 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
-import { Link } from 'react-router-dom';
 import {
   faClipboard,
   faClock,
@@ -85,6 +84,18 @@ const SinglePage = () => {
   } else {
     locationColumn = 'col-lg-5';
   }
+
+  const selectedData = {
+    name: {name},
+    locationName: {locationName},
+    // image: {images[0] || null}
+  };
+  
+  const dispatch = useDispatch();
+  
+  dispatch(setSelectedData(selectedData));
+
+
   return (
     <div className="container-fluid px-0">
       <Navbar />
