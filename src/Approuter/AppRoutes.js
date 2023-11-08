@@ -9,6 +9,8 @@ import HotelReservation from "../pages/reservation/hotel-reservation/hotel-reser
 import NotFound from "../NotFound/Notfound";
 import SuccessPage from "../pages/success/success";
 import FoodArticle from "../components/Adds/Food/FoodArticle";
+import RestrauntReservation from "../pages/reservation/restraunt-reservation/restraunt-reservation";
+import ThingsToDoReservation from "../pages/reservation/things-reservation/things-reservation";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,14 @@ const AppRoutes = () => {
         <Route
           path="/cities/hotels/reservation/hotel-reservation"
           element={<HotelReservation />}
+        />
+        <Route
+          path="/cities/restaurants/reservation/restaurant-reservation"
+          element={<RestrauntReservation />}
+        />
+        <Route
+          path="/cities/thingsToDo/reservation/thingsToDo-reservation"
+          element={<ThingsToDoReservation />}
         />
         <Route path="/reservation/successfully" element={<SuccessPage />} />
         <Route path="/cities/restaurants" element={<Resturants />} />

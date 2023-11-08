@@ -68,7 +68,7 @@ const Hotels = () => {
                     name={hotel.name}
                     phone={hotel.phone}
                     image={hotel.images[0]}
-                    address={hotel.location.locationName}
+                    address={hotel.location?.locationName}
                     rating={hotel.rating}
                     description={hotel.description}
                     reviews={hotel.reviews}

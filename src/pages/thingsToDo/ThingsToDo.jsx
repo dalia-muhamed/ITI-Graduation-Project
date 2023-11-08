@@ -33,7 +33,6 @@ const ThingsToDo = () => {
     }
   }, [cityName, todoName, innerSearchState]);
 
-  console.log(filteredToDos);
   return (
     <div className="matched-hotels-component">
       <Navbar />
