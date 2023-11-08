@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { axiosInstance } from "../axios";
+import { axiosInstance } from "../../axios";
 import Slider from "react-slick";
 import "./SlickComponent.css";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const SlickComponent = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 770,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -68,7 +68,7 @@ const SlickComponent = () => {
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
       >
-        Worldwide Top Rated Restaurants
+        Worldwide Top Rated Hotels
       </h4>
       <Slider {...settings}>
         {hotels &&
@@ -76,9 +76,6 @@ const SlickComponent = () => {
             <div
               onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
               className="SlickItem"
-              data-aos="fade-right"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-sine"
             >
               <img src={hotel.images[1]} alt={hotel.name} />
               <div className="overlay"></div>

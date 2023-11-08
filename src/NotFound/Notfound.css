@@ -1,0 +1,42 @@
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: 'Arvo', serif;
+}
+
+.page_404 img {
+  width: 100%;
+}
+.notfound-container {
+  margin: 5rem auto;
+}
+.notfound-column {
+  display: flex !important;
+  justify-content: center !important;
+}
+.four_zero_four_bg {
+  background-image: url(./dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  text-decoration: none;
+  background: rgb(1, 163, 1);
+  padding: 0.7rem 1.2rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: #fff;
+  margin-top: 1.4rem !important;
+}
+.contant_box_404 {
+  margin-top: -50px;
+}

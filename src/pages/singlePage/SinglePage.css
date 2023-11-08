@@ -1,10 +1,11 @@
 .singlePage-container {
-  padding: 0.7rem 0 !important;
-  background-color: #f2f2f2;
+  border-top: 1px solid rgb(212, 211, 211);
+  padding: 0 !important;
+  background-color: #f0eeee;
 }
 .category-details {
   padding: 6.8rem 0;
-  max-width: 70% !important;
+  max-width: 75% !important;
   margin: 0 auto;
 }
 
@@ -14,17 +15,11 @@
   margin-bottom: 1.4rem;
 }
 .singlePage-ratingReview-container {
-  padding: 0.2rem 0 !important;
+  padding-left: 1.3rem 0 !important;
 }
 .singlePageRatingReviews {
   margin-bottom: -1.7rem;
 }
-
-.Hr {
-  width: 1px;
-  background-color: #ccc;
-}
-
 .singlePage-main-image-container .single-hotels-left-images {
   padding-right: 0;
 }
@@ -40,7 +35,6 @@
 .singlePage-address-header {
   font-family: tripRegular;
   font-size: 1rem;
-  /* padding-left: 1.5rem !important; */
   display: flex;
   gap: 0.4rem;
   align-items: center;
@@ -81,19 +75,8 @@
   color: #000000;
   text-decoration: none;
 }
-.singlePage-main-image-containerMax-Height {
-  max-height: 25rem;
-}
-.singlePage-main-image-containerMin-Height {
-  min-height: 25rem;
-}
-.about-iframe-section {
-  margin-top: 6rem !important;
-}
-.description-about-container {
-  line-height: 1.7rem !important;
-}
-@media (min-width<48.125em) {
+
+@media (width<770px) {
   .singlePage-main-image-container .single-hotels-left-images {
     padding: 0 !important;
   }

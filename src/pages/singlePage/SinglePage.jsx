@@ -10,6 +10,7 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
+import { Link } from 'react-router-dom';
 import {
   faClipboard,
   faClock,
@@ -18,7 +19,7 @@ import {
   faTicketSimple,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Footer from '../../components/footer/Footer';
+import Ads from '../../components/ads/Ads';
 
 const SinglePage = () => {
   const params = useParams();
@@ -84,40 +85,10 @@ const SinglePage = () => {
   } else {
     locationColumn = 'col-lg-5';
   }
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 770px)');
-
-    const checkMediaQuery = e => {
-      setIsMobile(e.matches);
-    };
-
-    // Initial check on page load
-    checkMediaQuery(mediaQuery);
-
-    // Event listener for changes in viewport width
-    mediaQuery.addEventListener('change', checkMediaQuery);
-
-    // Clean up
-    return () => {
-      mediaQuery.removeEventListener('change', checkMediaQuery);
-    };
-  }, []);
-
-  const selectedData = {
-    image:images && images.length > 0 ? images[0] : null,
-    name: {name},
-    locationName:{locationName},
-  };
-  
-  const dispatch = useDispatch();
-  
-  dispatch(setSelectedData(selectedData));
-
   return (
     <div className="container-fluid px-0">
       <Navbar />
+      <Ads />
       <div className="singlePage-container">
         {selectedCategory ? (
           <div className="container category-details">
@@ -127,10 +98,9 @@ const SinglePage = () => {
               </div>
             </div>
             <div className="row d-flex singlePage-ratingReview-container my-0">
-              <div className="singlePageRatingReviews col-lg-3 col-md-4 mb-1">
+              <div className="singlePageRatingReviews col-md-4 mb-2">
                 <Rating rating={rating} reviews={reviews} />
               </div>
-              <div className="Hr"></div>
               {rank && (
                 <div className="col-md-8">
                   <div className="">{rank}</div>
@@ -143,7 +113,7 @@ const SinglePage = () => {
                 </div>
               )}
             </div>
-            <div className="row mb-2">
+            <div className="row my-1">
               {location && (
                 <div className="col-12 singlePage-address-header">
                   <span>
@@ -157,7 +127,7 @@ const SinglePage = () => {
                 </div>
               )}
               {address && (
-                <div className="col-12 singlePage-address-header ">
+                <div className="col-12 singlePage-address-header">
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className="singlePageAddressIcon"
@@ -166,8 +136,8 @@ const SinglePage = () => {
                 </div>
               )}
             </div>
-            <div className="row singlePage-heading-contacts-container mb-3">
-              <div className="col-md-8 d-flex singlePage-heading-contacts row mb-1">
+            <div className="row singlePage-heading-contacts-container my-4">
+              <div className="col-md-8 d-flex singlePage-heading-contacts row mb-3">
                 <div className="row">
                   <div className="singlePage-website-header col-md-4 my-1 ">
                     {website && (
@@ -182,7 +152,7 @@ const SinglePage = () => {
                           className="singlePageIcon"
                           alt="singlePageIcon"
                         />
-                        Visit website
+                        Visit hotel website
                       </a>
                     )}
                     {duration && (
@@ -230,22 +200,18 @@ const SinglePage = () => {
                 </div>
               </div>
               <div className="col-md-3 availabilityButton-container">
-              <Link to="/cities/hotels/reservation/hotel-reservation">
-                  <button className="btn btn-warning availabilityButton">Check availability</button>
-              </Link>
+                <Link to="/cities/hotels/reservation/hotel-reservation">
+                  <button className="btn btn-warning availabilityButton">
+                    Check availability
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">
               <>
                 {images && (
-                  <div className="">
-                    <div
-                      className={`row ${
-                        isMobile
-                          ? 'singlePage-main-image-containerMin-Height '
-                          : 'singlePage-main-image-containerMax-Height'
-                      }`}
-                    >
+                  <div className="singlePage-main-image-container">
+                    <div className="row">
                       <div className="col-md-8 px-0 mb-1">
                         <img
                           src={images[0]}
@@ -253,12 +219,9 @@ const SinglePage = () => {
                           className="w-100 h-100"
                         />
                       </div>
-                      <div className="col-md  -4 h-100 single-hotels-left-images">
+                      <div className="col-md-4 h-100 single-hotels-left-images">
                         {slidingImages.map((img, index) => (
-                          <div
-                            className="d-flex flex-column mb-1"
-                            style={{ height: '150px' }}
-                          >
+                          <div className="d-flex flex-column mb-1">
                             <img
                               src={img}
                               alt={index}
@@ -273,11 +236,11 @@ const SinglePage = () => {
               </>
             </div>
 
-            <div className="row d-flex justify-content-between about-iframe-section">
+            <div className="row d-flex justify-content-between my-4">
               {about || description ? (
-                <div className="col-lg-6 bg-white px-4 py-3 description-about-container">
-                  <h4 className="fw-bold mt-3 mb-2">About</h4>
-                  {description && <p className=" text-muted ">{description}</p>}
+                <div className="col-lg-6 bg-white px-4 py-3 about-single-hotels">
+                  <h4 className="fw-bold mt-3 mb-3">About</h4>
+                  {description && <p className="text-muted">{description}</p>}
                   {about && <p className="text-muted">{about}</p>}
                 </div>
               ) : null}
@@ -304,7 +267,6 @@ const SinglePage = () => {
                       ></iframe>
                     </div>
                   )}
-                
                 </div>
                 <div>
                   <div>
@@ -352,9 +314,6 @@ const SinglePage = () => {
                       </a>
                     )}
                   </div>
-                  <div>{address && <p>{address}</p>}</div>
-                  <div>{money && <p>{money}</p>}</div>
-                  <div>{cancellation && <p>{cancellation}</p>}</div>
                 </div>
               </div>
             </div>
@@ -363,7 +322,6 @@ const SinglePage = () => {
           <LoadingComponent />
         )}
       </div>
-      <Footer />
     </div>
   );
 };

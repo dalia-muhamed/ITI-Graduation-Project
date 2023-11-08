@@ -1,0 +1,87 @@
+.falafel-container {
+  background-color: #e0d3ee;
+  margin: 12rem 0rem;
+  position: relative;
+}
+.ads-content {
+  padding: 2rem;
+  width: 100%;
+}
+
+.ads-image img {
+  position: absolute;
+  top: -40px;
+  right: 40px;
+  height: 300px;
+  width: 25rem;
+  border-radius: 10px;
+}
+
+.img-falafel {
+  width: 100%;
+  height: 100%;
+}
+.btn-falafel {
+  background-color: black;
+  color: #fff;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 20rem;
+}
+link {
+  color: #fff;
+  text-decoration: none;
+}
+.falafel-right-side {
+  order: 2;
+}
+.falafel-left-side {
+  order: 1;
+}
+
+@media (width<1000px) {
+  .falafel-right-side {
+    position: relative;
+    order: 1;
+  }
+  .falafel-left-side {
+    order: 2;
+  }
+  .ads-image img {
+    top: -20px;
+    left: 30px;
+    height: 450;
+    width: 340px;
+    margin: 0;
+  }
+}
+@media (width<770px) {
+  .falafel-row {
+    flex-direction: column;
+  }
+  .falafel-right-side {
+    height: 260px;
+    justify-content: center;
+    display: flex;
+  }
+  .ads-image img {
+    height: 300px;
+    position: static;
+  }
+  .ads-image {
+    text-align: center;
+    margin-top: -40px;
+  }
+}
+@media (width<400px) {
+    .falafel-right-side {
+        height: 200px;
+        justify-content: center;
+        display: flex;
+      }
+    .ads-image img {
+        height: 250px;
+        width: 280px;
+        position: static;
+      }
+}

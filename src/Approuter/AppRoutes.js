@@ -8,6 +8,7 @@ import SinglePage from "../pages/singlePage/SinglePage";
 import HotelReservation from "../pages/reservation/hotel-reservation/hotel-reservation";
 import NotFound from "../NotFound/Notfound";
 import SuccessPage from "../pages/success/success";
+import FoodArticle from "../components/Adds/Food/FoodArticle";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -18,9 +19,10 @@ const AppRoutes = () => {
           path="/cities/hotels/reservation/hotel-reservation"
           element={<HotelReservation />}
         />
-         <Route path="/reservation/successfully" element={<SuccessPage />} />
+        <Route path="/reservation/successfully" element={<SuccessPage />} />
         <Route path="/cities/restaurants" element={<Resturants />} />
         <Route path="/cities/thingsToDo" element={<ThingsToDo />} />
+        <Route path="/FoodArticle" element={<FoodArticle />} />
         <Route
           path="/cities/:category/details/:categoryId"
           element={<SinglePage />}
