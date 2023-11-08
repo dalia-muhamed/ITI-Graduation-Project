@@ -1,11 +1,14 @@
-import React from 'react';
-import SearchComponent from '../../components/SearchComponent/SearchComponent';
-import Navbar from '../../components/navbar/Navbar';
-import Owl from '../../components/owl/Owl';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import React from "react";
+import SearchComponent from "../../components/SearchComponent/SearchComponent";
+import Navbar from "../../components/navbar/Navbar";
+import Owl from "../../components/owl/Owl";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-import SlickComponent from '../../slickComponent/SlickComponent';
-import Footer from '../../components/footer/footer';
+import Footer from "../../components/footer/Footer";
+import SlickComponent from "../../components/slickComponent/SlickComponent";
+import Donate from "../../components/Adds/Donate/Donate";
+import FoodAdd from "../../components/Adds/Food/FoodAdd";
+import RandomToDo from "../../components/RandomToDo/RandomToDo";
 
 const Home = () => {
   return (
@@ -14,7 +17,10 @@ const Home = () => {
         <Navbar />
         <SearchComponent />
         <Owl />
+        <Donate />
         <SlickComponent />
+        <RandomToDo />
+        <FoodAdd />
         <Footer />
       </GoogleOAuthProvider>
     </div>

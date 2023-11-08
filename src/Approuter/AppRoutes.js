@@ -1,13 +1,14 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from '../pages/home/Home';
-import Hotels from '../pages/hotels/Hotels';
-import ThingsToDo from '../pages/thingsToDo/ThingsToDo';
-import Resturants from '../pages/restaurants/Resturants';
-import SinglePage from '../pages/singlePage/SinglePage';
-import HotelReservation from '../pages/reservation/hotel-reservation/hotel-reservation';
-import NotFound from '../NotFound/Notfound';
-import SuccessPage from '../pages/success/success';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../pages/home/Home";
+import Hotels from "../pages/hotels/Hotels";
+import ThingsToDo from "../pages/thingsToDo/ThingsToDo";
+import Resturants from "../pages/restaurants/Resturants";
+import SinglePage from "../pages/singlePage/SinglePage";
+import HotelReservation from "../pages/reservation/hotel-reservation/hotel-reservation";
+import NotFound from "../NotFound/Notfound";
+import SuccessPage from "../pages/success/success";
+import FoodArticle from "../components/Adds/Food/FoodArticle";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/reservation/successfully" element={<SuccessPage />} />
         <Route path="/cities/restaurants" element={<Resturants />} />
         <Route path="/cities/thingsToDo" element={<ThingsToDo />} />
+        <Route path="/FoodArticle" element={<FoodArticle />} />
         <Route
           path="/cities/:category/details/:categoryId"
           element={<SinglePage />}

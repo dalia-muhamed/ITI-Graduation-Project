@@ -1,7 +1,9 @@
 .SlickContainer {
-  height: 400px;
+  height: 450px;
   margin: 20px 0;
   width: 50%;
+  padding: 3rem 0rem;
+  margin: 3rem 0rem;
 }
 .SlickItem {
   height: 300px; /* Set the height you prefer */
@@ -36,7 +38,7 @@
   border-radius: 50% !important; /* Change the color of the buttons to black */
   height: 40px !important;
   width: 40px !important;
-  right: -50px !important;
+  right: -40px !important;
   opacity: 1;
 }
 .slick-prev {
@@ -44,14 +46,18 @@
   border-radius: 50% !important; /* Change the color of the buttons to black */
   height: 40px !important;
   width: 40px !important;
-  left: -50px !important;
+  left: -40px !important;
 }
 .SlickItem h5 {
   font-weight: bold;
   padding: 10px;
   z-index: 10;
 }
-.slick-next:before,
+.slick-next:before {
+  opacity: 1 !important;
+  color: black !important;
+  font-size: 40px !important;
+}
 .slick-prev::before {
   opacity: 1 !important;
   color: black !important;
@@ -68,4 +74,15 @@
 
 .SlickItem:hover .overlay {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (width<700px) {
+  .slick-prev {
+    left: -13px !important;
+    z-index: 20;
+  }
+  .slick-next {
+    right: -13px !important;
+    z-index: 20;
+  }
 }

@@ -7,9 +7,21 @@
   z-index: 99999;
   border-bottom: 1px solid rgb(212, 211, 211);
   padding: 0.5rem 0rem;
+  position: relative;
+  transition: top 0.5s ease;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: top 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
 }
 .nav-logo-container .navbar-logo {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 900;
 }
 .nav-left-side {
@@ -39,9 +51,12 @@
 }
 
 .nav-logo-container {
-  width: 45px;
-  height: 40px;
+  width: 3.125rem;
+  height: 2.5rem;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo {
   width: 100%;
