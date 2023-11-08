@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { axiosInstance } from '../../axios';
+import { useDispatch } from 'react-redux';
+import { setSelectedData } from './singlePageSlice';
 import './SinglePage.css';
 import pen from './singlePageIcons/pen.png';
 import telephone from './singlePageIcons/telephone.png';
@@ -8,7 +10,6 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
-import { Link } from "react-router-dom";
 import {
   faClipboard,
   faClock,
@@ -103,6 +104,17 @@ const SinglePage = () => {
       mediaQuery.removeEventListener('change', checkMediaQuery);
     };
   }, []);
+
+  const selectedData = {
+    image:images && images.length > 0 ? images[0] : null,
+    name: {name},
+    locationName:{locationName},
+  };
+  
+  const dispatch = useDispatch();
+  
+  dispatch(setSelectedData(selectedData));
+
   return (
     <div className="container-fluid px-0">
       <Navbar />
@@ -218,9 +230,9 @@ const SinglePage = () => {
                 </div>
               </div>
               <div className="col-md-3 availabilityButton-container">
-                <Link to="/cities/hotels/reservation/hotel-reservation"><button className="btn btn-warning availabilityButton">
-                  Check availability
-                </button></Link>
+              <Link to="/cities/hotels/reservation/hotel-reservation">
+                  <button className="btn btn-warning availabilityButton">Check availability</button>
+              </Link>
               </div>
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">

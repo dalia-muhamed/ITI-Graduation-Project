@@ -3,7 +3,8 @@ import InputHolder from "../../../components/input/input";
 import "./hotel-reservation.css";
 import Hotelbg from "./header-bg.jpg";
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
@@ -44,6 +45,9 @@ const HotelReservation = () => {
     checkOutErr:""
   });
 
+  const newSelectedData = useSelector((state) => state.selectedData.data);
+console.log(newSelectedData)
+
   const navigate = useNavigate();
   const handleChange = (e) => {
       if (e.target.type === "checkbox") {
@@ -53,6 +57,7 @@ const HotelReservation = () => {
         setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
       }
   };
+  
 
 const validateErrors = () =>{
 
@@ -64,6 +69,8 @@ const validateErrors = () =>{
   const [checkedOutYear, checkedOutMonth, checkedOutDay] = formInputs.checkOut.split("-");
   const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
   const checkOutDate = new Date(checkedOutYear, checkedOutMonth - 1, checkedOutDay);
+
+
 
   setFormErrs({
     firstNameGuestErr:!formInputs.firstNameGuest.length?"This field is required!":'',
@@ -539,8 +546,8 @@ useEffect(() => {
               Best rates guaranteed
             </p>
             <img src={Hotelbg} alt="hotel" className="w-100" />
-            <p className="px-lg-2 fw-bold">Hotel name</p>
-            <p className="px-lg-2 fw-bold">loation</p>
+            {/* <p className="px-lg-2 fw-bold">{newSelectedData && newSelectedData.name}</p> */}
+            {/* <p className="px-lg-2 fw-bold">{selectedData}</p> */}
             <hr />
             <ul className="list-unstyled px-2 fw-bold">
               <li className="d-flex justify-content-between">
