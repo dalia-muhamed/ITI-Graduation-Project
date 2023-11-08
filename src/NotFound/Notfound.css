@@ -29,13 +29,13 @@
 }
 
 .link_404 {
-  text-decoration: none !important;
-  background: green !important;
-  padding: 0.7rem 1.2rem !important;
-  text-align: center !important;
-  border-radius: 0.3rem !important;
-  color: #fff !important;
-  margin-top: 1rem !important;
+  text-decoration: none;
+  background: rgb(1, 163, 1);
+  padding: 0.7rem 1.2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: #fff;
+  margin-top: 1rem;
 }
 .contant_box_404 {
   margin-top: -50px;
