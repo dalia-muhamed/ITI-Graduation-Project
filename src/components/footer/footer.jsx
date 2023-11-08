@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css';
+import './footer';
 import logo from '../navbar/logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

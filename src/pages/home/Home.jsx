@@ -5,7 +5,7 @@ import Owl from '../../components/owl/Owl';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import SlickComponent from '../../slickComponent/SlickComponent';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/footer/footer';
 
 const Home = () => {
   return (
