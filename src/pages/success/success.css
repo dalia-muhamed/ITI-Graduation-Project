@@ -1,0 +1,34 @@
+
+.success-comp-wrapper .success-container{
+    background-image: url(plane.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.success-comp-wrapper .custom-success{
+    animation:popping 3s infinite ;
+    text-align: center;
+    /* text-shadow:5px 5px 5px rgb(243, 243, 243) ; */
+}
+
+@keyframes popping {
+    0%{
+    transform: translate(1px, 1px) rotate(0deg);
+    }
+    /* 10% {
+        transform: translateY(6rem);
+    } */
+    30% {
+        transform: translateY(15rem);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-2deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(2deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-2deg);
+    }
+    }

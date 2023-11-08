@@ -7,6 +7,7 @@ import Resturants from "../pages/restaurants/Resturants";
 import SinglePage from "../pages/singlePage/SinglePage";
 import HotelReservation from "../pages/reservation/hotel-reservation/hotel-reservation";
 import NotFound from "../NotFound/Notfound";
+import SuccessPage from "../pages/success/success";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -14,9 +15,10 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/cities/hotels" element={<Hotels />} />
         <Route
-          path="/cities/hotels/reservation"
+          path="/cities/hotels/reservation/hotel-reservation"
           element={<HotelReservation />}
         />
+         <Route path="/reservation/successfully" element={<SuccessPage />} />
         <Route path="/cities/restaurants" element={<Resturants />} />
         <Route path="/cities/thingsToDo" element={<ThingsToDo />} />
         <Route
