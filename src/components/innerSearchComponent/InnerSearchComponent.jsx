@@ -1,21 +1,23 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SearchButton from "../searchbutton/SearchButton";
 import "./InnerSearchComponent.css";
 import { axiosInstance } from "../../axios";
 import { useDispatch} from "react-redux";
 import { filteredByName } from "./innerSearchSlice";
+import CategoriesNavBar from "../SearchNavBar/CategoriesNavBar";
 
 const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue }) => {
-  const [innerInput, setInnerInput] = useState("");
+  const [innerInput, setInnerInput] = useState(cityName);
   const dispatch = useDispatch();
-
-  useEffect(() => {
+  const fetchData=useCallback((currentCategory=category,catName=categoryName)=>{
+    
     if (cityName) {
       axiosInstance
-        .get(`/cities/${category}?cityName=${cityName}`)
+        .get(`/cities/${currentCategory}?cityName=${cityName}`)
         .then((res) => {
+          
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
           dispatch(filteredByName({ innerInput, responseData: data }));
@@ -24,20 +26,28 @@ const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue 
     }
      else if (categoryValue) {
       axiosInstance
-        .get(`/cities/${category}?${categoryName}=${categoryValue}`)
+        .get(`/cities/${currentCategory}?${catName}=${categoryValue}`)
         .then((res) => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
-
+  
           dispatch(filteredByName({ innerInput, responseData: data }));
         })
         .catch((err) => console.log(err));
     }
-  }, [innerInput, cityName, category, dispatch]);
+  },[category, categoryName, categoryValue, cityName, dispatch, innerInput])
+
+  useEffect(() => {
+    fetchData()
+  }, [fetchData]);
 
   const handleChange = (e) => {
     setInnerInput(e.target.value);
   };
+  const onIndexChanged= (category)=>{
+    const {currentCategory,categoryName}=category
+     fetchData(currentCategory,categoryName)
+  }
 
   return (
     <div className="innerSearchComponent">
@@ -54,6 +64,8 @@ const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue 
           border="none"
         />
       </div>
+            <CategoriesNavBar  selectedCategory={category}  onIndexChanged={({currentCategory,categoryName})=>onIndexChanged({currentCategory,categoryName})} />
+      
     </div>
   );
 };

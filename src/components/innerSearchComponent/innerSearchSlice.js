@@ -10,6 +10,7 @@ const innerSearchSlice = createSlice({
   reducers: {
     filteredByName: (state, action) => {
       const { innerInput, responseData } = action.payload;
+      
       if (!responseData) {
         // Handle the case where responseData is undefined or null
         console.error("responseData is not defined");
