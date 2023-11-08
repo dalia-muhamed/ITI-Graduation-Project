@@ -58,7 +58,7 @@ const Restaurants = () => {
                 </small>
               </div>
             </div>
-            {filteredRestaurants.length ? (
+{filteredRestaurants.length ? (
               filteredRestaurants.map((restaurant, index) => (
                 <SearchResultPage
                   key={index}
@@ -67,7 +67,7 @@ const Restaurants = () => {
                   name={restaurant.name}
                   phone={restaurant.phone}
                   image={restaurant.images[0]}
-                  address={restaurant.location.locationName}
+                  address={restaurant.location?.locationName}
                   rating={restaurant.rating}
                   rank={restaurant.rank}
                   reviews={restaurant.reviews}
