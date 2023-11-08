@@ -5,7 +5,7 @@ import Hotelbg from './header-bg.jpg';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../../components/navbar/Navbar';
-import Footer from '../../../components/footer/footer';
+import Footer from '../../../components/footer/Footer';
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({

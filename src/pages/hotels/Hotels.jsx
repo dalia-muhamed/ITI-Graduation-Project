@@ -7,7 +7,7 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
 import { axiosInstance } from '../../axios';
 import { useSelector } from 'react-redux';
-import Footer from '../../components/footer/footer';
+import Footer from '../../components/footer/Footer';
 
 const Hotels = () => {
   const location = useLocation();
