@@ -1,21 +1,35 @@
-@media screen and (min-width: 993px) {
-    .hotel-custom .reserve-modify {
-      flex-direction: row;
-    }
-  }
-  @media screen and (max-width: 992px) {
-    .hotel-custom .reserve-modify {
-      flex-direction: column;
-    }
-  }
+.hotel-custom {
+  margin-bottom: 5rem;
+}
+.heading-reservation {
+  font-weight: 900;
+  font-size: 2.2rem !important;
+}
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 0.8rem rgba(84, 224, 30, 0.1) !important;
+}
 
-  @media screen and (min-width: 993px) {
-    .hotel-custom .reserve-modify .inputs-modify{
-      width: 50%;
-    }
+@media screen and (min-width: 993px) {
+  .hotel-custom .reserve-modify {
+    flex-direction: row;
   }
-  @media screen and (max-width: 992px) {
-    .hotel-custom .reserve-modify .inputs-modify{
-     width:100%;
-    }
+}
+@media screen and (max-width: 992px) {
+  .hotel-custom .reserve-modify {
+    flex-direction: column;
   }
+}
+
+@media screen and (min-width: 993px) {
+  .hotel-custom .reserve-modify .inputs-modify {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .hotel-custom .reserve-modify .inputs-modify {
+    width: 100%;
+  }
+}

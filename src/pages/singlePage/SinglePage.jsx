@@ -8,7 +8,7 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
   faClipboard,
   faClock,
@@ -17,6 +17,7 @@ import {
   faTicketSimple,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Ads from '../../components/ads/Ads';
 
 const SinglePage = () => {
   const params = useParams();
@@ -85,6 +86,7 @@ const SinglePage = () => {
   return (
     <div className="container-fluid px-0">
       <Navbar />
+      <Ads />
       <div className="singlePage-container">
         {selectedCategory ? (
           <div className="container category-details">
@@ -196,9 +198,11 @@ const SinglePage = () => {
                 </div>
               </div>
               <div className="col-md-3 availabilityButton-container">
-                <Link to="/cities/hotels/reservation/hotel-reservation"><button className="btn btn-warning availabilityButton">
-                  Check availability
-                </button></Link>
+                <Link to="/cities/hotels/reservation/hotel-reservation">
+                  <button className="btn btn-warning availabilityButton">
+                    Check availability
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">
