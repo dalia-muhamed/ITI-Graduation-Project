@@ -33,9 +33,9 @@
   background: rgb(1, 163, 1);
   padding: 0.7rem 1.2rem;
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   color: #fff;
-  margin-top: 1rem;
+  margin-top: 1.4rem !important;
 }
 .contant_box_404 {
   margin-top: -50px;
