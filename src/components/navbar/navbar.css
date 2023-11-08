@@ -39,9 +39,12 @@
 }
 
 .nav-logo-container {
-  width: 45px;
-  height: 40px;
+  width: 3.125rem;
+  height: 2.5rem;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo {
   width: 100%;

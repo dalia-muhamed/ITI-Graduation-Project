@@ -1,0 +1,67 @@
+.container-artical {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.img-caption {
+  width: 100%;
+}
+.bouns-ads {
+  width: 80%;
+  margin: auto;
+}
+.atricleContainer {
+  padding: 5rem 0rem;
+}
+.atricleContainer h1 {
+  letter-spacing: 0px;
+  color: black;
+}
+.atricleContainer p {
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 25px;
+
+  width: 100%;
+}
+.img-cofee {
+  width: 100%;
+  margin-top: 30px;
+  /* height: 25rem; */
+}
+.atricle-inner-box {
+  margin: 50px auto;
+  width: 66%;
+  border-bottom: 1px solid rgb(190, 189, 189);
+  padding-bottom: 30px;
+}
+.atricle-inner-box .small-text {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+.atricle-inner-box i {
+  font-weight: bolder;
+  font-size: 1.3rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.container-artical h1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+.articleComment {
+  width: 60%;
+  margin: auto;
+}
+.articleComment img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+.articleComment h6 {
+  color: black;
+  font-weight: 700;
+}
+.articleComment p {
+  font-size: 1rem;
+  line-height: 20px;
+}
