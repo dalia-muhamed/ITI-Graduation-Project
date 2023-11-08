@@ -1,7 +1,6 @@
 import React from 'react';
 import InputHolder from '../../../components/input/input';
 import './hotel-reservation.css';
-import Hotelbg from './header-bg.jpg';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -632,10 +631,10 @@ console.log(newSelectedData)
               <p className="bg-black text-center text-white rounded-top-2 fs-6">
                 Best rates guaranteed
               </p>
-              <img src={Hotelbg} alt="hotel" className="w-100" />
+              <img src={newSelectedData[2].images[0]} alt="hotel" className="w-100" />
               <div style={{ padding: '1rem 0.7rem' }}>
-                <p className="px-lg-2 fw-bold">{newSelectedData.name}</p>
-                <p className="px-lg-2 fw-bold">{newSelectedData.locationName}</p>
+                <p className="px-lg-2 fw-bold">{newSelectedData[0].name}</p>
+                <p className="px-lg-2 fw-bold">{newSelectedData[1].locationName}</p>
                 <hr />
                 <ul
                   className="list-unstyled px-2 fw-bold d-flex flex-column"

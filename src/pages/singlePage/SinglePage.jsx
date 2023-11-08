@@ -32,14 +32,16 @@ const SinglePage = () => {
         .then(res => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
-          console.log(data);
+          // console.log(data);
           setResponseData(data);
-          console.log(responseData);
+          // console.log(responseData);
         })
         .catch(err => console.log(err));
     };
     fetchData();
   }, [category, responseData]);
+
+
 
   useEffect(() => {
     if (responseData.length > 0) {
@@ -85,11 +87,13 @@ const SinglePage = () => {
     locationColumn = 'col-lg-5';
   }
 
-  const selectedData = {
-    name: {name},
-    locationName: {locationName},
-    // image: {images[0] || null}
-  };
+  const selectedData = [
+     {name},
+     category === 'thingsToDo'
+      ?{duration}
+      : {locationName},
+    {images}
+  ];
   
   const dispatch = useDispatch();
   
@@ -211,11 +215,21 @@ const SinglePage = () => {
                 </div>
               </div>
               <div className="col-md-3 availabilityButton-container">
-                <Link to="/cities/hotels/reservation/hotel-reservation">
-                  <button className="btn btn-warning availabilityButton">
-                    Check availability
-                  </button>
-                </Link>
+              <Link
+  to={
+    category === 'hotels'
+      ? "/cities/hotels/reservation/hotel-reservation"
+      : category === 'restaurants'
+      ? "/cities/restaurants/reservation/restaurant-reservation"
+      : category === 'thingsToDo'
+      ? "/cities/thingsToDo/reservation/thingsToDo-reservation"
+      : '*'
+  }
+>
+  <button className="btn btn-warning availabilityButton">
+    Check availability
+  </button>
+</Link>
               </div>
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">

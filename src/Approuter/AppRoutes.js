@@ -22,11 +22,11 @@ const AppRoutes = () => {
           element={<HotelReservation />}
         />
         <Route
-          path="/cities/hotels/reservation/restraunt-reservation"
+          path="/cities/restaurants/reservation/restaurant-reservation"
           element={<RestrauntReservation />}
         />
         <Route
-          path="/cities/hotels/reservation/thingsToDo-reservation"
+          path="/cities/thingsToDo/reservation/thingsToDo-reservation"
           element={<ThingsToDoReservation />}
         />
         <Route path="/reservation/successfully" element={<SuccessPage />} />
