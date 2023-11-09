@@ -120,7 +120,7 @@ const SinglePage = () => {
                 <Rating rating={rating} reviews={reviews} />
               </div>
               {rank && (
-                <div className="col-md-8">
+                <div className="col-md-8" style={{ fontWeight: '700' }}>
                   <div className="">{rank}</div>
                 </div>
               )}
@@ -133,7 +133,10 @@ const SinglePage = () => {
             </div>
             <div className="row my-1">
               {location && (
-                <div className="col-12 singlePage-address-header">
+                <div
+                  className="col-12 singlePage-address-header"
+                  style={{ fontSize: '1.1rem' }}
+                >
                   <span>
                     {' '}
                     <FontAwesomeIcon
@@ -154,7 +157,7 @@ const SinglePage = () => {
                 </div>
               )}
             </div>
-            <div className="row singlePage-heading-contacts-container my-4">
+            <div className="row singlePage-heading-contacts-container my-3">
               <div className="col-md-8 d-flex singlePage-heading-contacts row mb-3">
                 <div className="row">
                   <div className="singlePage-website-header col-md-4 my-1 ">
@@ -205,7 +208,7 @@ const SinglePage = () => {
                         <span>{cancellation}</span>
                       </div>
                     ) : (
-                      <div>
+                      <div style={{ fontWeight: '700' }}>
                         <img
                           src={pen}
                           className="singlePageIcon"
@@ -217,7 +220,7 @@ const SinglePage = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3 availabilityButton-container">
+              <div className="col-md-4 availabilityButton-container">
                 <Link
                   to={
                     category === 'hotels'
@@ -299,8 +302,86 @@ const SinglePage = () => {
                       ></iframe>
                     </div>
                   )}
+                  {tours && (
+                    <div className="pt-4">
+                      <h4 style={{ fontWeight: 'bold' }} className="mb-4">
+                        More information
+                      </h4>
+                      <p>
+                        {' '}
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
+                          className="singlePageAddressIcon"
+                          style={{ marginRight: '10px', marginLeft: '' }}
+                        />
+                        {address}
+                      </p>
+                      <p>
+                        {duration && (
+                          <div>
+                            <FontAwesomeIcon icon={faClock} />{' '}
+                            <span>Duration: {duration}</span>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        {tours && (
+                          <div className="singlePage-phone-header my-1">
+                            <p>
+                              {' '}
+                              <FontAwesomeIcon icon={faPersonRunning} /> {tours}
+                            </p>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        {cancellation && (
+                          <div>
+                            <FontAwesomeIcon icon={faTicketSimple} />{' '}
+                            <span>{cancellation}</span>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        <Rating rating={rating} reviews={reviews} />
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div>
+                  {tours && (
+                    <div>
+                      <hr />
+                      <h4 style={{ fontWeight: 'bold' }}>Reservation</h4>
+                      <div className="d-flex row">
+                        <div className="col-md-6">
+                          <small className="text-muted">from</small>
+                          <p
+                            style={{
+                              margin: '0',
+                              fontWeight: 'bold',
+                              fontSize: '2rem',
+                            }}
+                          >
+                            {money}
+                          </p>
+                          <small className="text-muted">
+                            per group (up to 6)
+                          </small>
+                        </div>
+                        <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
+                          <Link
+                            to={
+                              '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                            }
+                            className="reservation-btn btn btn-warning "
+                          >
+                            Book on Visitor
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <div>
                     {location && (
                       <div className="singlePage-address-header mb-3">
