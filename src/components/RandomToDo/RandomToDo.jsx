@@ -4,6 +4,7 @@ import "./RandomTodo.css";
 import { axiosInstance } from "../../axios";
 
 import like from "./heart2.png";
+import Rating from "../owl/Rating";
 const RandomToDo = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
@@ -51,8 +52,9 @@ const RandomToDo = () => {
                 >
                   <div class="card">
                     <img src={todo.images[0]} className="card-img-top" />
-                    <div class="card-body">
-                      <h6 class="card-title">{todo.name}</h6>
+                    <div class="card-body d-block">
+                      <Rating rating={todo.rating} reviews={todo.reviews} />
+                      <h6 class="card-title mt-2">{todo.name}</h6>
                     </div>
                   </div>
                 </div>
