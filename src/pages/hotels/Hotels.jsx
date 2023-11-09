@@ -5,10 +5,10 @@ import './hotels.css';
 import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
-import { axiosInstance } from '../../axios';
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
-
+import Ads from '../../components/ads/Ads';
+import adImage from "../../components/ads/ad2.jpg";
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -36,9 +36,15 @@ const Hotels = () => {
   }, [hotelName, cityName, innerSearchState]);
 
   return (
-    <>
+    <div>
       <div className="matched-hotels-component">
-        <Navbar />
+      <Ads
+        text=" Find out why travelers like you are raving about Bermoda."
+        header="Discover Bermoda"
+        imgPath={adImage}
+        backgroundColor="#faf1ed"
+      />
+        <Navbar navbarItem="" sticky={true} myClass="sticky"  />
         <InnerSearchComponent
           category={category}
           cityName={cityName}
@@ -82,7 +88,7 @@ const Hotels = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

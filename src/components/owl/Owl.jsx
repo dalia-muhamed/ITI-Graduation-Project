@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./owl.css";
 import Rating from "./Rating";
 import { motion } from "framer-motion";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../axios";
 
 const Owl = () => {
@@ -26,30 +26,29 @@ const Owl = () => {
     return shuffledArray.slice(0, count);
   };
 
+  const handleLinkClick = () => {
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="owl-container">
       {restaurants && (
         <div className="container owl">
-          <h4
-            className="owl-title"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            Worldwide Top Rated Restaurants
-          </h4>
+          <h4>Worldwide Top Rated Restaurants</h4>
           <motion.div className="carousel">
             <motion.div
               drag="x"
               dragConstraints={{ right: 0, left: -2000 }}
               className="inner-carousel"
+              onClick={handleLinkClick}
+              
             >
               {restaurants.map((restaurant) => (
                 <motion.div
                   className="item"
                   key={restaurant.id}
-                  data-aos="fade-up"
-                  data-aos-duration="1800"
+
                 >
                   <img
                     src={restaurant.images[0]}

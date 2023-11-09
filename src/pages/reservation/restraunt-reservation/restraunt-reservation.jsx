@@ -173,8 +173,8 @@ console.log(newSelectedData)
   }, [formErrs, navigate]);
 
   return (
-    <div className="container-fluid">
-      <Navbar />
+    <div className="">
+      <Navbar sticky={true} myClass="sticky" navbarItem=""/>
       <div className="container hotel-custom">
         <h1 className=" ms-5 my-5 fs-2 ps-md-5 heading-reservation">
           Complete Your Booking

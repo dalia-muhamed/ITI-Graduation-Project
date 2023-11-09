@@ -154,7 +154,7 @@ const SearchComponent = () => {
 
   return (
     <div className="SearchComponent">
-      <video src={video} loop autoPlay muted/>
+      <video src={video} loop autoPlay muted />
       <div className="container searchComponentInner">
         <div className="content font-weight-bold">
           {activeTab === 1 && (

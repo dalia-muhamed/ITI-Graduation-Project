@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
-        <Navbar />
+        <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container"/>
         <SearchComponent />
         <Owl />
         <Donate />

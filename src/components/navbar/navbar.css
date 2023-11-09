@@ -8,19 +8,21 @@
   width: 100%;
   background-color: transparent;
   z-index: 99999;
-  border: none;
-  padding: 0.5rem 0rem;
-  transition: background-color 0.5s ease; /* Smooth transition effect */
-}
-.sticky {
-  border: 1px solid #e0e0e0;
+  padding: 0.3rem 0rem;
+  transition: 1s ease;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
 }
+.sticky {
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0rem;
+}
+
 .nav-logo-container .navbar-logo {
   font-family: 'Open Sans', sans-serif;
   font-weight: 900;
