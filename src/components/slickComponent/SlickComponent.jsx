@@ -74,8 +74,13 @@ const SlickComponent = () => {
         {hotels &&
           hotels.map((hotel) => (
             <div
-              onClick={() => navigate(`/cities/hotels/details/${hotel.id}`)}
+              onClick={() => {
+                navigate(`/cities/hotels/details/${hotel.id}`);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="SlickItem"
+              data-aos="fade-up"
+              data-aos-duration="1800"
             >
               <img src={hotel.images[1]} alt={hotel.name} />
               <div className="overlay"></div>

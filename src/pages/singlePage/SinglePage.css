@@ -26,6 +26,7 @@
 .singlePageRatingReviews {
   margin-bottom: -1.7rem;
 }
+
 .singlePage-main-image-container .single-hotels-left-images {
   padding-right: 0;
 }
@@ -41,7 +42,6 @@
 }
 .singlePage-address-header {
   font-family: tripRegular;
-  font-size: 1rem;
   display: flex;
   gap: 0.4rem;
   align-items: center;

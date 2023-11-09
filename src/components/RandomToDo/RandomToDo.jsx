@@ -44,10 +44,10 @@ const RandomToDo = () => {
                   <img src={like} className="likeImage" />
                 </div>
                 <div
-
-                  onClick={() =>
-                    navigate(`/cities/thingsToDo/details/${todo.id}`)
-                  }
+                  onClick={() => {
+                    navigate(`/cities/thingsToDo/details/${todo.id}`);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   <div class="card">
                     <img src={todo.images[0]} className="card-img-top" />

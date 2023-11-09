@@ -3,25 +3,25 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #fff;
+  background-color: transparent;
   z-index: 99999;
-  border: 1px solid #e0e0e0;
-  padding: 0.2rem 0rem;
-  position: relative;
-  transition: top 0.5s ease;
-}
-.sticky {
+  padding: 0.3rem 0rem;
+  transition:  1s ease;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 100;
-  transition: top 0.3s ease ease-in-out;
-  opacity: 1;
-  transform: translateY(0);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.sticky {
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0rem;
+}
+
 .nav-logo-container .navbar-logo {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 900;
 }
 .nav-left-side {

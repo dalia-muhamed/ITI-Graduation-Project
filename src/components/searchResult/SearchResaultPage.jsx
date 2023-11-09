@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import './SearchResultPage.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import "./SearchResultPage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function SearchResultPage({
   name,
@@ -30,7 +30,7 @@ function SearchResultPage({
           <div
             key={index}
             className="circle"
-            style={{ backgroundColor: '#00AA6C' }}
+            style={{ backgroundColor: "#00AA6C" }}
           ></div>
         );
       } else if (index === fullCirclesCount && hasHalfCircle) {
@@ -48,7 +48,7 @@ function SearchResultPage({
           <div
             key={index}
             className="circle"
-            style={{ backgroundColor: 'transparent' }}
+            style={{ backgroundColor: "transparent" }}
           ></div>
         );
       }
@@ -61,6 +61,7 @@ function SearchResultPage({
     <Link
       to={`/cities/${category}/details/${categoryId}`}
       className="search-result-card"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
       <div className="search-result">
         <div className="matched-hotels-img">
@@ -83,14 +84,14 @@ function SearchResultPage({
               <>
                 <FontAwesomeIcon
                   icon={faPhone}
-                  style={{ fontSize: '0.7rem' }}
+                  style={{ fontSize: "0.7rem" }}
                 />
-                <span style={{ marginLeft: '0.5rem' }}>{phone}</span>
+                <span style={{ marginLeft: "0.5rem" }}>{phone}</span>
               </>
             )}
           </small>
           {money && (
-            <p style={{ fontWeight: 'bold', margin: '5px 0px' }}>{money}</p>
+            <p style={{ fontWeight: "bold", margin: "5px 0px" }}>{money}</p>
           )}
 
           <div className="d-flex">
