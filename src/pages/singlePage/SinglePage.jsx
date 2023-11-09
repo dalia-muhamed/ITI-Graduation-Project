@@ -19,6 +19,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Ads from '../../components/ads/Ads';
+import Footer from '../../components/footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();
@@ -40,8 +41,6 @@ const SinglePage = () => {
     };
     fetchData();
   }, [category, responseData]);
-
-
 
   useEffect(() => {
     if (responseData.length > 0) {
@@ -88,22 +87,20 @@ const SinglePage = () => {
   }
 
   const selectedData = [
-     {name},
-     category === 'thingsToDo'
-      ?{duration}
-      : {locationName},
-    {images}
+    { name },
+    category === 'thingsToDo' ? { duration } : { locationName },
+    { images },
   ];
-  
-  const dispatch = useDispatch();
-  
-  dispatch(setSelectedData(selectedData));
 
+  const dispatch = useDispatch();
+
+  dispatch(setSelectedData(selectedData));
 
   return (
     <div className="container-fluid px-0">
-      <Navbar />
       <Ads />
+      <Navbar />
+
       <div className="singlePage-container">
         {selectedCategory ? (
           <div className="container category-details">
@@ -167,7 +164,7 @@ const SinglePage = () => {
                           className="singlePageIcon"
                           alt="singlePageIcon"
                         />
-                        Visit hotel website
+                        Visit our website
                       </a>
                     )}
                     {duration && (
@@ -215,21 +212,20 @@ const SinglePage = () => {
                 </div>
               </div>
               <div className="col-md-3 availabilityButton-container">
-              <Link
-  to={
-    category === 'hotels'
-      ? "/cities/hotels/reservation/hotel-reservation"
-      : category === 'restaurants'
-      ? "/cities/restaurants/reservation/restaurant-reservation"
-      : category === 'thingsToDo'
-      ? "/cities/thingsToDo/reservation/thingsToDo-reservation"
-      : '*'
-  }
->
-  <button className="btn btn-warning availabilityButton">
-    Check availability
-  </button>
-</Link>
+                <Link
+                  to={
+                    category === 'hotels'
+                      ? '/cities/hotels/reservation/hotel-reservation'
+                      : category === 'restaurants'
+                      ? '/cities/restaurants/reservation/restaurant-reservation'
+                      : category === 'thingsToDo'
+                      ? '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                      : '*'
+                  }
+                  className="btn btn-warning availabilityButton"
+                >
+                  Book now
+                </Link>
               </div>
             </div>
             <div className="row d-flex singlePage-randomImages-row my-4">
@@ -261,12 +257,18 @@ const SinglePage = () => {
               </>
             </div>
 
-            <div className="row d-flex justify-content-between my-4">
+            <div className="row d-flex justify-content-between align-items-start my-4 about-location-section">
               {about || description ? (
-                <div className="col-lg-6 bg-white px-4 py-3 about-single-hotels">
+                <div className="col-lg-6 bg-white px-4 py-4 ">
                   <h4 className="fw-bold mt-3 mb-3">About</h4>
-                  {description && <p className="text-muted">{description}</p>}
-                  {about && <p className="text-muted">{about}</p>}
+                  {description && (
+                    <p className="text-muted about-description-text">
+                      {description}
+                    </p>
+                  )}
+                  {about && (
+                    <p className="text-muted about-description-text">{about}</p>
+                  )}
                 </div>
               ) : null}
               <div
@@ -285,7 +287,6 @@ const SinglePage = () => {
                           height: '300px',
                           marginBottom: '20px',
                         }}
-                        allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="z"
@@ -322,7 +323,7 @@ const SinglePage = () => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Visit hotel website
+                        Visit our website
                       </a>
                     </div>
                   )}
@@ -347,6 +348,7 @@ const SinglePage = () => {
           <LoadingComponent />
         )}
       </div>
+      <Footer />
     </div>
   );
 };

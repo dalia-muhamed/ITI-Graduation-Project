@@ -1,14 +1,20 @@
 .singlePage-container {
-  border-top: 1px solid rgb(212, 211, 211);
   padding: 0 !important;
-  background-color: #f0eeee;
+  background-color: #fff;
 }
 .category-details {
   padding: 6.8rem 0;
-  max-width: 75% !important;
+  max-width: 70% !important;
   margin: 0 auto;
 }
-
+.about-location-section > div {
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+}
+.about-description-text {
+  line-height: 1.8rem !important;
+  font-size: 1.1rem;
+}
 .category-details .details-heading {
   font-size: 2.2rem;
   font-family: TripBold-900;
@@ -45,12 +51,17 @@
   justify-content: flex-end;
 }
 .availabilityButton-container .availabilityButton {
-  padding: 0.7rem 1.2rem;
-  background-color: #f2b203;
+  padding: 0.9rem 1rem;
+  background-color: #f1b718;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
   color: #000000;
   border: none;
   font-family: tripBold-600;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.1rem;
   border-radius: 2rem;
   cursor: pointer;
 }

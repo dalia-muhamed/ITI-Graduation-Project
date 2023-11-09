@@ -1,12 +1,12 @@
-import React from "react";
-import "./Donate.css";
-import donate from "./donate.jpg";
-import logo2 from "./logo.jpg";
+import React from 'react';
+import './Donate.css';
+import donate from './donate.jpg';
+import logo2 from './logo.jpg';
 
 function Donate() {
   return (
-    <div className="container-donate bg-warning container">
-      <div className="row">
+    <div className="container d-flex justify-content-center ">
+      <div className="row container-donate bg-warning">
         <div className=" parent-img col-md-6">
           <img src={donate} alt="Image" className="donate-img" />
         </div>
@@ -15,7 +15,7 @@ function Donate() {
             <div className="donateLogoImageContainer">
               <img src={logo2} alt="Logo" className="donate-img-logo" />
             </div>
-            <h6 className="donate-logo-name">Traveliya Foundation</h6>
+            <h6 className="donate-logo-name">Travelia Foundation</h6>
           </div>
           <div className="details-head">
             <h2>Help Maui & others</h2>
@@ -23,8 +23,8 @@ function Donate() {
           </div>
 
           <div className="btn-donate-details">
-            <p>
-              The Tripadvisor Foundation is matching donations to World Central
+            <p className="donate-text">
+              Travelia Foundation is matching donations to World Central
               Kitchen’s Climate Disaster Fund. Your support helps disaster
               responses not only in Maui, but worldwide.
             </p>

@@ -1,13 +1,13 @@
-import logo from "./logo.jpg";
-import "./navbar.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useState, useEffect } from "react";
-import GoogleLogin from "../GoogleLogin/GoogleLogin";
-import { jwtDecode } from "jwt-decode";
-import { Link } from "react-router-dom";
+import logo from './logo.jpg';
+import './navbar.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useState, useEffect } from 'react';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import { jwtDecode } from 'jwt-decode';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [imageSrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState('');
   const [hasLogged, setHasLogged] = useState(false);
 
   // useEffect(() => {
@@ -21,43 +21,43 @@ const Navbar = () => {
 
   const [isSticky, setIsSticky] = useState(false);
 
-useEffect(() => {
-  let prevScrollPosition = window.pageYOffset;
+  useEffect(() => {
+    let prevScrollPosition = window.pageYOffset;
 
-  const handleScroll = () => {
-    const scrollPosition = window.pageYOffset;
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
 
-    if (scrollPosition > prevScrollPosition) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
+      if (scrollPosition > prevScrollPosition) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
 
-    prevScrollPosition = scrollPosition;
-  };
+      prevScrollPosition = scrollPosition;
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
-    const hasLoggedValue = localStorage.getItem("hasLogged");
-    if (hasLoggedValue === "true") {
+    const hasLoggedValue = localStorage.getItem('hasLogged');
+    if (hasLoggedValue === 'true') {
       setHasLogged(true);
-      const userImage = localStorage.getItem("userImage");
+      const userImage = localStorage.getItem('userImage');
       if (userImage) {
         setImageSrc(userImage);
       }
     }
   }, []);
 
-  const handleLoginSuccess = (credentialResponse) => {
+  const handleLoginSuccess = credentialResponse => {
     const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
     setImageSrc(credentialResponseDecoded.picture);
-    localStorage.setItem("hasLogged", "true");
-    localStorage.setItem("userImage", credentialResponseDecoded.picture);
+    localStorage.setItem('hasLogged', 'true');
+    localStorage.setItem('userImage', credentialResponseDecoded.picture);
     setHasLogged(true);
   };
 
@@ -66,13 +66,13 @@ useEffect(() => {
       <nav
         id="navbar"
         className={
-          isSticky ? "sticky NavbarItems-container" : "NavbarItems-container"
+          isSticky ? 'sticky NavbarItems-container' : 'NavbarItems-container'
         }
       >
-        <div className="container">
-          <div className="row w-100">
+        <div className="container navbar-row">
+          <div className="row w-100 ">
             <div className="nav-left-side col-md-4  my-1">
-              <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              <Link to="/" style={{ color: 'black', textDecoration: 'none' }}>
                 <div className="d-flex align-items-center">
                   <div className="nav-logo-container">
                     <img src={logo} className="logo" alt="logo" />
@@ -94,12 +94,12 @@ useEffect(() => {
               {hasLogged && (
                 <img
                   style={{
-                    position: "absolute",
-                    right: "70px",
-                    top: "7px",
-                    borderRadius: "50%",
-                    width: "50px",
-                    height: "50px",
+                    // position: "absolute",
+                    // right: "70px",
+                    // top: "7px",
+                    borderRadius: '50%',
+                    width: '50px',
+                    height: '50px',
                   }}
                   src={imageSrc}
                   alt="dad"

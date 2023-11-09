@@ -10,7 +10,7 @@ const Ads = () => {
           <p className="ads-paragraph">
             Find out why travelers like you are raving about Bermoda.
           </p>
-          <Link className="ads-link"> explore more</Link>
+          <Link className="ads-link"> Read now</Link>
         </div>
         <div className="ad-image-container"></div>
       </div>
