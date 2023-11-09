@@ -94,7 +94,6 @@ const Navbar = () => {
               {hasLogged && (
                 <img
                   style={{
-      
                     borderRadius: '50%',
                     width: '50px',
                     height: '50px',

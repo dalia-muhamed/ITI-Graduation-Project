@@ -2,19 +2,29 @@
   padding: 70px 0px;
   background-color: #faf1ed;
 }
+.randomToDoContainer h4 {
+  padding-left: 5.8rem;
+}
 .randomToDo .card {
-  height: 430px;
+  height: 400px;
   position: relative;
+  border-radius: 0;
+  border: none;
 }
 .randomToDo .card .card-img-top {
   height: 20rem;
+  border-radius: 0;
 }
 .randomToDo .card .card-body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 !important;
+  padding: 0.5rem 1rem !important;
 }
-.randomToDo .card-img-top:hover{
+.randomToDo .card-img-top:hover {
   opacity: 0.8;
   transition: 0.3s;
 }
@@ -38,11 +48,15 @@
   height: 100%;
   z-index: 20;
 }
+.randomToDo .card-title {
+  font-family: TripBold-700;
+  font-size: 1.1rem;
+}
 .randomToDo .card-title:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.randomToDo .RandomTodoRalative{
+.randomToDo .RandomTodoRalative {
   position: relative;
 }
 @media (width<770) {
