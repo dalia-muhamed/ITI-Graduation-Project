@@ -10,6 +10,7 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
+import adImage from '../../components/ads/ad2.jpg';
 import {
   faClipboard,
   faClock,
@@ -98,7 +99,12 @@ const SinglePage = () => {
 
   return (
     <div className="container-fluid px-0">
-      <Ads />
+      <Ads
+        text=" Find out why travelers like you are raving about Bermoda."
+        header="Discover Bermoda"
+        imgPath={adImage}
+        backgroundColor="#faf1ed"
+      />
       <Navbar />
 
       <div className="singlePage-container">
