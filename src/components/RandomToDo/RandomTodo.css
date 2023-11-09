@@ -42,6 +42,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+.randomToDo .RandomTodoRalative{
+  position: relative;
+}
 @media (width<770) {
   .randomToDoContainer {
     max-width: 90%;

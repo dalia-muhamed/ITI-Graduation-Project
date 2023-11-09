@@ -21,26 +21,26 @@ const Navbar = () => {
 
   const [isSticky, setIsSticky] = useState(false);
 
-useEffect(() => {
-  let prevScrollPosition = window.pageYOffset;
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.getElementById("navbar");
+      if (navbar) {
+        const navbarHeight = navbar.offsetHeight;
+        const scrollPosition = window.scrollY;
 
-  const handleScroll = () => {
-    const scrollPosition = window.pageYOffset;
+        if (scrollPosition > navbarHeight) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      }
+    };
 
-    if (scrollPosition > prevScrollPosition) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-
-    prevScrollPosition = scrollPosition;
-  };
-
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const hasLoggedValue = localStorage.getItem("hasLogged");

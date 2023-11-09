@@ -20,8 +20,7 @@ const ThingsToDo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dataToShow =
-          innerSearchState.length > 0 ? innerSearchState : [];
+        const dataToShow = innerSearchState.length > 0 ? innerSearchState : [];
         setFilteredToDos(dataToShow);
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -38,7 +37,7 @@ const ThingsToDo = () => {
       <Navbar />
       <InnerSearchComponent
         cityName={cityName}
-        categoryValue={todoName}
+        categoryValue={todoName || cityName}
         category={category}
         categoryName="todoName"
       />
