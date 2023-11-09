@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { axiosInstance } from "../../axios";
-import { useDispatch } from "react-redux";
-import { setSelectedData } from "./singlePageSlice";
-import "./SinglePage.css";
-import pen from "./singlePageIcons/pen.png";
-import telephone from "./singlePageIcons/telephone.png";
-import web from "./singlePageIcons/web.png";
-import Navbar from "../../components/navbar/Navbar";
-import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
-import Rating from "../../components/owl/Rating";
-import adImage from "../../components/ads/ad2.jpg";
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { axiosInstance } from '../../axios';
+import { useDispatch } from 'react-redux';
+import { setSelectedData } from './singlePageSlice';
+import './SinglePage.css';
+import pen from './singlePageIcons/pen.png';
+import telephone from './singlePageIcons/telephone.png';
+import web from './singlePageIcons/web.png';
+import Navbar from '../../components/navbar/Navbar';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import Rating from '../../components/owl/Rating';
+import adImage from '../../components/ads/ad2.jpg';
 import {
   faClipboard,
   faClock,
@@ -18,28 +18,30 @@ import {
   faPersonRunning,
   faTicketSimple,
   faWallet,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Ads from "../../components/ads/Ads";
-import Footer from "../../components/footer/Footer";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Ads from '../../components/ads/Ads';
+import Footer from '../../components/footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();
   const [responseData, setResponseData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState({});
   const { category, categoryId } = params;
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = () => {
       axiosInstance
         .get(`/cities/${category}`)
-        .then((res) => {
+        .then(res => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
           // console.log(data);
           setResponseData(data);
           // console.log(responseData);
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     };
     fetchData();
   }, [category, responseData]);
@@ -47,7 +49,7 @@ const SinglePage = () => {
   useEffect(() => {
     if (responseData.length > 0) {
       const filteredCategoryById = responseData.find(
-        (res) => res.id === +categoryId
+        res => res.id === +categoryId
       );
       setSelectedCategory(filteredCategoryById);
     }
@@ -83,18 +85,20 @@ const SinglePage = () => {
   }
   let locationColumn;
   if (!description && !about) {
-    locationColumn = "col-lg-12";
+    locationColumn = 'col-lg-12';
   } else {
-    locationColumn = "col-lg-5";
+    locationColumn = 'col-lg-5';
   }
 
   const selectedData = [
     { name },
-    category === "thingsToDo" ? { duration } : { locationName },
+    category === 'thingsToDo' ? { duration } : { locationName },
     { images },
   ];
 
-  const dispatch = useDispatch();
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   dispatch(setSelectedData(selectedData));
 
@@ -121,13 +125,13 @@ const SinglePage = () => {
                 <Rating rating={rating} reviews={reviews} />
               </div>
               {rank && (
-                <div className="col-md-8" style={{ fontWeight: "700" }}>
+                <div className="col-md-8" style={{ fontWeight: '700' }}>
                   <div className="">{rank}</div>
                 </div>
               )}
               {recommendation && (
                 <div className="col-md-8">
-                  <FontAwesomeIcon icon={faClipboard} />{" "}
+                  <FontAwesomeIcon icon={faClipboard} />{' '}
                   <span>{recommendation}</span>
                 </div>
               )}
@@ -136,14 +140,14 @@ const SinglePage = () => {
               {location && (
                 <div
                   className="col-12 singlePage-address-header"
-                  style={{ fontSize: "1rem" }}
+                  style={{ fontSize: '1rem' }}
                 >
                   <span>
-                    {" "}
+                    {' '}
                     <FontAwesomeIcon
                       icon={faLocationDot}
                       className="singlePageAddressIcon"
-                    />{" "}
+                    />{' '}
                     {locationName}
                   </span>
                 </div>
@@ -153,7 +157,7 @@ const SinglePage = () => {
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className="singlePageAddressIcon"
-                  />{" "}
+                  />{' '}
                   {address}
                 </div>
               )}
@@ -179,7 +183,7 @@ const SinglePage = () => {
                     )}
                     {duration && (
                       <div>
-                        <FontAwesomeIcon icon={faClock} />{" "}
+                        <FontAwesomeIcon icon={faClock} />{' '}
                         <span>Duration: {duration}</span>
                       </div>
                     )}
@@ -198,18 +202,18 @@ const SinglePage = () => {
                   )}
                   {tours && (
                     <div className="singlePage-phone-header col-md-4 my-1">
-                      <FontAwesomeIcon icon={faPersonRunning} />{" "}
+                      <FontAwesomeIcon icon={faPersonRunning} />{' '}
                       <span>{tours}</span>
                     </div>
                   )}
                   <div className="singlePage-pen-header col-md-4 my-1">
                     {cancellation ? (
                       <div>
-                        <FontAwesomeIcon icon={faTicketSimple} />{" "}
+                        <FontAwesomeIcon icon={faTicketSimple} />{' '}
                         <span>{cancellation}</span>
                       </div>
                     ) : (
-                      <div style={{ fontWeight: "700" }}>
+                      <div style={{ fontWeight: '700' }}>
                         <img
                           src={pen}
                           className="singlePageIcon"
@@ -224,14 +228,15 @@ const SinglePage = () => {
               <div className="col-md-4 availabilityButton-container">
                 <Link
                   to={
-                    category === "hotels"
-                      ? "/cities/hotels/reservation/hotel-reservation"
-                      : category === "restaurants"
-                      ? "/cities/restaurants/reservation/restaurant-reservation"
-                      : category === "thingsToDo"
-                      ? "/cities/thingsToDo/reservation/thingsToDo-reservation"
-                      : "*"
+                    category === 'hotels'
+                      ? '/cities/hotels/reservation/hotel-reservation'
+                      : category === 'restaurants'
+                      ? '/cities/restaurants/reservation/restaurant-reservation'
+                      : category === 'thingsToDo'
+                      ? '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                      : '*'
                   }
+                  onClick={handleClick}
                   className="btn btn-warning availabilityButton"
                 >
                   Book now
@@ -256,7 +261,7 @@ const SinglePage = () => {
                             <img
                               src={img}
                               alt={index}
-                              style={{ height: "100%", width: "100%" }}
+                              style={{ height: '100%', width: '100%' }}
                             />
                           </div>
                         ))}
@@ -287,15 +292,15 @@ const SinglePage = () => {
                 <div>
                   {location && (
                     <div>
-                      <h5 style={{ fontWeight: "bold" }}>
+                      <h5 style={{ fontWeight: 'bold' }}>
                         Location and contact
                       </h5>
                       <iframe
                         src={locationAddress}
                         style={{
-                          width: "100%",
-                          height: "300px",
-                          marginBottom: "20px",
+                          width: '100%',
+                          height: '300px',
+                          marginBottom: '20px',
                         }}
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
@@ -305,22 +310,22 @@ const SinglePage = () => {
                   )}
                   {tours && (
                     <div className="pt-4">
-                      <h4 style={{ fontWeight: "bold" }} className="mb-4">
+                      <h4 style={{ fontWeight: 'bold' }} className="mb-4">
                         More information
                       </h4>
                       <p>
-                        {" "}
+                        {' '}
                         <FontAwesomeIcon
                           icon={faLocationDot}
                           className="singlePageAddressIcon"
-                          style={{ marginRight: "10px", marginLeft: "" }}
+                          style={{ marginRight: '10px', marginLeft: '' }}
                         />
                         {address}
                       </p>
                       <p>
                         {duration && (
                           <div>
-                            <FontAwesomeIcon icon={faClock} />{" "}
+                            <FontAwesomeIcon icon={faClock} />{' '}
                             <span>Duration: {duration}</span>
                           </div>
                         )}
@@ -329,7 +334,7 @@ const SinglePage = () => {
                         {tours && (
                           <div className="singlePage-phone-header my-1">
                             <p>
-                              {" "}
+                              {' '}
                               <FontAwesomeIcon icon={faPersonRunning} /> {tours}
                             </p>
                           </div>
@@ -338,7 +343,7 @@ const SinglePage = () => {
                       <p>
                         {cancellation && (
                           <div>
-                            <FontAwesomeIcon icon={faTicketSimple} />{" "}
+                            <FontAwesomeIcon icon={faTicketSimple} />{' '}
                             <span>{cancellation}</span>
                           </div>
                         )}
@@ -354,12 +359,12 @@ const SinglePage = () => {
                     {location && (
                       <div className="singlePage-address-header mb-3">
                         <span>
-                          {" "}
+                          {' '}
                           <FontAwesomeIcon
                             icon={faLocationDot}
                             className="singlePageAddressIcon"
-                            style={{ marginRight: "10px", marginLeft: "4px" }}
-                          />{" "}
+                            style={{ marginRight: '10px', marginLeft: '4px' }}
+                          />{' '}
                           {locationName}
                         </span>
                       </div>
@@ -397,15 +402,15 @@ const SinglePage = () => {
                     {money && (
                       <div>
                         <hr />
-                        <h4 style={{ fontWeight: "bold" }}>Reservation</h4>
+                        <h4 style={{ fontWeight: 'bold' }}>Reservation</h4>
                         <div className="d-flex row">
                           <div className="col-md-6">
                             <small className="text-muted">from</small>
                             <p
                               style={{
-                                margin: "0",
-                                fontWeight: "bold",
-                                fontSize: "2rem",
+                                margin: '0',
+                                fontWeight: 'bold',
+                                fontSize: '2rem',
                               }}
                             >
                               {money}
@@ -417,8 +422,9 @@ const SinglePage = () => {
                           <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
                             <Link
                               to={
-                                "/cities/thingsToDo/reservation/thingsToDo-reservation"
+                                '/cities/thingsToDo/reservation/thingsToDo-reservation'
                               }
+                              onClick={handleClick}
                               className="reservation-btn btn btn-warning "
                             >
                               Book on Visitor
