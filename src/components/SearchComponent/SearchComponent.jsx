@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-
-} from "@fortawesome/free-solid-svg-icons";
-import {  useNavigate } from "react-router-dom";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import Hotel from "./icon/bed.png";
 import todo from "./icon/ticket.png";
 import Restaurants from "./icon/fork.png";
 import "./SearchComponent.css";
 import { axiosInstance } from "../../axios";
-import video from "./icon/video5.mp4"
+import video from "./icon/video5.mp4";
 const SearchComponent = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [searchPlaceholder, setSearchPlaceholder] = useState("");
@@ -139,6 +136,7 @@ const SearchComponent = () => {
     } else if (category === "thingsToDo" && matchedTodos && !matchedCity) {
       path += `/${category}?todoName=${searchVal}`;
     }
+
     setSearchPath(path);
     navigate(path);
   };
@@ -151,7 +149,8 @@ const SearchComponent = () => {
       searchValidate();
     }
   };
-
+  const isInputEmpty = searchVal.trim() === "";
+  const isButtonDisabled = isInputEmpty;
   return (
     <div className="SearchComponent">
       <video src={video} loop autoPlay muted />
@@ -197,13 +196,18 @@ const SearchComponent = () => {
             className="SearchComponentIcon"
           />
           <input
+            id="searchComponentInut"
             type="text"
             placeholder={searchPlaceholder}
             onKeyDown={handleEnterKey}
             onChange={handleInputChange}
             value={searchVal}
           />
-          <button className="searchLink" onClick={searchBtn}>
+          <button
+            className="searchLink"
+            onClick={searchBtn}
+            disabled={isButtonDisabled}
+          >
             Search
           </button>
         </div>

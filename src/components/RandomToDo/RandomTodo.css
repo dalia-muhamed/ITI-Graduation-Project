@@ -12,15 +12,14 @@
   border: none;
 }
 .randomToDo .card .card-img-top {
-  height: 20rem;
+  height: 18rem;
   border-radius: 0;
 }
 .randomToDo .card .card-body {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-end;
   padding: 0 !important;
   padding: 0.5rem 1rem !important;
 }
