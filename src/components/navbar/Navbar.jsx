@@ -89,14 +89,12 @@ const Navbar = () => {
                 <li>more</li>
               </ul>
             </div>
-            <div className="nav-right-side col-md-4 d-flex align-items-center mb-2">
+            <div className="nav-right-side col-md-4 d-flex align-items-center  my-1">
               {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
               {hasLogged && (
                 <img
                   style={{
-                    // position: "absolute",
-                    // right: "70px",
-                    // top: "7px",
+      
                     borderRadius: '50%',
                     width: '50px',
                     height: '50px',
