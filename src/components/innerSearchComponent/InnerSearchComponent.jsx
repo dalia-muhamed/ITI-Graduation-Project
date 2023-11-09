@@ -4,11 +4,16 @@ import React, { useEffect, useState } from "react";
 import SearchButton from "../searchbutton/SearchButton";
 import "./InnerSearchComponent.css";
 import { axiosInstance } from "../../axios";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { filteredByName } from "./innerSearchSlice";
 
-const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue }) => {
-  const [innerInput, setInnerInput] = useState("");
+const InnerSearchComponent = ({
+  cityName,
+  category,
+  categoryName,
+  categoryValue,
+}) => {
+  const [innerInput, setInnerInput] = useState(categoryValue);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,8 +26,7 @@ const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue 
           dispatch(filteredByName({ innerInput, responseData: data }));
         })
         .catch((err) => console.log(err));
-    }
-     else if (categoryValue) {
+    } else if (categoryValue) {
       axiosInstance
         .get(`/cities/${category}?${categoryName}=${categoryValue}`)
         .then((res) => {

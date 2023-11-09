@@ -22,18 +22,18 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    let prevScrollPosition = window.pageYOffset;
-
     const handleScroll = () => {
-      const scrollPosition = window.pageYOffset;
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        const navbarHeight = navbar.offsetHeight;
+        const scrollPosition = window.scrollY;
 
-      if (scrollPosition > prevScrollPosition) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
+        if (scrollPosition > navbarHeight) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
       }
-
-      prevScrollPosition = scrollPosition;
     };
 
     window.addEventListener('scroll', handleScroll);

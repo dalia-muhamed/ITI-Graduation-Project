@@ -39,19 +39,21 @@ const RandomToDo = () => {
         <div className="row">
           {todos &&
             todos.map((todo) => (
-              <div
-                className="col-md-4"
-                onClick={() =>
-                  navigate(`/cities/thingsToDo/details/${todo.id}`)
-                }
-              >
-                <div class="card">
-                  <div className="LikeRounded">
-                    <img src={like} className="likeImage" />
-                  </div>
-                  <img src={todo.images[0]} className="card-img-top" />
-                  <div class="card-body">
-                    <h6 class="card-title">{todo.name}</h6>
+              <div className="RandomTodoRalative col-md-4">
+                <div className="LikeRounded">
+                  <img src={like} className="likeImage" />
+                </div>
+                <div
+
+                  onClick={() =>
+                    navigate(`/cities/thingsToDo/details/${todo.id}`)
+                  }
+                >
+                  <div class="card">
+                    <img src={todo.images[0]} className="card-img-top" />
+                    <div class="card-body">
+                      <h6 class="card-title">{todo.name}</h6>
+                    </div>
                   </div>
                 </div>
               </div>
