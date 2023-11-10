@@ -1,13 +1,15 @@
-import logo from './logo.jpg';
-import './navbar.css';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { useState, useEffect } from 'react';
-import GoogleLogin from '../GoogleLogin/GoogleLogin';
-import { jwtDecode } from 'jwt-decode';
-import { Link } from 'react-router-dom';
+import logo from "./logo.jpg";
+import "./navbar.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useState, useEffect } from "react";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = ({ sticky, myClass, navbarItem }) => {
-  const [imageSrc, setImageSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState("");
   const [hasLogged, setHasLogged] = useState(false);
 
   // useEffect(() => {
@@ -26,46 +28,46 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
       setIsSticky(scrollPosition > 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
-    const hasLoggedValue = localStorage.getItem('hasLogged');
-    if (hasLoggedValue === 'true') {
+    const hasLoggedValue = localStorage.getItem("hasLogged");
+    if (hasLoggedValue === "true") {
       setHasLogged(true);
-      const userImage = localStorage.getItem('userImage');
+      const userImage = localStorage.getItem("userImage");
       if (userImage) {
         setImageSrc(userImage);
       }
     }
   }, []);
 
-  const handleLoginSuccess = credentialResponse => {
+  const handleLoginSuccess = (credentialResponse) => {
     const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
     setImageSrc(credentialResponseDecoded.picture);
-    localStorage.setItem('hasLogged', 'true');
-    localStorage.setItem('userImage', credentialResponseDecoded.picture);
+    localStorage.setItem("hasLogged", "true");
+    localStorage.setItem("userImage", credentialResponseDecoded.picture);
     setHasLogged(true);
   };
   const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
       <nav
         id="navbar"
-        className={` ${navbarItem} ${isSticky ? 'sticky' : myClass}`}
+        className={` ${navbarItem} ${isSticky ? "sticky" : myClass}`}
       >
         <div className="container navbar-row">
           <div className="row w-100 ">
             <div className="nav-left-side col-md-4  my-1">
               <Link
                 to="/"
-                style={{ color: 'black', textDecoration: 'none' }}
+                style={{ color: "black", textDecoration: "none" }}
                 onClick={handleLinkClick}
               >
                 <div className="d-flex align-items-center">
@@ -87,15 +89,18 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
             <div className="nav-right-side col-md-4 d-flex align-items-center  my-1">
               {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
               {hasLogged && (
-                <img
-                  style={{
-                    borderRadius: '50%',
-                    width: '50px',
-                    height: '50px',
-                  }}
-                  src={imageSrc}
-                  alt="dad"
-                />
+                <div>
+                  <img
+                    style={{
+                      borderRadius: "50%",
+                      width: "50px",
+                      height: "50px",
+                    }}
+                    src={imageSrc}
+                    alt="dad"
+                  />
+                  <Link to="/Favourites"><FontAwesomeIcon icon={faBookmark} /></Link>
+                </div>
               )}
             </div>
           </div>
