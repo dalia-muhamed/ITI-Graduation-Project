@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   /* margin-bottom: 10px; */
-  border-bottom: 1px solid rgb(188, 188, 190);
+  border-bottom: 1px solid #e0e0e0;
   padding: 0.9rem;
   overflow-x: hidden;
 }
@@ -104,11 +104,14 @@
 }
 
 @media (width<550px) {
+  .search-result .matched-hotels-img {
+    width: 100%;
+  }
   .search-result {
     flex-direction: column;
   }
   .search-result .matched-hotels-img {
-    align-self: flex-start;
+    align-self: center;
     margin-bottom: 10px;
   }
   .result-details {

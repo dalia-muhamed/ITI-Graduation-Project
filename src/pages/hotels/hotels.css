@@ -1,5 +1,5 @@
 .matched-hotels-component .matched-hotel-section {
-  border: 1px solid rgb(212, 212, 214);
+  border: 1px solid #e0e0e0;
   width: 70%;
 }
 .matched-hotels-component .matched-hotel-section-container {
@@ -7,7 +7,7 @@
   padding: 2rem;
 }
 .matched-hotels-component .matched-hotel-section .matchedHeaders {
-  border: 1px solid rgb(212, 212, 214);
+  border: 1px solid #e0e0e0;
   color: black;
   padding: 1rem;
 }
@@ -20,7 +20,7 @@
 }
 .notMatchted {
   position: absolute;
-  border: 1px solid rgb(187, 187, 187);
+  border: 1px solid #e0e0e0;
 }
 @media (width<840px) {
   .matched-hotels-component .matched-hotel-section {
