@@ -21,11 +21,18 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
   //   };
   // }, []);
   const [isSticky, setIsSticky] = useState(sticky);
-
+  const [bookMark, setBookMark] = useState("shoppingCart");
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
       setIsSticky(scrollPosition > 0);
+      if (scrollPosition > 0) {
+        setBookMark("bookMarkColor");
+      }
+      else{
+        setBookMark("shoppingCart");
+
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -89,7 +96,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
             <div className="nav-right-side col-md-4 d-flex align-items-center  my-1">
               {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
               {hasLogged && (
-                <div>
+                <div className="d-flex justify-content-center align-items-center">
                   <img
                     style={{
                       borderRadius: "50%",
@@ -99,7 +106,9 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     src={imageSrc}
                     alt="dad"
                   />
-                  <Link to="/Favourites"><FontAwesomeIcon icon={faBookmark} /></Link>
+                  <Link to="/Favourites">
+                    <FontAwesomeIcon icon={faBookmark} className={bookMark} />
+                  </Link>
                 </div>
               )}
             </div>
