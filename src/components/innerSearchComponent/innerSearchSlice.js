@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const initialState = {
   initialSearchState: undefined,
 };
@@ -46,3 +45,5 @@ const innerSearchSlice = createSlice({
 
 export const { filteredByName } = innerSearchSlice.actions;
 export default innerSearchSlice.reducer;
+
+

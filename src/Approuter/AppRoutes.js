@@ -11,6 +11,7 @@ import SuccessPage from "../pages/success/success";
 import FoodArticle from "../components/Adds/Food/FoodArticle";
 import RestrauntReservation from "../pages/reservation/restraunt-reservation/restraunt-reservation";
 import ThingsToDoReservation from "../pages/reservation/things-reservation/things-reservation";
+import Favourites from "../pages/Favourites/Favourites";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -37,6 +38,7 @@ const AppRoutes = () => {
           path="/cities/:category/details/:categoryId"
           element={<SinglePage />}
         />
+        <Route path="/Favourites" element={<Favourites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
