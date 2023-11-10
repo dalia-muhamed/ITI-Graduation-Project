@@ -8,7 +8,7 @@ import InnerSearchComponent from '../../components/innerSearchComponent/InnerSea
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
 import Ads from '../../components/ads/Ads';
-import adImage from "../../components/ads/ad2.jpg";
+import adImage from '../../components/ads/ad1.jpg';
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -38,13 +38,13 @@ const Hotels = () => {
   return (
     <div>
       <div className="matched-hotels-component">
-      <Ads
-        text=" Find out why travelers like you are raving about Bermoda."
-        header="Discover Bermoda"
-        imgPath={adImage}
-        backgroundColor="#faf1ed"
-      />
-        <Navbar navbarItem="" sticky={true} myClass="sticky"  />
+        <Ads
+          text="Journey through Tucson’s desertscapes and bustling downtown streets in adventure-packed Arizona. From outdoor explorations among sky-high cacti to inviting museum experiences that captivate the kids, see what makes Tucson a must for you and your crew."
+          header="Make family memories in beautiful Arizona"
+          imgPath={adImage}
+          backgroundColor="#FFF7E1"
+        />
+        <Navbar navbarItem="" sticky={true} myClass="sticky" />
         <InnerSearchComponent
           category={category}
           cityName={cityName}
