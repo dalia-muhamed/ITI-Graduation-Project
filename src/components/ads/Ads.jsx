@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Ads.css';
-const Ads = ({ backgroundColor, header, text, imgPath }) => {
+const Ads = ({ backgroundColor, header, text, imgPath, btnText }) => {
   return (
     <div className="container ads-section">
       <div
@@ -11,7 +11,7 @@ const Ads = ({ backgroundColor, header, text, imgPath }) => {
         <div className=" ads-text">
           <h3 className="ads-heading">{header}</h3>
           <p className="ads-paragraph">{text}</p>
-          <Link className="ads-link"> Read now</Link>
+          <Link className="ads-link">{btnText}</Link>
         </div>
         <div
           className="ad-image-container"

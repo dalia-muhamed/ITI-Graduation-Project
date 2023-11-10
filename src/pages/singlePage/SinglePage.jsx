@@ -109,6 +109,7 @@ const SinglePage = () => {
         header="Discover Bermoda"
         imgPath={adImage}
         backgroundColor="#faf1ed"
+        btnText="Read now"
       />
       <Navbar sticky={true} myClass="sticky" navbarItem="" />
 

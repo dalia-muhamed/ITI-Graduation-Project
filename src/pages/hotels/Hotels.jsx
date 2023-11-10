@@ -42,6 +42,7 @@ const Hotels = () => {
           text="Journey through Tucson’s desertscapes and bustling downtown streets in adventure-packed Arizona. From outdoor explorations among sky-high cacti to inviting museum experiences that captivate the kids, see what makes Tucson a must for you and your crew."
           header="Make family memories in beautiful Arizona"
           imgPath={adImage}
+          btnText="View now"
           backgroundColor="#FFF7E1"
         />
         <Navbar navbarItem="" sticky={true} myClass="sticky" />
