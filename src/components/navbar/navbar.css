@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 .sticky {
   border: 1px solid #e0e0e0;
@@ -117,7 +117,7 @@ button:hover {
   visibility: hidden;
 }
 .shoppingCart {
-  color: white;
+  color: #FFCA2C;
   font-size: 35px;
   margin-left: 40px;
   transition: 0.5s ease;

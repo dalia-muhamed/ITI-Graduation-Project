@@ -80,7 +80,7 @@
 
 .search-bar .searchLink {
   margin: 0.3rem;
-  width: 6.25rem;
+  width: 7rem;
   background-color: #34e0a1;
   color: #000000;
   border: none;
@@ -89,7 +89,7 @@
   position: absolute;
   right: 0.1rem;
   top: 0;
-  height: 2.9rem;
+  height: 3.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
