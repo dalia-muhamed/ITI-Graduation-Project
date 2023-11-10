@@ -7,7 +7,7 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
-import Ads from '../../components/ads/Ads';
+import Ads from '../../components/Adds/ads/Ads';
 import adImage from '../../components/ads/ad1.jpg';
 const Hotels = () => {
   const location = useLocation();

@@ -20,7 +20,7 @@ import {
   faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Ads from '../../components/ads/Ads';
+import Ads from '../../components/Adds/ads/Ads';
 import Footer from '../../components/footer/Footer';
 
 const SinglePage = () => {

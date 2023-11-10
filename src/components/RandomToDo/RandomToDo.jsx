@@ -1,44 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./RandomTodo.css";
-import { axiosInstance } from "../../axios";
-
-import like from "./heart2.png";
-import Rating from "../owl/Rating";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './RandomTodo.css';
+import { axiosInstance } from '../../axios';
+import Rating from '../owl/Rating';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addToFavorites,
   removeFromFavorites,
-} from "../../pages/Favourites/FavouriteSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+} from '../../pages/Favourites/FavouriteSlice';
 const RandomToDo = () => {
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axiosInstance.get("/thingsToDo");
+        const response = await axiosInstance.get('/thingsToDo');
         const allTodos = response.data.todos;
         const randomTodos = getRandomTodos(allTodos, 3);
         setTodos(randomTodos);
       } catch (error) {
-        console.log("Error while fetching restaurants:", error);
+        console.log('Error while fetching restaurants:', error);
       }
     };
     fetchTodos();
   }, []);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const getRandomTodos = (array, count) => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
-  const favorites = useSelector((state) => state.favorites.favorites);
-  const isFavorite = (todoId) => {
-    return favorites.some((item) => item.id === todoId);
+  const favorites = useSelector(state => state.favorites.favorites);
+  const isFavorite = todoId => {
+    return favorites.some(item => item.id === todoId);
   };
 
-  const handleFavoriteToggle = (todo) => {
+  const handleFavoriteToggle = todo => {
     if (isFavorite(todo.id)) {
       dispatch(removeFromFavorites(todo.id));
     } else {
@@ -50,16 +47,16 @@ const RandomToDo = () => {
       <div className="container randomToDoContainer">
         <h4
           className="mb-4"
-          style={{ color: "black", fontWeight: "700" }}
+          style={{ color: 'black', fontWeight: '700' }}
           data-aos="fade-right"
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
         >
           More Things to do
         </h4>
-        <div className="row" style={{ maxWidth: "90%", margin: "0 auto" }}>
+        <div className="row" style={{ maxWidth: '90%', margin: '0 auto' }}>
           {todos &&
-            todos.map((todo) => (
+            todos.map(todo => (
               <div className="RandomTodoRalative col-md-4 ">
                 <div className="LikeRounded">
                   <svg
@@ -69,7 +66,7 @@ const RandomToDo = () => {
                     strokeWidth={1.5}
                     stroke="gray"
                     className={`w-6 h-6 likeImage ${
-                      isFavorite(todo.id) ? "favorite" : ""
+                      isFavorite(todo.id) ? 'favorite' : ''
                     }`}
                     onClick={() => handleFavoriteToggle(todo)}
                   >
@@ -83,7 +80,7 @@ const RandomToDo = () => {
                 <div
                   onClick={() => {
                     navigate(`/cities/thingsToDo/details/${todo.id}`);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   <div className="card">
