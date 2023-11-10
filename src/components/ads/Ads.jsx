@@ -10,7 +10,7 @@ const Ads = ({ backgroundColor, header, text, imgPath, btnText }) => {
       >
         <div className=" ads-text">
           <h3 className="ads-heading">{header}</h3>
-          <p className="ads-paragraph">{text}</p>
+          <p className="ads-paragraph text-muted">{text}</p>
           <Link className="ads-link">{btnText}</Link>
         </div>
         <div
