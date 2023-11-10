@@ -21,18 +21,12 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
   //   };
   // }, []);
   const [isSticky, setIsSticky] = useState(sticky);
-  const [bookMark, setBookMark] = useState("shoppingCart");
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
       setIsSticky(scrollPosition > 0);
-      if (scrollPosition > 0) {
-        setBookMark("bookMarkColor");
-      }
-      else{
-        setBookMark("shoppingCart");
 
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -107,7 +101,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     alt="dad"
                   />
                   <Link to="/Favourites">
-                    <FontAwesomeIcon icon={faBookmark} className={bookMark} />
+                    <FontAwesomeIcon icon={faBookmark} className="shoppingCart" />
                   </Link>
                 </div>
               )}

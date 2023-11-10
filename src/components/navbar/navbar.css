@@ -22,13 +22,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0rem;
 }
-.bookMarkColor {
-  color: #00aa6c;
-  font-size: 35px;
-  margin-left: 40px;
-  transition: 0.5s ease;
 
-}
 .nav-logo-container .navbar-logo {
   font-family: "Open Sans", sans-serif;
   font-weight: 900;
