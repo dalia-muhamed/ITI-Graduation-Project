@@ -39,7 +39,6 @@
   z-index: 15;
 }
 .randomToDo .LikeRounded:hover .likeImage{
-
 fill: red;
 }
 .LikeRounded .likeImage {
@@ -67,6 +66,7 @@ fill: red;
 }
 .favorite {
   fill: red;
+  stroke: none;
 }
 @media (width<770px) {
   .randomToDoContainer {
