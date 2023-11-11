@@ -10,7 +10,7 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
-import adImage from '../../components/ads/ad2.jpg';
+import adImage from '../../components/Adds/ads/ad2.jpg';
 import {
   faClipboard,
   faClock,

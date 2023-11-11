@@ -8,7 +8,7 @@ import InnerSearchComponent from '../../components/innerSearchComponent/InnerSea
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
 import Ads from '../../components/Adds/ads/Ads';
-import adImage from '../../components/ads/ad1.jpg';
+import adImage from '../../components/Adds/ads/ad1.jpg';
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
