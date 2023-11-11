@@ -1,6 +1,7 @@
 .matched-hotels-component .matched-hotel-section {
   border: 1px solid #e0e0e0;
   width: 70%;
+  min-height: 100vh;
 }
 .matched-hotels-component .matched-hotel-section-container {
   margin-bottom: 4rem;

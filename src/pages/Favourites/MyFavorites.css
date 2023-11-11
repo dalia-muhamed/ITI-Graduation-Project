@@ -1,0 +1,22 @@
+.FavouritesContainer{
+    position: relative;
+}
+.deleteFavourite{
+
+}
+.deleteFavoritebBtn{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding:4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deleteImage{
+fill: red;
+}
