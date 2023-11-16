@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Navbar = () => {
+const Navbar = ({ sticky, myClass, navbarItem }) => {
   const [imageSrc, setImageSrc] = useState("");
   const [hasLogged, setHasLogged] = useState(false);
 
@@ -18,29 +20,20 @@ const Navbar = () => {
   //     localStorage.removeItem('hasLogged');
   //   };
   // }, []);
+  const [isSticky, setIsSticky] = useState(sticky);
 
-  const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
+      setIsSticky(scrollPosition > 0);
 
-useEffect(() => {
-  let prevScrollPosition = window.pageYOffset;
+    };
 
-  const handleScroll = () => {
-    const scrollPosition = window.pageYOffset;
-
-    if (scrollPosition > prevScrollPosition) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-
-    prevScrollPosition = scrollPosition;
-  };
-
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const hasLoggedValue = localStorage.getItem("hasLogged");
@@ -60,19 +53,24 @@ useEffect(() => {
     localStorage.setItem("userImage", credentialResponseDecoded.picture);
     setHasLogged(true);
   };
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
       <nav
         id="navbar"
-        className={
-          isSticky ? "sticky NavbarItems-container" : "NavbarItems-container"
-        }
+        className={` ${navbarItem} ${isSticky ? "sticky" : myClass}`}
       >
-        <div className="container">
-          <div className="row w-100">
+        <div className="container navbar-row">
+          <div className="row w-100 ">
             <div className="nav-left-side col-md-4  my-1">
-              <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              <Link
+                to="/"
+                style={{ color: "black", textDecoration: "none" }}
+                onClick={handleLinkClick}
+              >
                 <div className="d-flex align-items-center">
                   <div className="nav-logo-container">
                     <img src={logo} className="logo" alt="logo" />
@@ -89,21 +87,23 @@ useEffect(() => {
                 <li>more</li>
               </ul>
             </div>
-            <div className="nav-right-side col-md-4 d-flex align-items-center mb-2">
+            <div className="nav-right-side col-md-4 d-flex align-items-center  my-1">
               {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
               {hasLogged && (
-                <img
-                  style={{
-                    position: "absolute",
-                    right: "70px",
-                    top: "7px",
-                    borderRadius: "50%",
-                    width: "50px",
-                    height: "50px",
-                  }}
-                  src={imageSrc}
-                  alt="dad"
-                />
+                <div className="d-flex justify-content-center align-items-center">
+                  <img
+                    style={{
+                      borderRadius: "50%",
+                      width: "50px",
+                      height: "50px",
+                    }}
+                    src={imageSrc}
+                    alt="dad"
+                  />
+                  <Link to="/Favourites">
+                    <FontAwesomeIcon icon={faBookmark} className="shoppingCart" />
+                  </Link>
+                </div>
               )}
             </div>
           </div>

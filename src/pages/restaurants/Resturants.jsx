@@ -37,7 +37,7 @@ const Restaurants = () => {
       <InnerSearchComponent
         cityName={cityName}
         category={category}
-        categoryValue={restaurantName}
+        categoryValue={restaurantName || cityName}
         categoryName="restaurantName"
       />
       <div

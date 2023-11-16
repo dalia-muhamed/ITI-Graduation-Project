@@ -5,10 +5,10 @@ import './hotels.css';
 import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
-import { axiosInstance } from '../../axios';
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
-
+import Ads from '../../components/Adds/ads/Ads';
+import adImage from '../../components/Adds/ads/ad1.jpg';
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -36,13 +36,20 @@ const Hotels = () => {
   }, [hotelName, cityName, innerSearchState]);
 
   return (
-    <>
+    <div>
       <div className="matched-hotels-component">
-        <Navbar />
+        <Ads
+          text="Journey through Tucson’s desertscapes and bustling downtown streets in adventure-packed Arizona. From outdoor explorations among sky-high cacti to inviting museum experiences that captivate the kids, see what makes Tucson a must for you and your crew."
+          header="Make family memories in beautiful Arizona"
+          imgPath={adImage}
+          btnText="View now"
+          backgroundColor="#FFF7E1"
+        />
+        <Navbar navbarItem="" sticky={true} myClass="sticky" />
         <InnerSearchComponent
           category={category}
           cityName={cityName}
-          categoryValue={hotelName}
+          categoryValue={hotelName || cityName}
           categoryName="hotelName"
         />
         <div
@@ -82,7 +89,7 @@ const Hotels = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
 import InputHolder from "../../../components/input/input";
-import "./hotel-reservation.css";
+import "./things-reservation.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../../../components/navbar/Navbar";
 import Footer from "../../../components/footer/Footer";
 
-const HotelReservation = () => {
+const ThingsToDoReservation = () => {
   const [formInputs, setFormInputs] = useState({
     firstNameGuest: "",
     lastNameGuest: "",
@@ -21,12 +21,9 @@ const HotelReservation = () => {
     csv: "",
     month: "",
     check: false,
-    bed: "King size",
-    smoking: "Non-smoking",
-    room: "1",
+    time: "1",
     guest: "1",
     checkIn: "",
-    checkOut: "",
   });
 
   const [formErrs, setFormErrs] = useState({
@@ -43,7 +40,6 @@ const HotelReservation = () => {
     checkErr: "",
     monthErr: "",
     checkInErr: "",
-    checkOutErr: "",
   });
 
   const newSelectedData = useSelector((state) => state.selectedData.data);
@@ -65,14 +61,7 @@ const HotelReservation = () => {
     const [selectedYear, selectedMonth] = formInputs.month.split("-");
     const [checkedYear, checkedMonth, checkedDay] =
       formInputs.checkIn.split("-");
-    const [checkedOutYear, checkedOutMonth, checkedOutDay] =
-      formInputs.checkOut.split("-");
     const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
-    const checkOutDate = new Date(
-      checkedOutYear,
-      checkedOutMonth - 1,
-      checkedOutDay
-    );
 
     setFormErrs({
       firstNameGuestErr: !formInputs.firstNameGuest.length
@@ -117,11 +106,6 @@ const HotelReservation = () => {
         : checkInDate < currentDate
         ? "Sorry, this date is invalid"
         : "",
-      checkOutErr: !formInputs.checkOut.length
-        ? "This field is required!"
-        : checkOutDate < checkInDate
-        ? "Sorry, this date is invalid"
-        : "",
       checkErr: !formInputs.check
         ? "You must confirm the terms and conditions"
         : "",
@@ -161,12 +145,9 @@ const HotelReservation = () => {
           csv: formInputs.csv,
           month: formInputs.month,
           check: formInputs.check,
-          bed: formInputs.bed,
-          smoking: formInputs.smoking,
-          room: formInputs.room,
+          time: formInputs.time,
           guest: formInputs.guest,
           checkIn: formInputs.checkIn,
-          checkOut: formInputs.checkOut,
         };
 
         // Add the new entry to the existing data array
@@ -233,57 +214,21 @@ const HotelReservation = () => {
                     </div>
                     <div className="inputs-modify mb-3">
                       <div className="form-group pe-lg-3">
-                        <label for="formGroupExampleInput">
-                          Bed Preference
-                        </label>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          value={formInputs.bed}
-                          onChange={handleChange}
-                          name="bed"
-                        >
-                          <option defaultValue="King size">King size</option>
-                          <option value="Queen size">Queen size</option>
-                          <option value="Single bed">Single bed</option>
-                          <option value="Twin bed">Twin bed</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="inputs-modify mb-3">
-                      <div className="form-group ps-lg-3">
-                        <label for="formGroupExampleInput2">
-                          Smoking Preference
-                        </label>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          value={formInputs.smoking}
-                          onChange={handleChange}
-                          name="smoking"
-                        >
-                          <option defaultValue="Non-smoking">
-                            Non-smoking
-                          </option>
-                          <option value="Smoking">Smoking</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="inputs-modify mb-3">
-                      <div className="form-group pe-lg-3">
-                        <label for="formGroupExampleInput2">Rooms</label>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          value={formInputs.room}
-                          onChange={handleChange}
-                          name="room"
-                        >
-                          <option defaultValue="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                          <option value="4">Four</option>
-                        </select>
+                        <label for="formGroupExampleInput">Check-in Date</label>
+                        <InputHolder
+                          type="date"
+                          min="2024-10"
+                          id="date"
+                          value={formInputs.checkIn}
+                          handleChange={handleChange}
+                          name="checkIn"
+                          className="form-control"
+                        />
+                        {formErrs.checkInErr && (
+                          <span className="text-danger">
+                            {formErrs.checkInErr}
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="inputs-modify mb-3">
@@ -306,44 +251,30 @@ const HotelReservation = () => {
                         </select>
                       </div>
                     </div>
+
                     <div className="inputs-modify mb-3">
                       <div className="form-group pe-lg-3">
-                        <label for="formGroupExampleInput">Check-in Date</label>
-                        <InputHolder
-                          type="date"
-                          min="2024-10"
-                          id="date"
-                          value={formInputs.checkIn}
-                          handleChange={handleChange}
-                          name="checkIn"
-                          className="form-control"
-                        />
-                        {formErrs.checkInErr && (
-                          <span className="text-danger">
-                            {formErrs.checkInErr}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="inputs-modify mb-3">
-                      <div className="form-group ps-lg-3">
-                        <label for="formGroupExampleInput">
-                          Check-out Date
-                        </label>
-                        <InputHolder
-                          type="date"
-                          min="2024-10"
-                          id="date"
-                          value={formInputs.checkOut}
-                          handleChange={handleChange}
-                          name="checkOut"
-                          className="form-control"
-                        />
-                        {formErrs.checkOutErr && (
-                          <span className="text-danger">
-                            {formErrs.checkOutErr}
-                          </span>
-                        )}
+                        <label for="formGroupExampleInput">Time</label>
+                        <select
+                          className="form-select"
+                          aria-label="Default select example"
+                          value={formInputs.time}
+                          onChange={handleChange}
+                          name="time"
+                        >
+                          <option defaultValue="12">12</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -605,8 +536,7 @@ const HotelReservation = () => {
                   </div>
                   <div className="bg-secondary ps-3 py-3  text-white rounded-2 mb-4">
                     <p className="mb-0 fs-5">
-                      Total: $
-                      {formInputs.room * 100 + formInputs.guest * 25 + 35}
+                      Total: ${formInputs.guest * 5 + 5}
                     </p>
                     <small className="mt-0">
                       Total includes tax recovery charges and service fees.
@@ -636,9 +566,13 @@ const HotelReservation = () => {
                 className="w-100"
               />
               <div style={{ padding: "1rem 0.7rem" }}>
-                <p className="px-lg-2 fw-bold">{newSelectedData[0].name}</p>
                 <p className="px-lg-2 fw-bold">
-                  {newSelectedData[1].locationName}
+                  <span className="text-muted">Location: </span>
+                  {newSelectedData[0].name}
+                </p>
+                <p className="px-lg-2 fw-bold">
+                  <span className="text-muted">Duration: </span>
+                  {newSelectedData[1].duration}
                 </p>
                 <hr />
                 <ul
@@ -647,21 +581,11 @@ const HotelReservation = () => {
                 >
                   <li className="d-flex justify-content-between">
                     <span className="text-muted">Check in:</span>
-                    <span>{formInputs.checkIn}</span>
+                    <span className="text-end">{formInputs.checkIn}</span>
                   </li>
                   <li className="d-flex justify-content-between">
-                    <span className="text-muted">Check out:</span>
-                    <span className="text-end">{formInputs.checkOut}</span>
-                  </li>
-                  <li className="d-flex justify-content-between">
-                    <span className="text-muted">Room type:</span>
-                    <span className="text-end">
-                      {formInputs.bed},{formInputs.smoking}
-                    </span>
-                  </li>
-                  <li className="d-flex justify-content-between">
-                    <span className="text-muted">Rooms:</span>
-                    <span>{formInputs.room}</span>
+                    <span className="text-muted">Time:</span>
+                    <span className="text-end"> {formInputs.time} PM</span>
                   </li>
                   <li className="d-flex justify-content-between">
                     <span className="text-muted">Guests:</span>
@@ -677,18 +601,14 @@ const HotelReservation = () => {
                   className="list-unstyled px-2 fw-bold  d-flex flex-column"
                   style={{ gap: "1rem" }}
                 >
-                  <li className="text-muted">Room price:</li>
-                  <li className="fs-5">$150</li>
-                  <li className="text-muted">Hotel occupancy and sales tax:</li>
-                  <li className="fs-5">$20</li>
+                  <li className="text-muted">Price per guest:</li>
+                  <li className="fs-5">$5</li>
                   <li className="text-muted">
                     Tax recovery charges and services fees:
                   </li>
-                  <li className="fs-5">$15</li>
+                  <li className="fs-5">$5</li>
                   <li className="text-muted">Total:</li>
-                  <li className="fs-5">
-                    ${formInputs.room * 150 + formInputs.guest * 25 + 35}
-                  </li>
+                  <li className="fs-5">${formInputs.guest * 5 + 5}</li>
                 </ul>
               </div>
             </div>
@@ -700,4 +620,4 @@ const HotelReservation = () => {
   );
 };
 
-export default HotelReservation;
+export default ThingsToDoReservation;

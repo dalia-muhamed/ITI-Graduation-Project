@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import SearchButton from "../searchbutton/SearchButton";
 import "./InnerSearchComponent.css";
 import { axiosInstance } from "../../axios";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { filteredByName } from "./innerSearchSlice";
 import CategoriesNavBar from "../SearchNavBar/CategoriesNavBar";
 
@@ -23,8 +23,7 @@ const InnerSearchComponent = ({ cityName, category ,categoryName, categoryValue 
           dispatch(filteredByName({ innerInput, responseData: data }));
         })
         .catch((err) => console.log(err));
-    }
-     else if (categoryValue) {
+    } else if (categoryValue) {
       axiosInstance
         .get(`/cities/${currentCategory}?${catName}=${categoryValue}`)
         .then((res) => {

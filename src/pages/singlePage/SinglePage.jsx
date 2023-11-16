@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { axiosInstance } from '../../axios';
+import { useDispatch } from 'react-redux';
+import { setSelectedData } from './singlePageSlice';
 import './SinglePage.css';
 import pen from './singlePageIcons/pen.png';
 import telephone from './singlePageIcons/telephone.png';
@@ -8,22 +10,26 @@ import web from './singlePageIcons/web.png';
 import Navbar from '../../components/navbar/Navbar';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Rating from '../../components/owl/Rating';
-import { Link } from 'react-router-dom';
+import adImage from '../../components/Adds/ads/ad2.jpg';
 import {
   faClipboard,
   faClock,
   faLocationDot,
   faPersonRunning,
   faTicketSimple,
+  faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Ads from '../../components/ads/Ads';
+import Ads from '../../components/Adds/ads/Ads';
+import Footer from '../../components/footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();
   const [responseData, setResponseData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState({});
   const { category, categoryId } = params;
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = () => {
       axiosInstance
@@ -31,9 +37,9 @@ const SinglePage = () => {
         .then(res => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
-          console.log(data);
+          // console.log(data);
           setResponseData(data);
-          console.log(responseData);
+          // console.log(responseData);
         })
         .catch(err => console.log(err));
     };
@@ -83,10 +89,30 @@ const SinglePage = () => {
   } else {
     locationColumn = 'col-lg-5';
   }
+
+  const selectedData = [
+    { name },
+    category === 'thingsToDo' ? { duration } : { locationName },
+    { images },
+  ];
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  dispatch(setSelectedData(selectedData));
+
   return (
     <div className="container-fluid px-0">
-      <Navbar />
-      <Ads />
+      <Ads
+        text=" Find out why travelers like you are raving about Bermoda."
+        header="Discover Bermoda"
+        imgPath={adImage}
+        backgroundColor="#faf1ed"
+        btnText="Read now"
+      />
+      <Navbar sticky={true} myClass="sticky" navbarItem="" />
+
       <div className="singlePage-container">
         {selectedCategory ? (
           <div className="container category-details">
@@ -100,7 +126,7 @@ const SinglePage = () => {
                 <Rating rating={rating} reviews={reviews} />
               </div>
               {rank && (
-                <div className="col-md-8">
+                <div className="col-md-8" style={{ fontWeight: '700' }}>
                   <div className="">{rank}</div>
                 </div>
               )}
@@ -113,7 +139,10 @@ const SinglePage = () => {
             </div>
             <div className="row my-1">
               {location && (
-                <div className="col-12 singlePage-address-header">
+                <div
+                  className="col-12 singlePage-address-header"
+                  style={{ fontSize: '1rem' }}
+                >
                   <span>
                     {' '}
                     <FontAwesomeIcon
@@ -134,7 +163,7 @@ const SinglePage = () => {
                 </div>
               )}
             </div>
-            <div className="row singlePage-heading-contacts-container my-4">
+            <div className="row singlePage-heading-contacts-container my-2">
               <div className="col-md-8 d-flex singlePage-heading-contacts row mb-3">
                 <div className="row">
                   <div className="singlePage-website-header col-md-4 my-1 ">
@@ -150,7 +179,7 @@ const SinglePage = () => {
                           className="singlePageIcon"
                           alt="singlePageIcon"
                         />
-                        Visit hotel website
+                        Visit our website
                       </a>
                     )}
                     {duration && (
@@ -185,7 +214,7 @@ const SinglePage = () => {
                         <span>{cancellation}</span>
                       </div>
                     ) : (
-                      <div>
+                      <div style={{ fontWeight: '700' }}>
                         <img
                           src={pen}
                           className="singlePageIcon"
@@ -197,11 +226,21 @@ const SinglePage = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3 availabilityButton-container">
-                <Link to="/cities/hotels/reservation/hotel-reservation">
-                  <button className="btn btn-warning availabilityButton">
-                    Check availability
-                  </button>
+              <div className="col-md-4 availabilityButton-container">
+                <Link
+                  to={
+                    category === 'hotels'
+                      ? '/cities/hotels/reservation/hotel-reservation'
+                      : category === 'restaurants'
+                      ? '/cities/restaurants/reservation/restaurant-reservation'
+                      : category === 'thingsToDo'
+                      ? '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                      : '*'
+                  }
+                  onClick={handleClick}
+                  className="btn btn-warning availabilityButton"
+                >
+                  Book now
                 </Link>
               </div>
             </div>
@@ -209,7 +248,7 @@ const SinglePage = () => {
               <>
                 {images && (
                   <div className="singlePage-main-image-container">
-                    <div className="row">
+                    <div className="row singlePage-main-image-container-row">
                       <div className="col-md-8 px-0 mb-1">
                         <img
                           src={images[0]}
@@ -234,12 +273,18 @@ const SinglePage = () => {
               </>
             </div>
 
-            <div className="row d-flex justify-content-between my-4">
+            <div className="row d-flex justify-content-between align-items-start my-4 about-location-section">
               {about || description ? (
-                <div className="col-lg-6 bg-white px-4 py-3 about-single-hotels">
+                <div className="col-lg-6 bg-white px-4 py-4 ">
                   <h4 className="fw-bold mt-3 mb-3">About</h4>
-                  {description && <p className="text-muted">{description}</p>}
-                  {about && <p className="text-muted">{about}</p>}
+                  {description && (
+                    <p className="text-muted about-description-text">
+                      {description}
+                    </p>
+                  )}
+                  {about && (
+                    <p className="text-muted about-description-text">{about}</p>
+                  )}
                 </div>
               ) : null}
               <div
@@ -258,11 +303,55 @@ const SinglePage = () => {
                           height: '300px',
                           marginBottom: '20px',
                         }}
-                        allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="z"
                       ></iframe>
+                    </div>
+                  )}
+                  {tours && (
+                    <div className="pt-4">
+                      <h4 style={{ fontWeight: 'bold' }} className="mb-4">
+                        More information
+                      </h4>
+                      <p>
+                        {' '}
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
+                          className="singlePageAddressIcon"
+                          style={{ marginRight: '10px', marginLeft: '' }}
+                        />
+                        {address}
+                      </p>
+                      <p>
+                        {duration && (
+                          <div>
+                            <FontAwesomeIcon icon={faClock} />{' '}
+                            <span>Duration: {duration}</span>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        {tours && (
+                          <div className="singlePage-phone-header my-1">
+                            <p>
+                              {' '}
+                              <FontAwesomeIcon icon={faPersonRunning} /> {tours}
+                            </p>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        {cancellation && (
+                          <div>
+                            <FontAwesomeIcon icon={faTicketSimple} />{' '}
+                            <span>{cancellation}</span>
+                          </div>
+                        )}
+                      </p>
+                      <p>
+                        <Rating rating={rating} reviews={reviews} />
+                      </p>
                     </div>
                   )}
                 </div>
@@ -295,7 +384,7 @@ const SinglePage = () => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Visit hotel website
+                        Visit our website
                       </a>
                     </div>
                   )}
@@ -311,6 +400,40 @@ const SinglePage = () => {
                         {phone}
                       </a>
                     )}
+                    {money && (
+                      <div>
+                        <hr />
+                        <h4 style={{ fontWeight: 'bold' }}>Reservation</h4>
+                        <div className="d-flex row">
+                          <div className="col-md-6">
+                            <small className="text-muted">from</small>
+                            <p
+                              style={{
+                                margin: '0',
+                                fontWeight: 'bold',
+                                fontSize: '2rem',
+                              }}
+                            >
+                              {money}
+                            </p>
+                            <small className="text-muted">
+                              per group (up to 6)
+                            </small>
+                          </div>
+                          <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
+                            <Link
+                              to={
+                                '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                              }
+                              onClick={handleClick}
+                              className="reservation-btn btn btn-warning "
+                            >
+                              Book on Visitor
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -320,6 +443,7 @@ const SinglePage = () => {
           <LoadingComponent />
         )}
       </div>
+      <Footer />
     </div>
   );
 };

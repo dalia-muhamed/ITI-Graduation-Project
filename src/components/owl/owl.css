@@ -1,9 +1,9 @@
-
-
 .owl-container {
   padding: 5rem 0rem;
 }
-
+.owl-container h4 {
+  font-family: TripBold-700;
+}
 .owl {
   margin: 3rem 0rem;
   overflow: hidden;
