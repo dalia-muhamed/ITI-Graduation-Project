@@ -47,8 +47,8 @@ const Hotels = () => {
         />
         <Navbar navbarItem="" sticky={true} myClass="sticky" />
         <InnerSearchComponent
-          category={category}
           cityName={cityName}
+          category={category}
           categoryValue={hotelName || cityName}
           categoryName="hotelName"
         />
