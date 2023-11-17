@@ -1,57 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
-import Navbar from "../../components/navbar/Navbar";
-import SearchResultPage from "../../components/searchResult/SearchResaultPage";
-import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
-import InnerSearchComponent from "../../components/innerSearchComponent/InnerSearchComponent";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import Navbar from '../../components/navbar/Navbar';
+import SearchResultPage from '../../components/searchResult/SearchResaultPage';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
+import { useSelector } from 'react-redux';
+import { Axios } from '../../axios';
 
 const ThingsToDo = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const todoName = params.get("todoName");
-  const cityName = params.get("cityName");
+  const queryName = params.get('queryName');
   const [filteredToDos, setFilteredToDos] = useState([]);
-  const category = "thingsToDo";
+  const category = 'ThingsToDo';
   const innerSearchState = useSelector(
-    (state) => state.innerSearch.initialSearchState
+    state => state.innerSearch.initialSearchState
   );
+  const cities = ['cairo', 'rome', 'lebanon', 'greece', 'dubai'];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dataToShow = innerSearchState.length > 0 ? innerSearchState : [];
-        setFilteredToDos(dataToShow);
+        const data = await Axios(category, queryName);
+        setFilteredToDos(data);
       } catch (error) {
-        console.log("Error fetching data:", error);
+        console.log(error);
       }
     };
+    fetchData();
+  }, []);
 
-    if (cityName || todoName) {
-      fetchData();
-    }
-  }, [cityName, todoName, innerSearchState]);
+  useEffect(() => {
+    setFilteredToDos(innerSearchState);
+  }, [innerSearchState]);
 
   return (
     <div className="matched-hotels-component">
       <Navbar />
-      <InnerSearchComponent
-        cityName={cityName}
-        categoryValue={todoName || cityName}
-        category={category}
-        categoryName="todoName"
-      />
+      <InnerSearchComponent categoryValue={queryName} category={category} />
       <div
         className="w-100"
-        style={{ backgroundColor: "#F2F2F2", padding: "1px" }}
+        style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
       >
         <div className="matched-hotel-section-container">
           <div className="matched-hotel-section bg-white">
             <div className="d-flex justify-content-between align-items-center matchedHeaders">
               <h5 className="fw-bolder my-0">
-                {todoName
-                  ? `Things To Do: "${todoName}"`
-                  : `Things To Do in "${cityName}"`}
+                {cities.includes(queryName)
+                  ? `Hotels in ${queryName}`
+                  : `Hotel: "${queryName}"`}
               </h5>
               <small>Is Travellia missing a place?</small>
             </div>

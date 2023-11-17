@@ -37,9 +37,7 @@ const SinglePage = () => {
         .then(res => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
-          // console.log(data);
           setResponseData(data);
-          // console.log(responseData);
         })
         .catch(err => console.log(err));
     };
@@ -229,12 +227,12 @@ const SinglePage = () => {
               <div className="col-md-4 availabilityButton-container">
                 <Link
                   to={
-                    category === 'hotels'
-                      ? '/cities/hotels/reservation/hotel-reservation'
-                      : category === 'restaurants'
-                      ? '/cities/restaurants/reservation/restaurant-reservation'
-                      : category === 'thingsToDo'
-                      ? '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                    category === 'Hotels'
+                      ? '/get/hotels/reservation/hotel-reservation'
+                      : category === 'Restaurants'
+                      ? '/get/restaurants/reservation/restaurant-reservation'
+                      : category === 'ThingsToDo'
+                      ? '/get/thingsToDo/reservation/thingsToDo-reservation'
                       : '*'
                   }
                   onClick={handleClick}
