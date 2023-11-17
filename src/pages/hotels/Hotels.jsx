@@ -9,31 +9,33 @@ import { useSelector } from 'react-redux';
 import Footer from '../../components/footer/Footer';
 import Ads from '../../components/Adds/ads/Ads';
 import adImage from '../../components/Adds/ads/ad1.jpg';
+import { Axios } from '../../axios';
 const Hotels = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const hotelName = params.get('hotelName');
-  const cityName = params.get('cityName');
+  const queryName = params.get('queryName');
   const [filteredHotels, setFilteredHotels] = useState([]);
-  const category = 'hotels';
+  const category = 'Hotels';
   const innerSearchState = useSelector(
     state => state.innerSearch.initialSearchState
   );
+  const cities = ['cairo', 'rome', 'lebanon', 'greece', 'dubai'];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dataToShow = innerSearchState.length > 0 ? innerSearchState : [];
-        setFilteredHotels(dataToShow);
+        const data = await Axios(category, queryName);
+        setFilteredHotels(data);
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.log(error);
       }
     };
+    fetchData();
+  }, []);
 
-    if (hotelName || cityName) {
-      fetchData();
-    }
-  }, [hotelName, cityName, innerSearchState]);
+  useEffect(() => {
+    setFilteredHotels(innerSearchState);
+  }, [innerSearchState]);
 
   return (
     <div>
@@ -46,12 +48,7 @@ const Hotels = () => {
           backgroundColor="#FFF7E1"
         />
         <Navbar navbarItem="" sticky={true} myClass="sticky" />
-        <InnerSearchComponent
-          category={category}
-          cityName={cityName}
-          categoryValue={hotelName || cityName}
-          categoryName="hotelName"
-        />
+        <InnerSearchComponent category={category} categoryValue={queryName} />
         <div
           className="w-100"
           style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
@@ -60,9 +57,9 @@ const Hotels = () => {
             <div className="matched-hotel-section bg-white ">
               <div className="d-flex justify-content-between align-items-center matchedHeaders">
                 <h5 className="fw-bolder my-0">
-                  {hotelName
-                    ? `Hotel: "${hotelName}"`
-                    : `Hotels in ${cityName}`}
+                  {cities.includes(queryName)
+                    ? `Hotels in ${queryName}`
+                    : `Hotel: "${queryName}"`}
                 </h5>
                 <small>Is Travellia missing a place?</small>
               </div>
