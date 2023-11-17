@@ -57,7 +57,7 @@ const GoogleLogin = () => {
     },
   });
 
-  return <img style={{ position: 'absolute', right: '70px', top: '7px', borderRadius: '50%', width: '50px', height: '50px' }} src={imageSrc} />;
+  return <img  src={imageSrc} />;
 };
 
 export default GoogleLogin;

@@ -13,20 +13,20 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
   const [hasLogged, setHasLogged] = useState(false);
 
   // useEffect(() => {
-  //   const userHasLogged = localStorage.getItem('hasLogged');
-  //   setHasLogged(userHasLogged === 'true');
+  //   const userHasLogged = localStorage.getItem("hasLogged");
+  //   setHasLogged(userHasLogged === "true");
 
   //   window.onbeforeunload = () => {
-  //     localStorage.removeItem('hasLogged');
+  //     localStorage.removeItem("hasLogged");
   //   };
   // }, []);
+
   const [isSticky, setIsSticky] = useState(sticky);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
       setIsSticky(scrollPosition > 0);
-
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -100,11 +100,16 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     src={imageSrc}
                     alt="dad"
                   />
-                  <Link to="/Favourites">
-                    <FontAwesomeIcon icon={faBookmark} className="shoppingCart" />
-                  </Link>
                 </div>
               )}
+              <Link
+                to="/Favourites"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                <FontAwesomeIcon icon={faBookmark} className="shoppingCart" />
+              </Link>
             </div>
           </div>
         </div>
