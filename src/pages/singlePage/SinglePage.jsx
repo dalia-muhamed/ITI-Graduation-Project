@@ -421,7 +421,7 @@ const SinglePage = () => {
                           <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
                             <Link
                               to={
-                                '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                                '/get/ThingsToDo/reservation/thingsToDo-reservation'
                               }
                               onClick={handleClick}
                               className="reservation-btn btn btn-warning "
