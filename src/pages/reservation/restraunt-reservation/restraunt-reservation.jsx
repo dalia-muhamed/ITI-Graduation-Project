@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Navbar from '../../../components/navbar/Navbar';
-import Footer from '../../../components/footer/Footer';
+import Footer from '../../../footer/Footer';
 
 const RestrauntReservation = () => {
   const [formInputs, setFormInputs] = useState({
@@ -44,8 +44,8 @@ const RestrauntReservation = () => {
     checkInErr: '',
   });
 
-  const newSelectedData = useSelector((state) => state.selectedData.data);
-console.log(newSelectedData)
+  const newSelectedData = useSelector(state => state.selectedData.data);
+  console.log(newSelectedData);
 
   const navigate = useNavigate();
   const handleChange = e => {
@@ -55,7 +55,6 @@ console.log(newSelectedData)
       setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
     }
   };
-  
 
   const validateErrors = () => {
     const currentDate = new Date();
@@ -174,7 +173,7 @@ console.log(newSelectedData)
 
   return (
     <div className="">
-      <Navbar sticky={true} myClass="sticky" navbarItem=""/>
+      <Navbar sticky={true} myClass="sticky" navbarItem="" />
       <div className="container hotel-custom">
         <h1 className=" ms-5 my-5 fs-2 ps-md-5 heading-reservation">
           Complete Your Booking
@@ -282,9 +281,7 @@ console.log(newSelectedData)
                     </div>
                     <div className="inputs-modify mb-3">
                       <div className="form-group ps-lg-3">
-                        <label for="formGroupExampleInput">
-                          Time
-                        </label>
+                        <label for="formGroupExampleInput">Time</label>
                         <select
                           className="form-select"
                           aria-label="Default select example"
@@ -586,7 +583,7 @@ console.log(newSelectedData)
                   <div className="bg-secondary ps-3 py-3  text-white rounded-2 mb-4">
                     <p className="mb-0 fs-5">
                       Total: $
-                      {(formInputs.table*25 + formInputs.guest*25) + 15}
+                      {formInputs.table * 25 + formInputs.guest * 25 + 15}
                     </p>
                     <small className="mt-0">
                       Total includes tax recovery charges and service fees.
@@ -610,10 +607,16 @@ console.log(newSelectedData)
               <p className="bg-black text-center text-white rounded-top-2 fs-6">
                 Best rates guaranteed
               </p>
-              <img src={newSelectedData[2].images[0]} alt="hotel" className="w-100" />
+              <img
+                src={newSelectedData[2].images[0]}
+                alt="hotel"
+                className="w-100"
+              />
               <div style={{ padding: '1rem 0.7rem' }}>
                 <p className="px-lg-2 fw-bold">{newSelectedData[0].name}</p>
-                <p className="px-lg-2 fw-bold">{newSelectedData[1].locationName}</p>
+                <p className="px-lg-2 fw-bold">
+                  {newSelectedData[1].locationName}
+                </p>
                 <hr />
                 <ul
                   className="list-unstyled px-2 fw-bold d-flex flex-column"
@@ -637,9 +640,7 @@ console.log(newSelectedData)
                   </li>
                   <li className="d-flex justify-content-between">
                     <span className="text-muted">table type:</span>
-                    <span className="text-end">
-                     {formInputs.smoking}
-                    </span>
+                    <span className="text-end">{formInputs.smoking}</span>
                   </li>
                   <li className="d-flex justify-content-between">
                     <span className="text-muted">Refundable:</span>
@@ -661,7 +662,7 @@ console.log(newSelectedData)
                   <li className="fs-5">$5</li>
                   <li className="text-muted">Total:</li>
                   <li className="fs-5">
-                    ${(formInputs.table*25 + formInputs.guest*25) + 15}
+                    ${formInputs.table * 25 + formInputs.guest * 25 + 15}
                   </li>
                 </ul>
               </div>

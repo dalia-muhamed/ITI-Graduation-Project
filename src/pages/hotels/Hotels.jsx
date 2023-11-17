@@ -6,7 +6,7 @@ import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import InnerSearchComponent from '../../components/innerSearchComponent/InnerSearchComponent';
 import { useSelector } from 'react-redux';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../footer/Footer';
 import Ads from '../../components/Adds/ads/Ads';
 import adImage from '../../components/Adds/ads/ad1.jpg';
 import { Axios } from '../../axios';

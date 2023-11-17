@@ -21,7 +21,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Ads from '../../components/Adds/ads/Ads';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();

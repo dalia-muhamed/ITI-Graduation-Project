@@ -1,12 +1,12 @@
-import React from "react";
-import caption from "./caption.jpg";
-import pickels from "./pickels.jpg";
-import cofee from "./cofee.jpg";
-import chief from "./chief.jpg";
-import koshary from "./koshary.jpg";
-import Navbar from "../../navbar/Navbar";
-import "./FoodArticle.css";
-import Footer from "../../footer/Footer";
+import React from 'react';
+import caption from './caption.jpg';
+import pickels from './pickels.jpg';
+import cofee from './cofee.jpg';
+import chief from './chief.jpg';
+import koshary from './koshary.jpg';
+import Navbar from '../../navbar/Navbar';
+import './FoodArticle.css';
+import Footer from '../../../footer/Footer';
 const FoodArticle = () => {
   return (
     <div className="container-artical">
@@ -61,8 +61,8 @@ const FoodArticle = () => {
 
           <p className="small-text text-muted">
             Eric Berry (L) dining with Laila Hassaballa (R) of Bellies En-Route
-            food toursImage:{" "}
-            <span style={{ textDecoration: "underline" }}>
+            food toursImage:{' '}
+            <span style={{ textDecoration: 'underline' }}>
               Eric Berry/ Travel Coterie
             </span>
           </p>
@@ -136,7 +136,7 @@ const FoodArticle = () => {
           <p className="small-text text-muted">
             Eric Berry waiting for a food vendor to prepare a plate of Egyptian
             Koshari, Image:
-            <span style={{ textDecoration: "underline" }}>
+            <span style={{ textDecoration: 'underline' }}>
               Eric Berry/ Travel Coterie
             </span>
           </p>
@@ -174,13 +174,13 @@ const FoodArticle = () => {
             <br />
             <br />
             <i>
-              {" "}
-              This{" "}
-              <span style={{ textDecoration: "underline", fontWeight: "600" }}>
+              {' '}
+              This{' '}
+              <span style={{ textDecoration: 'underline', fontWeight: '600' }}>
                 article
-              </span>{" "}
-              originally appeared on{" "}
-              <span style={{ textDecoration: "underline", fontWeight: "600" }}>
+              </span>{' '}
+              originally appeared on{' '}
+              <span style={{ textDecoration: 'underline', fontWeight: '600' }}>
                 TravelCoterie,
               </span>
               , a Black-owned publication featuring travel news, tips, and

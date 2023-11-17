@@ -1,57 +1,57 @@
-import React from "react";
-import InputHolder from "../../../components/input/input";
-import "./hotel-reservation.css";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Navbar from "../../../components/navbar/Navbar";
-import Footer from "../../../components/footer/Footer";
+import React from 'react';
+import InputHolder from '../../../components/input/input';
+import './hotel-reservation.css';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Navbar from '../../../components/navbar/Navbar';
+import Footer from '../../../footer/Footer';
 
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
-    firstNameGuest: "",
-    lastNameGuest: "",
-    firstNameBilling: "",
-    lastNameBilling: "",
-    email: "",
-    phone: "",
-    city: "",
-    postalCode: "",
-    cardNumber: "",
-    csv: "",
-    month: "",
+    firstNameGuest: '',
+    lastNameGuest: '',
+    firstNameBilling: '',
+    lastNameBilling: '',
+    email: '',
+    phone: '',
+    city: '',
+    postalCode: '',
+    cardNumber: '',
+    csv: '',
+    month: '',
     check: false,
-    bed: "King size",
-    smoking: "Non-smoking",
-    room: "1",
-    guest: "1",
-    checkIn: "",
-    checkOut: "",
+    bed: 'King size',
+    smoking: 'Non-smoking',
+    room: '1',
+    guest: '1',
+    checkIn: '',
+    checkOut: '',
   });
 
   const [formErrs, setFormErrs] = useState({
-    firstNameGuestErr: "",
-    lastNameGuestErr: "",
-    firstNameBillingErr: "",
-    lastNameBillingErr: "",
-    emailErr: "",
-    phoneErr: "",
-    cityErr: "",
-    postalCodeErr: "",
-    cardNumberErr: "",
-    csvErr: "",
-    checkErr: "",
-    monthErr: "",
-    checkInErr: "",
-    checkOutErr: "",
+    firstNameGuestErr: '',
+    lastNameGuestErr: '',
+    firstNameBillingErr: '',
+    lastNameBillingErr: '',
+    emailErr: '',
+    phoneErr: '',
+    cityErr: '',
+    postalCodeErr: '',
+    cardNumberErr: '',
+    csvErr: '',
+    checkErr: '',
+    monthErr: '',
+    checkInErr: '',
+    checkOutErr: '',
   });
 
-  const newSelectedData = useSelector((state) => state.selectedData.data);
+  const newSelectedData = useSelector(state => state.selectedData.data);
   console.log(newSelectedData);
 
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    if (e.target.type === "checkbox") {
+  const handleChange = e => {
+    if (e.target.type === 'checkbox') {
       setFormInputs({ ...formInputs, [e.target.name]: e.target.checked });
     } else {
       setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
@@ -62,11 +62,11 @@ const HotelReservation = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1;
-    const [selectedYear, selectedMonth] = formInputs.month.split("-");
+    const [selectedYear, selectedMonth] = formInputs.month.split('-');
     const [checkedYear, checkedMonth, checkedDay] =
-      formInputs.checkIn.split("-");
+      formInputs.checkIn.split('-');
     const [checkedOutYear, checkedOutMonth, checkedOutDay] =
-      formInputs.checkOut.split("-");
+      formInputs.checkOut.split('-');
     const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
     const checkOutDate = new Date(
       checkedOutYear,
@@ -76,74 +76,74 @@ const HotelReservation = () => {
 
     setFormErrs({
       firstNameGuestErr: !formInputs.firstNameGuest.length
-        ? "This field is required!"
-        : "",
+        ? 'This field is required!'
+        : '',
       lastNameGuestErr: !formInputs.lastNameGuest.length
-        ? "This field is required!"
-        : "",
+        ? 'This field is required!'
+        : '',
       firstNameBillingErr: !formInputs.firstNameBilling.length
-        ? "This field is required!"
-        : "",
+        ? 'This field is required!'
+        : '',
       lastNameBillingErr: !formInputs.lastNameBilling.length
-        ? "This field is required!"
-        : "",
+        ? 'This field is required!'
+        : '',
       emailErr: !formInputs.email.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : !/^\w+([.-]?\w+)@\w+([.-]?\w+)(\.\w{2,3})+$/.test(formInputs.email)
-        ? "Invalid email format!"
-        : "",
-      cityErr: !formInputs.city.length ? "This field is required!" : "",
-      phoneErr: !formInputs.phone.length ? "This field is required!" : "",
+        ? 'Invalid email format!'
+        : '',
+      cityErr: !formInputs.city.length ? 'This field is required!' : '',
+      phoneErr: !formInputs.phone.length ? 'This field is required!' : '',
       postalCodeErr: !formInputs.postalCode.length
-        ? "This field is required!"
-        : "",
+        ? 'This field is required!'
+        : '',
       cardNumberErr: !formInputs.cardNumber.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : !/^\d{16}$/.test(formInputs.cardNumber)
-        ? "Invalid card number format! (16 Digits)"
-        : "",
+        ? 'Invalid card number format! (16 Digits)'
+        : '',
       csvErr: !formInputs.csv.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : !/^\d{3}$/.test(formInputs.csv)
-        ? "It should be 3 digits only!"
-        : "",
+        ? 'It should be 3 digits only!'
+        : '',
       monthErr: !formInputs.month.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : `${selectedYear}-${selectedMonth}` < `${currentYear}-${currentMonth}`
         ? "Sorry, can't complete with expired card"
-        : "",
+        : '',
       checkInErr: !formInputs.checkIn.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : checkInDate < currentDate
-        ? "Sorry, this date is invalid"
-        : "",
+        ? 'Sorry, this date is invalid'
+        : '',
       checkOutErr: !formInputs.checkOut.length
-        ? "This field is required!"
+        ? 'This field is required!'
         : checkOutDate < checkInDate
-        ? "Sorry, this date is invalid"
-        : "",
+        ? 'Sorry, this date is invalid'
+        : '',
       checkErr: !formInputs.check
-        ? "You must confirm the terms and conditions"
-        : "",
+        ? 'You must confirm the terms and conditions'
+        : '',
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     validateErrors();
   };
 
   useEffect(() => {
     // Check if there are any form errors
-    const hasErrors = Object.values(formErrs).some((error) => error !== "");
+    const hasErrors = Object.values(formErrs).some(error => error !== '');
 
     if (!hasErrors) {
       // Retrieve existing data from local storage or initialize an empty array
-      const existingData = JSON.parse(localStorage.getItem("formData")) || [];
+      const existingData = JSON.parse(localStorage.getItem('formData')) || [];
 
       // Check if the new entry already exists in the array
-      const isDuplicate = existingData.some((entry) =>
-        Object.keys(entry).every((key) => entry[key] === formInputs[key])
+      const isDuplicate = existingData.some(entry =>
+        Object.keys(entry).every(key => entry[key] === formInputs[key])
       );
 
       if (!isDuplicate) {
@@ -173,8 +173,8 @@ const HotelReservation = () => {
         const newData = [...existingData, newEntry];
 
         // Save the updated data to local storage
-        localStorage.setItem("formData", JSON.stringify(newData));
-        navigate("/reservation/successfully");
+        localStorage.setItem('formData', JSON.stringify(newData));
+        navigate('/reservation/successfully');
       }
     }
   }, [formErrs, navigate]);
@@ -635,7 +635,7 @@ const HotelReservation = () => {
                 alt="hotel"
                 className="w-100"
               />
-              <div style={{ padding: "1rem 0.7rem" }}>
+              <div style={{ padding: '1rem 0.7rem' }}>
                 <p className="px-lg-2 fw-bold">{newSelectedData[0].name}</p>
                 <p className="px-lg-2 fw-bold">
                   {newSelectedData[1].locationName}
@@ -643,7 +643,7 @@ const HotelReservation = () => {
                 <hr />
                 <ul
                   className="list-unstyled px-2 fw-bold d-flex flex-column"
-                  style={{ gap: "1rem" }}
+                  style={{ gap: '1rem' }}
                 >
                   <li className="d-flex justify-content-between">
                     <span className="text-muted">Check in:</span>
@@ -675,7 +675,7 @@ const HotelReservation = () => {
                 <hr />
                 <ul
                   className="list-unstyled px-2 fw-bold  d-flex flex-column"
-                  style={{ gap: "1rem" }}
+                  style={{ gap: '1rem' }}
                 >
                   <li className="text-muted">Room price:</li>
                   <li className="fs-5">$150</li>

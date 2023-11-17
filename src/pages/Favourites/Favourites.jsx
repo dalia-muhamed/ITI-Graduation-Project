@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar/Navbar';
 import { removeFromFavorites } from './FavouriteSlice';
 import SearchResultPage from '../../components/searchResult/SearchResaultPage';
 import './MyFavorites.css';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../footer/Footer';
 const Favourites = () => {
   const favorites = useSelector(state => state.favorites.favorites);
   const dispatch = useDispatch();
