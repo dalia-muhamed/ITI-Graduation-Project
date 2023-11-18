@@ -99,21 +99,21 @@ const SearchComponent = () => {
             onClick={() => handleTabClick('Hotels')}
           >
             <img className="searchIcon" src={Hotel} alt="icon" />
-            Hotel
+            <span className='tabSearch'>Hotel</span>
           </div>
           <div
             className={`tab ${activeTab === 'ThingsToDo' ? 'active' : ''}`}
             onClick={() => handleTabClick('ThingsToDo')}
           >
             <img className="searchIcon" alt="logo" src={todo} />
-            Things To Do
+            <span className='tabSearch'>Things To Do</span>
           </div>
           <div
             className={`tab ${activeTab === 'Restaurants' ? 'active' : ''}`}
             onClick={() => handleTabClick('Restaurants')}
           >
             <img className="searchIcon" alt="logo" src={Restaurants} />
-            Restaurants
+            <span className='tabSearch'>Restaurants</span>
           </div>
         </div>
         <div className="search-bar">
