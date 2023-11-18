@@ -7,7 +7,6 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../pages/Favourites/FavouriteSlice';
-import axios from 'axios';
 
 const NearbyPlaces = () => {
   const [location, setLocation] = useState(null);
@@ -36,7 +35,7 @@ const NearbyPlaces = () => {
   useEffect(() => {
     const compareWithCities = async () => {
       const citiesResponse = await axiosInstance.get(
-        `/cities?lat=${location.latitude}&&long=${location.longitude}`
+        `/cities/hotels?lat=${location.latitude}&&long=${location.longitude}`
       );
       const cities = citiesResponse.data.cities;
       setNearestCity(cities);
