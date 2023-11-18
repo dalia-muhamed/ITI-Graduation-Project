@@ -7,9 +7,11 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../pages/Favourites/FavouriteSlice';
+import axios from 'axios';
 
 const NearbyPlaces = () => {
   const [location, setLocation] = useState(null);
+  const [cityName, setCityName] = useState('');
   const [hotels, setHotels] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,11 +35,13 @@ const NearbyPlaces = () => {
 
   useEffect(() => {
     const compareWithCities = async () => {
-      const citiesResponse = await axiosInstance.get(
+      const hotelsResponse = await axiosInstance.get(
         `/cities/hotels?lat=${location.latitude}&&long=${location.longitude}`
       );
-      const cities = citiesResponse.data.cities;
-      setHotels(cities);
+
+      const hotels = hotelsResponse.data.hotels;
+      setCityName(hotelsResponse.data.cityName);
+      setHotels(hotels);
     };
     if (location) {
       compareWithCities();
@@ -81,7 +85,7 @@ const NearbyPlaces = () => {
 
       <div className="randomToDo " style={{ backgroundColor: 'white' }}>
         <div className="container randomToDoContainer">
-          {hotels ? (
+          {cityName ? (
             <h4
               className="mb-4"
               style={{ color: 'black', fontWeight: '700' }}
@@ -89,7 +93,7 @@ const NearbyPlaces = () => {
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
             >
-              Nearby Hotels in Egypt
+              {`Nearby Hotels in ${cityName}`}
             </h4>
           ) : (
             <h4
