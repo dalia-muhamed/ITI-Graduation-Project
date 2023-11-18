@@ -85,9 +85,9 @@ const RandomToDo = () => {
                 >
                   <div className="card">
                     <img src={todo.images[0]} className="card-img-top" />
-                    <div class="card-body flex-column">
+                    <div className="card-body flex-column">
                       <Rating rating={todo.rating} reviews={todo.reviews} />
-                      <h6 class="card-title mt-2">{todo.name}</h6>
+                      <h6 className="card-title mt-2">{todo.name}</h6>
                     </div>
                   </div>
                 </div>

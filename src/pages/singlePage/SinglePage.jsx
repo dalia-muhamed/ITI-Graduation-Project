@@ -256,7 +256,7 @@ const SinglePage = () => {
                       </div>
                       <div className="col-md-4 h-100 single-hotels-left-images">
                         {slidingImages.map((img, index) => (
-                          <div className="d-flex flex-column mb-1">
+                          <div className="d-flex flex-column mb-1" key={index}>
                             <img
                               src={img}
                               alt={index}
@@ -302,7 +302,7 @@ const SinglePage = () => {
                           marginBottom: '20px',
                         }}
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
+                        referrpolicy="no-referrer-when-downgrade"
                         title="z"
                       ></iframe>
                     </div>
