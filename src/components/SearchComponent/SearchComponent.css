@@ -39,7 +39,7 @@
 }
 .search-bar input {
   width: 100%;
-  max-width: 50rem;
+  /* max-width: 50rem; */
   height: 3.5rem;
   padding: 1.8rem 3rem;
   border: 1px solid #ccc;
@@ -108,4 +108,20 @@ video {
   width: 100%;
   z-index: -1;
   object-fit: cover;
+}
+.tabSearch{
+  font-size: 1rem;
+}
+
+@media(width<770px){
+  .search-bar{
+    width: 95%;
+  }
+  .searchIcon {
+    width: 15px;
+    height: 15px;
+  }
+  .tabSearch{
+    font-size: 12px;
+  }
 }
