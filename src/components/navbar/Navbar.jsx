@@ -61,25 +61,26 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
     <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
       <nav
         id="navbar"
-        className={`navbar navbar-expand-lg fixed-top${navbarItem} ${
-          isSticky ? 'sticky' : myClass
-        }`}
+        className={`navbar navbar-expand-lg fixed-top ${
+          isSticky ? ' sticky' : ''
+        } ${navbarItem} ${myClass}`}
       >
         <div className="container-fluid">
           <button
             className="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse container navbar-row"
-            id="navbarTogglerDemo01"
+            className="offcanvas offcanvas-start container navbar-row"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="row w-100 ">
               <div className="nav-left-side col-md-4  my-1">
@@ -99,22 +100,22 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
               </div>
               <div className="col-md-4 nav-inner-side d-flex  align-items-center my-1 justify-content-center">
                 <ul className="navbar-nav d-flex flex-row">
-                  <li className="nav-item m-0">
+                  <li className="nav-item ">
                     <Link to="/" className="nav-link">
                       Discover
                     </Link>
                   </li>
-                  <li className="nav-item m-0">
+                  <li className="nav-item ">
                     <Link to="/" className="nav-link">
                       Trip
                     </Link>
                   </li>
-                  <li className="nav-item m-0">
+                  <li className="nav-item ">
                     <Link to="/" className="nav-link">
                       Community
                     </Link>
                   </li>
-                  <li className="nav-item m-0">
+                  <li className="nav-item ">
                     <Link to="/" className="nav-link">
                       More
                     </Link>

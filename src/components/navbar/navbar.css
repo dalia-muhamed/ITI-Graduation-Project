@@ -16,6 +16,12 @@
   border: none;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
+.sticky {
+  border: 1px solid #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.909) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  padding: 0.5rem 0rem;
+}
 .navbar-toggler:focus,
 .navbar-toggler:hover {
   background-color: white !important;
@@ -127,10 +133,21 @@ button:hover {
 .bookMarkColor:hover {
   transform: translateY(-5px);
 }
-@media (width<780px) {
+@media (width<991px) {
+  /* .navbar-container {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap;
+  }
+  .nav-inner-side ul {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+  }
+
   .nav-left-side,
   .nav-inner-side,
   .nav-right-side {
-    justify-content: center;
-  }
+    justify-content: flex-start !important;
+  } */
 }
