@@ -10,7 +10,6 @@ import {
 
 const NearbyPlaces = () => {
   const [location, setLocation] = useState(null);
-  const [nearestCity, setNearestCity] = useState(null);
   const [hotels, setHotels] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ const NearbyPlaces = () => {
         `/cities/hotels?lat=${location.latitude}&&long=${location.longitude}`
       );
       const cities = citiesResponse.data.cities;
-      setNearestCity(cities);
+      setHotels(cities);
     };
     if (location) {
       compareWithCities();
@@ -62,19 +61,6 @@ const NearbyPlaces = () => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
-  let nearCityName;
-  useEffect(() => {
-    if (nearestCity) {
-      const nearCity = nearestCity.name;
-      nearCityName = nearCity;
-      const fetchHotels = async () => {
-        const data = await Axios('Hotels', nearCityName);
-        const randomHotels = getRandomHotels(data, 6);
-        setHotels(randomHotels);
-      };
-      fetchHotels();
-    }
-  }, [nearestCity]);
 
   const favorites = useSelector(state => state.favorites.favorites);
   const isFavorite = todoId => {
@@ -95,7 +81,7 @@ const NearbyPlaces = () => {
 
       <div className="randomToDo " style={{ backgroundColor: 'white' }}>
         <div className="container randomToDoContainer">
-          {nearestCity ? (
+          {hotels ? (
             <h4
               className="mb-4"
               style={{ color: 'black', fontWeight: '700' }}
@@ -103,7 +89,7 @@ const NearbyPlaces = () => {
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
             >
-              Nearby Hotels in {nearestCity.name}
+              Nearby Hotels in Egypt
             </h4>
           ) : (
             <h4
