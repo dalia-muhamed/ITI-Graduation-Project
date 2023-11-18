@@ -1,9 +1,9 @@
 .container-donate {
   max-width: 90%;
+  padding: 2rem 0rem;
 }
 .parent-img {
   width: 50%;
-  height: 70vh;
   display: flex;
   padding: 0.2rem;
 }
