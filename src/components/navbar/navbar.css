@@ -155,9 +155,11 @@ button:hover {
 .shoppingCart:hover {
   transform: translateY(-5px);
 }
+}
 .bookMarkColor:hover {
 .bookMarkColor:hover {
   transform: translateY(-5px);
+}
 }
 @media (width<991px) {
   /* .navbar-container {

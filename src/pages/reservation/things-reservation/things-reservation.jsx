@@ -158,7 +158,7 @@ const ThingsToDoReservation = () => {
         navigate('/reservation/successfully');
       }
     }
-  }, [formErrs, navigate]);
+  }, [formErrs]);
 
   return (
     <div className="">

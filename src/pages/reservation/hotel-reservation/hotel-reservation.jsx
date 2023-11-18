@@ -177,7 +177,7 @@ const HotelReservation = () => {
         navigate('/reservation/successfully');
       }
     }
-  }, [formErrs, navigate]);
+  }, [formErrs]);
 
   return (
     <div className="">
