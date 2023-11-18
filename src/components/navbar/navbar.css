@@ -6,25 +6,56 @@
   left: 0;
   align-items: center;
   width: 100%;
-  background-color: transparent;
+  background-color: transparent !important;
   z-index: 99999;
   padding: 0.5rem 0rem;
   transition: 1s ease;
   position: fixed;
-  top: 0;
-  left: 0;
   border: none;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+.offcanvas.offcanvas-end {
+  top: 0;
+  left: 0;
+  width: var(--bs-offcanvas-width);
+  border-left: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
+  transform: translateX(-20%);
+}
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  left:0;
+  z-index: var(--bs-offcanvas-zindex);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: var(--bs-offcanvas-color);
+  visibility: hidden;
+  background-color: var(--bs-offcanvas-bg);
+  background-clip: padding-box;
+  outline: 0;
+  transition: var(--bs-offcanvas-transition);
+}
+.sticky {
+  border: 1px solid #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.909) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  padding: 0.5rem 0rem;
+}
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+  background-color: white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 .sticky {
   border: 1px solid #e0e0e0;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   padding: 0.5rem 0rem;
 }
 
 .nav-logo-container .navbar-logo {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 900;
 }
 .nav-left-side {
@@ -111,21 +142,32 @@ button:hover {
   visibility: hidden;
 }
 .shoppingCart {
-  color: #FFCA2C;
+  color: #ffca2c;
   font-size: 35px;
   margin-left: 40px;
   transition: 0.5s ease;
 }
-.shoppingCart:hover{
+.shoppingCart:hover {
   transform: translateY(-5px);
 }
-.bookMarkColor:hover{
+.bookMarkColor:hover {
   transform: translateY(-5px);
 }
-@media (width<780px) {
+@media (width<991px) {
+  /* .navbar-container {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap;
+  }
+  .nav-inner-side ul {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+  }
+
   .nav-left-side,
   .nav-inner-side,
   .nav-right-side {
-    justify-content: center;
-  }
+    justify-content: flex-start !important;
+  } */
 }
