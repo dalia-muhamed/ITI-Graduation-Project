@@ -21,7 +21,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Ads from '../../components/Adds/ads/Ads';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();
@@ -421,7 +421,7 @@ const SinglePage = () => {
                           <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
                             <Link
                               to={
-                                '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                                '/get/ThingsToDo/reservation/thingsToDo-reservation'
                               }
                               onClick={handleClick}
                               className="reservation-btn btn btn-warning "
