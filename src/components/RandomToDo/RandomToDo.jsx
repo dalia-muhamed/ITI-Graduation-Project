@@ -57,7 +57,7 @@ const RandomToDo = () => {
         <div className="row" style={{ maxWidth: '90%', margin: '0 auto' }}>
           {todos &&
             todos.map(todo => (
-              <div className="RandomTodoRalative col-md-4 ">
+              <div className="RandomTodoRalative col-md-4 " key={todo.id}>
                 <div className="LikeRounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,15 +79,15 @@ const RandomToDo = () => {
                 </div>
                 <div
                   onClick={() => {
-                    navigate(`/cities/thingsToDo/details/${todo.id}`);
+                    navigate(`/get/ThingsToDo/details/${todo.id}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   <div className="card">
                     <img src={todo.images[0]} className="card-img-top" />
-                    <div class="card-body flex-column">
+                    <div className="card-body flex-column">
                       <Rating rating={todo.rating} reviews={todo.reviews} />
-                      <h6 class="card-title mt-2">{todo.name}</h6>
+                      <h6 className="card-title mt-2">{todo.name}</h6>
                     </div>
                   </div>
                 </div>

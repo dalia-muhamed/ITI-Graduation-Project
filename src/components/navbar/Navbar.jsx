@@ -67,71 +67,17 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
         } ${navbarItem} ${myClass}`}
       >
         <div className="container-fluid">
-        <nav class="navbar bg-transparent fixed-top d-lg-none NavbarItems-container">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    {hasLogged && (
-                  <div className="d-flex justify-content-center align-items-center pe-3">
-                    <img
-                      style={{
-                        borderRadius: '50%',
-                        width: '45px',
-                        height: '45px',
-                      }}
-                      src={imageSrc}
-                      alt="dad"
-                    />
-                  </div>
-                )}
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-      <Link
-                  to="/"
-                  style={{ color: 'black', textDecoration: 'none' }}
-                  onClick={handleLinkClick}
-                  className="navbar-brand"
-                >
-                  <div className="d-flex align-items-center">
-                    <div className="nav-logo-container">
-                      <img src={logo} className="logo" alt="logo" />
-                    </div>
-                    <h3 className="navbar-logo px-1 my-0">Travellia</h3>
-                  </div>
-                </Link>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Discover</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trip</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Community</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              More
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider"/>
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        
-      </div>
-    </div>
-  </div>
-</nav>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
           <div
             className="offcanvas offcanvas-start container navbar-row"
             id="offcanvasNavbar"
@@ -192,7 +138,6 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     />
                   </div>
                 )}
-
                 <Link
                   to="/Favourites"
                   onClick={() => {

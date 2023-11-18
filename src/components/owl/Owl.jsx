@@ -25,7 +25,28 @@ const Owl = () => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const dragConstraints =
+        screenWidth < 770
+          ? { right: 0, left: -2800 }
+          : { right: 0, left: -2000 };
+      setDragConstraints(dragConstraints);
+    };
 
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const [dragConstraints, setDragConstraints] = useState({
+    right: 0,
+    left: -2000,
+  });
   return (
     <div className="owl-container">
       {restaurants && (
@@ -34,7 +55,7 @@ const Owl = () => {
           <motion.div className="carousel">
             <motion.div
               drag="x"
-              dragConstraints={{ right: 0, left: -2000 }}
+              dragConstraints={dragConstraints}
               className="inner-carousel"
             >
               {restaurants.map((restaurant) => (
@@ -43,7 +64,7 @@ const Owl = () => {
                     src={restaurant.images[0]}
                     alt="Restaurant-img"
                     onClick={() => {
-                      navigate(`/cities/restaurants/details/${restaurant.id}`);
+                      navigate(`/get/Restaurants/details/${restaurant.id}`);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                   />

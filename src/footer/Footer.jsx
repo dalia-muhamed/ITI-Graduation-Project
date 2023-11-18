@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import logo from '../navbar/logo.jpg';
+import logo from '../components/navbar/logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMagnifyingGlass,

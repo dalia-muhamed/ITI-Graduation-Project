@@ -1,41 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import Hotel from "./icon/bed.png";
-import todo from "./icon/ticket.png";
-import Restaurants from "./icon/fork.png";
-import "./SearchComponent.css";
-import { axiosInstance } from "../../axios";
-import video from "./icon/video5.mp4";
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import Hotel from './icon/bed.png';
+import todo from './icon/ticket.png';
+import Restaurants from './icon/fork.png';
+import './SearchComponent.css';
+import { Axios } from '../../axios';
+import video from './icon/video5.mp4';
+import { useDispatch } from 'react-redux';
+import { getData } from '../../app/apiDataSlice';
 const SearchComponent = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  const [searchPlaceholder, setSearchPlaceholder] = useState("");
-  const [searchPath, setSearchPath] = useState("");
-  const [searchVal, setSearchVal] = useState("");
-  const [category, setCategory] = useState("");
+  const [activeTab, setActiveTab] = useState('Hotels');
+  const [searchPlaceholder, setSearchPlaceholder] = useState('');
+  const [searchPath, setSearchPath] = useState('');
+  const [searchVal, setSearchVal] = useState('');
+  const [category, setCategory] = useState('');
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
-  const handleTabClick = (tabId) => {
+  const handleTabClick = tabId => {
     setActiveTab(tabId);
     updateSearchPlaceholder(tabId);
   };
 
-  const updateSearchPlaceholder = (tabId) => {
+  const updateSearchPlaceholder = tabId => {
     switch (tabId) {
-      case 1:
-        setSearchPlaceholder("Hotel name or destination");
-        setCategory("hotels");
+      case 'Hotels':
+        setSearchPlaceholder('Hotel name or destination');
+        setCategory('hotels');
         break;
-      case 2:
-        setSearchPlaceholder("Attraction, activity, or destination");
-        setCategory("thingsToDo");
+      case 'Restaurants':
+        setSearchPlaceholder('Attraction, activity, or destination');
+        setCategory('thingsToDo');
         break;
-      case 3:
-        setSearchPlaceholder("Restaurant or destination");
-        setCategory("restaurants");
+      case 'ThingsToDo':
+        setSearchPlaceholder('Restaurant or destination');
+        setCategory('restaurants');
         break;
       default:
-        setSearchPlaceholder("");
+        setSearchPlaceholder('');
         break;
     }
   };
@@ -46,148 +50,70 @@ const SearchComponent = () => {
 
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setSearchVal(e.target.value);
   };
 
-  const [cities, setCities] = useState([]);
-  const [hotels, setHotels] = useState([]);
-  const [restaurants, setRestaurants] = useState([]);
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [
-          citiesResponse,
-          hotelsResponse,
-          restaurantsResponse,
-          todosResponse,
-        ] = await Promise.all([
-          axiosInstance.get("/cities"),
-          axiosInstance.get("/cities/hotels"),
-          axiosInstance.get("/cities/restaurants"),
-          axiosInstance.get("/cities/thingsToDo"),
-        ]);
-
-        const citiesData = citiesResponse.data.cities;
-        const hotelsData = hotelsResponse.data.hotels;
-        const restaurantsData = restaurantsResponse.data.restaurants;
-        const todosData = todosResponse.data.todos;
-
-        setCities(citiesData);
-        setHotels(hotelsData);
-        setRestaurants(restaurantsData);
-        setTodos(todosData);
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const cityNames = cities.map((city) => city.name.toLowerCase());
-  const hotelNames = hotels.map((hotel) => hotel.name.toLowerCase());
-  const todoNames = todos.map((todo) => todo.name.toLowerCase());
-  const restaurantNames = restaurants.map((restaurant) =>
-    restaurant.name.toLowerCase()
-  );
-
-  const searchValidate = () => {
-    const matchedCity = cityNames.find((city) =>
-      searchVal.toLowerCase().includes(city)
-    );
-    const matchedHotels = hotelNames.filter((hotel) =>
-      hotel.includes(searchVal.toLowerCase())
-    );
-    const matchedRestaurants = restaurantNames.filter((restaurant) =>
-      restaurant.includes(searchVal.toLowerCase())
-    );
-    const matchedTodos = todoNames.filter((todo) =>
-      todo.includes(searchVal.toLowerCase())
-    );
-
-    let path = "/cities";
-
-    if (category === "hotels" && matchedCity) {
-      path += `/${category}?cityName=${matchedCity}`;
-    } else if (category === "hotels" && matchedHotels.length === 0) {
-      path = "*";
-      navigate(path);
-    } else if (category === "hotels" && matchedHotels && !matchedCity) {
-      path += `/${category}?hotelName=${searchVal}`;
-    } else if (category === "restaurants" && matchedCity) {
-      path += `/${category}?cityName=${matchedCity}`;
-    } else if (category === "restaurants" && matchedRestaurants.length === 0) {
-      path = "*";
-      navigate(path);
-    } else if (
-      category === "restaurants" &&
-      matchedRestaurants &&
-      !matchedCity
-    ) {
-      path += `/${category}?restaurantName=${searchVal}`;
-    } else if (category === "thingsToDo" && matchedCity) {
-      path += `/${category}?cityName=${matchedCity}`;
-    } else if (category === "thingsToDo" && matchedTodos.length === 0) {
-      path = "*";
-      navigate(path);
-    } else if (category === "thingsToDo" && matchedTodos && !matchedCity) {
-      path += `/${category}?todoName=${searchVal}`;
+  const fetchData = async () => {
+    try {
+      const data = await Axios(activeTab, searchVal);
+      setData(data);
+      data.length > 0
+        ? navigate(`/get/${activeTab}?queryName=${searchVal}`)
+        : navigate('*');
+      dispatch(getData({ data }));
+    } catch (error) {
+      console.log('Error fetching data:', error);
     }
-
-    setSearchPath(path);
-    navigate(path);
   };
 
   const searchBtn = () => {
-    searchValidate();
+    fetchData();
   };
-  const handleEnterKey = (e) => {
-    if (e.key === "Enter") {
-      searchValidate();
+  const handleEnterKey = e => {
+    if (e.key === 'Enter') {
+      fetchData();
     }
   };
-  const isInputEmpty = searchVal.trim() === "";
+  const isInputEmpty = searchVal.trim() === '';
   const isButtonDisabled = isInputEmpty;
   return (
     <div className="SearchComponent">
       <video src={video} loop autoPlay muted />
       <div className="container searchComponentInner">
         <div className="content font-weight-bold">
-          {activeTab === 1 && (
+          {activeTab === 'Hotels' && (
             <h1 className="content-primaryHeading">Stay Somewhere great</h1>
           )}
-          {activeTab === 2 && (
+          {activeTab === 'ThingsToDo' && (
             <h1 className="content-primaryHeading">Do Something fun</h1>
           )}
-          {activeTab === 3 && (
+          {activeTab === 'Restaurants' && (
             <h1 className="content-primaryHeading">Find places to eat</h1>
           )}
         </div>
 
         <div className="tabsContainer">
           <div
-            className={`tab ${activeTab === 1 ? "active" : ""}`}
-            onClick={() => handleTabClick(1)}
+            className={`tab ${activeTab === 'Hotels' ? 'active' : ''}`}
+            onClick={() => handleTabClick('Hotels')}
           >
             <img className="searchIcon" src={Hotel} alt="icon" />
-            Hotel
+            <span className='tabSearch'>Hotel</span>
           </div>
           <div
-            className={`tab ${activeTab === 2 ? "active" : ""}`}
-            onClick={() => handleTabClick(2)}
+            className={`tab ${activeTab === 'ThingsToDo' ? 'active' : ''}`}
+            onClick={() => handleTabClick('ThingsToDo')}
           >
             <img className="searchIcon" alt="logo" src={todo} />
-            Things To Do
+            <span className='tabSearch'>Things To Do</span>
           </div>
           <div
-            className={`tab ${activeTab === 3 ? "active" : ""}`}
-            onClick={() => handleTabClick(3)}
+            className={`tab ${activeTab === 'Restaurants' ? 'active' : ''}`}
+            onClick={() => handleTabClick('Restaurants')}
           >
             <img className="searchIcon" alt="logo" src={Restaurants} />
-            Restaurants
+            <span className='tabSearch'>Restaurants</span>
           </div>
         </div>
         <div className="search-bar">

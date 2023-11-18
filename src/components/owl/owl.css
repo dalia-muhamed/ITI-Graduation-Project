@@ -41,3 +41,8 @@
   padding: 10px 0px;
   margin: 0%;
 }
+@media(width<770px){
+  .inner-carousel{
+    
+  }
+}

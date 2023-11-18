@@ -1,37 +1,36 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Navbar from "../../components/navbar/Navbar";
-import { removeFromFavorites } from "./FavouriteSlice";
-import SearchResultPage from "../../components/searchResult/SearchResaultPage";
-import "./MyFavorites.css";
-import Footer from "../../components/footer/Footer";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Navbar from '../../components/navbar/Navbar';
+import { removeFromFavorites } from './FavouriteSlice';
+import SearchResultPage from '../../components/searchResult/SearchResaultPage';
+import './MyFavorites.css';
+import Footer from '../../footer/Footer';
 const Favourites = () => {
-  const favorites = useSelector((state) => state.favorites.favorites);
-  console.log(favorites);
+  const favorites = useSelector(state => state.favorites.favorites);
   const dispatch = useDispatch();
 
-  const handleRemoveFavorite = (favoriteId) => {
+  const handleRemoveFavorite = favoriteId => {
     dispatch(removeFromFavorites(favoriteId));
   };
-  const category = "thingsToDo";
+  const category = 'thingsToDo';
   return (
     <div className="matched-hotels-component">
       <Navbar navbarItem="" sticky={true} myClass="sticky" />
       <div
         className="w-100"
-        style={{ backgroundColor: "#F2F2F2", padding: "1px" }}
+        style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
       >
         <div className="matched-hotel-section-container">
           <div className="matched-hotel-section bg-white d-flex flex-column">
             <div
               className="d-flex justify-content-between align-items-center matchedHeaders"
-              style={{ flex: "0 0 auto" }}
+              style={{ flex: '0 0 auto' }}
             >
               <h5 className="fw-bolder my-0">Favorite Items :</h5>
             </div>
             {favorites.length === 0 ? (
               <div
-                style={{ height: "auto", flex: "1" }}
+                style={{ height: 'auto', flex: '1' }}
                 className="d-flex justify-content-center align-items-center"
               >
                 <p>No favorite items yet.</p>

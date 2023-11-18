@@ -21,7 +21,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Ads from '../../components/Adds/ads/Ads';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../footer/Footer';
 
 const SinglePage = () => {
   const params = useParams();
@@ -37,9 +37,7 @@ const SinglePage = () => {
         .then(res => {
           const data =
             res.data.todos || res.data.restaurants || res.data.hotels;
-          // console.log(data);
           setResponseData(data);
-          // console.log(responseData);
         })
         .catch(err => console.log(err));
     };
@@ -229,12 +227,12 @@ const SinglePage = () => {
               <div className="col-md-4 availabilityButton-container">
                 <Link
                   to={
-                    category === 'hotels'
-                      ? '/cities/hotels/reservation/hotel-reservation'
-                      : category === 'restaurants'
-                      ? '/cities/restaurants/reservation/restaurant-reservation'
-                      : category === 'thingsToDo'
-                      ? '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                    category === 'Hotels'
+                      ? '/get/hotels/reservation/hotel-reservation'
+                      : category === 'Restaurants'
+                      ? '/get/restaurants/reservation/restaurant-reservation'
+                      : category === 'ThingsToDo'
+                      ? '/get/thingsToDo/reservation/thingsToDo-reservation'
                       : '*'
                   }
                   onClick={handleClick}
@@ -258,7 +256,7 @@ const SinglePage = () => {
                       </div>
                       <div className="col-md-4 h-100 single-hotels-left-images">
                         {slidingImages.map((img, index) => (
-                          <div className="d-flex flex-column mb-1">
+                          <div className="d-flex flex-column mb-1" key={index}>
                             <img
                               src={img}
                               alt={index}
@@ -304,7 +302,7 @@ const SinglePage = () => {
                           marginBottom: '20px',
                         }}
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
+                        referrpolicy="no-referrer-when-downgrade"
                         title="z"
                       ></iframe>
                     </div>
@@ -423,7 +421,7 @@ const SinglePage = () => {
                           <div className="d-flex align-items-end col-md-6 mt-3 reservation-btn-container">
                             <Link
                               to={
-                                '/cities/thingsToDo/reservation/thingsToDo-reservation'
+                                '/get/ThingsToDo/reservation/thingsToDo-reservation'
                               }
                               onClick={handleClick}
                               className="reservation-btn btn btn-warning "
