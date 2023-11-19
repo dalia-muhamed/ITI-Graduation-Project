@@ -103,7 +103,7 @@ const SinglePage = () => {
   return (
     <div className="container-fluid px-0">
       <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
-      <div style={{ height: '100px' }}></div>
+      <div style={{ height: '80px' }}></div>
       <Ads
         text=" Find out why travelers like you are raving about Bermoda."
         header="Discover Bermoda"
