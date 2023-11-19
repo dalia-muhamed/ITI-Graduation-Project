@@ -102,6 +102,8 @@ const SinglePage = () => {
 
   return (
     <div className="container-fluid px-0">
+      <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
+      <div style={{ height: '100px' }}></div>
       <Ads
         text=" Find out why travelers like you are raving about Bermoda."
         header="Discover Bermoda"
@@ -109,7 +111,6 @@ const SinglePage = () => {
         backgroundColor="#faf1ed"
         btnText="Read now"
       />
-      <Navbar sticky={true} myClass="sticky" navbarItem="" />
 
       <div className="singlePage-container">
         {selectedCategory ? (

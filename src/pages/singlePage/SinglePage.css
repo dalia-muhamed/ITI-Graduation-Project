@@ -3,7 +3,7 @@
   background-color: #fff;
 }
 .category-details {
-  padding: 6.8rem 0;
+  padding: 3rem 0;
   max-width: 70% !important;
   margin: 0 auto;
 }
@@ -66,7 +66,7 @@
   border-radius: 2rem;
   cursor: pointer;
 }
-.reservation-btn-container .reservation-btn{
+.reservation-btn-container .reservation-btn {
   background-color: #f1b718;
   display: flex;
   justify-content: center;
@@ -98,7 +98,7 @@
   color: #000000;
   text-decoration: none;
 }
-.reservation-btn-container{
+.reservation-btn-container {
   justify-content: flex-end;
 }
 @media (width<770px) {
@@ -108,7 +108,7 @@
   .availabilityButton-container {
     justify-content: flex-start;
   }
-  .reservation-btn-container{
+  .reservation-btn-container {
     justify-content: flex-start;
     margin-top: 20px;
   }

@@ -604,13 +604,13 @@ const RestrauntReservation = () => {
           </div>
           <div className="col-md-4 ps-md-5 pe-lg-5">
             <div className="border rounded-2 flex-column shadow">
-              <p className="bg-black text-center text-white rounded-top-2 fs-6">
-                Best rates guaranteed
+              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-2">
+                Best Rates Guaranteed
               </p>
               <img
                 src={newSelectedData[2].images[0]}
                 alt="hotel"
-                className="w-100"
+                className="w-100 "
               />
               <div style={{ padding: '1rem 0.7rem' }}>
                 <p className="px-lg-2 fw-bold">{newSelectedData[0].name}</p>

@@ -40,6 +40,8 @@ const Hotels = () => {
   return (
     <div>
       <div className="matched-hotels-component">
+        <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
+        <div style={{ height: '100px' }}></div>
         <Ads
           text="Journey through Tucson’s desertscapes and bustling downtown streets in adventure-packed Arizona. From outdoor explorations among sky-high cacti to inviting museum experiences that captivate the kids, see what makes Tucson a must for you and your crew."
           header="Make family memories in beautiful Arizona"
@@ -47,7 +49,6 @@ const Hotels = () => {
           btnText="View now"
           backgroundColor="#FFF7E1"
         />
-        <Navbar navbarItem="" sticky={true} myClass="sticky" />
         <InnerSearchComponent category={category} categoryValue={queryName} />
         <div
           className="w-100"

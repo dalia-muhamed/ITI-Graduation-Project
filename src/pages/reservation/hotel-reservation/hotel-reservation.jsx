@@ -627,8 +627,8 @@ const HotelReservation = () => {
           </div>
           <div className="col-md-4 ps-md-5 pe-lg-5">
             <div className="border rounded-2 flex-column shadow">
-              <p className="bg-black text-center text-white rounded-top-2 fs-6">
-                Best rates guaranteed
+              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-2">
+                Best Rates Guaranteed
               </p>
               <img
                 src={newSelectedData[2].images[0]}
