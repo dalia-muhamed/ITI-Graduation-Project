@@ -1,47 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { Axios, axiosInstance } from '../../axios';
-import Rating from '../owl/Rating';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Axios, axiosInstance } from "../../axios";
+import Rating from "../owl/Rating";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   addToFavorites,
   removeFromFavorites,
-} from '../../pages/Favourites/FavouriteSlice';
-import axios from 'axios';
+} from "../../pages/Favourites/FavouriteSlice";
 
 const NearbyPlaces = () => {
   const [location, setLocation] = useState(null);
-  const [cityName, setCityName] = useState('');
+  const [nearestCity, setNearestCity] = useState(null);
   const [hotels, setHotels] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a = Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    return distance;
+  }
+
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        position => {
+        (position) => {
           const { latitude, longitude } = position.coords;
           setLocation({ latitude, longitude });
         },
-        error => {
-          console.error('Error getting location:', error);
+        (error) => {
+          console.error("Error getting location:", error);
         },
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
       );
     } else {
-      console.error('Geolocation is not supported by this browser.');
+      console.error("Geolocation is not supported by this browser.");
     }
   };
-
+useEffect(()=>{
+  getCurrentLocation()
+},[])
   useEffect(() => {
     const compareWithCities = async () => {
-      const hotelsResponse = await axiosInstance.get(
-        `/cities/hotels?lat=${location.latitude}&&long=${location.longitude}`
-      );
+      const citiesResponse = await axiosInstance.get("/cities");
+      const cities = citiesResponse.data.cities;
 
-      const hotels = hotelsResponse.data.hotels;
-      setCityName(hotelsResponse.data.cityName);
-      setHotels(hotels);
+      if (location) {
+        let minDistance = Infinity;
+        let nearestCity = null;
+
+        cities.forEach((city) => {
+          const distance = getDistanceFromLatLonInKm(
+            location.latitude,
+            location.longitude,
+            city.latitude,
+            city.longitude
+          );
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            nearestCity = city;
+          }
+        });
+        setNearestCity(nearestCity);
+      }
     };
     if (location) {
       compareWithCities();
@@ -51,7 +81,7 @@ const NearbyPlaces = () => {
   useEffect(() => {
     const fetchRomeHotels = async () => {
       try {
-        const data = await Axios('Hotels', 'rome');
+        const data = await Axios("Hotels", "rome");
         const randomHotels = getRandomHotels(data, 6);
         setHotels(randomHotels);
       } catch (error) {
@@ -65,13 +95,27 @@ const NearbyPlaces = () => {
     const shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
   };
+  let nearCityName;
+  useEffect(() => {
+    if (nearestCity) {
+      const nearCity = nearestCity.name;
+      nearCityName = nearCity;
+      console.log(nearCity);
+      const fetchHotels = async () => {
+        const data = await Axios("Hotels", nearCityName);
+        const randomHotels = getRandomHotels(data, 6);
+        setHotels(randomHotels);
+      };
+      fetchHotels();
+    }
+  }, [nearestCity]);
 
-  const favorites = useSelector(state => state.favorites.favorites);
-  const isFavorite = todoId => {
-    return favorites.some(item => item.id === todoId);
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const isFavorite = (todoId) => {
+    return favorites.some((item) => item.id === todoId);
   };
 
-  const handleFavoriteToggle = todo => {
+  const handleFavoriteToggle = (todo) => {
     if (isFavorite(todo.id)) {
       dispatch(removeFromFavorites(todo.id));
     } else {
@@ -81,24 +125,24 @@ const NearbyPlaces = () => {
 
   return (
     <div className="mb-5">
-      <button onClick={() => getCurrentLocation()}>Nearby Places ...</button>
+      {/* <button onClick={() => getCurrentLocation()}>Nearby Places ...</button> */}
 
-      <div className="randomToDo " style={{ backgroundColor: 'white' }}>
+      <div className="randomToDo " style={{ backgroundColor: "white" }}>
         <div className="container randomToDoContainer">
-          {cityName ? (
+          {nearestCity ? (
             <h4
               className="mb-4"
-              style={{ color: 'black', fontWeight: '700' }}
+              style={{ color: "black", fontWeight: "700" }}
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
             >
-              {`Nearby Hotels in ${cityName}`}
+              Nearby Hotels in {nearestCity.name}
             </h4>
           ) : (
             <h4
               className="mb-4"
-              style={{ color: 'black', fontWeight: '700' }}
+              style={{ color: "black", fontWeight: "700" }}
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
@@ -106,9 +150,9 @@ const NearbyPlaces = () => {
               Rome Hotels
             </h4>
           )}
-          <div className="row" style={{ maxWidth: '90%', margin: '0 auto' }}>
+          <div className="row" style={{ maxWidth: "90%", margin: "0 auto" }}>
             {hotels &&
-              hotels.map(todo => (
+              hotels.map((todo) => (
                 <div
                   className="RandomTodoRalative col-lg-4 col-md-6 mb-4"
                   key={todo.id}
@@ -121,7 +165,7 @@ const NearbyPlaces = () => {
                       strokeWidth={1.5}
                       stroke="gray"
                       className={`w-6 h-6 likeImage ${
-                        isFavorite(todo.id) ? 'favorite' : ''
+                        isFavorite(todo.id) ? "favorite" : ""
                       }`}
                       onClick={() => handleFavoriteToggle(todo)}
                     >
@@ -135,7 +179,7 @@ const NearbyPlaces = () => {
                   <div
                     onClick={() => {
                       navigate(`/get/Hotels/details/${todo.id}`);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                   >
                     <div className="card">
@@ -154,5 +198,4 @@ const NearbyPlaces = () => {
     </div>
   );
 };
-
 export default NearbyPlaces;
