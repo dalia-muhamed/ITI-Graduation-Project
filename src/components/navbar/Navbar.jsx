@@ -7,6 +7,7 @@ import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MdBookmarkAdded } from "react-icons/md";
 
 const Navbar = ({ sticky, myClass, navbarItem }) => {
   const [imageSrc, setImageSrc] = useState('');
@@ -216,9 +217,18 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                 </ul>
               </div>
               <div className="nav-right-side col-md-4 d-flex align-items-center  my-1">
+              <Link
+                  to="/Favourites"
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <MdBookmarkAdded color='#00AA6C' size={40}/>
+                  {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
+                </Link>
                 {!hasLogged && <GoogleLogin onSuccess={handleLoginSuccess} />}
                 {hasLogged && (
-                  <div className="d-flex justify-content-center align-items-center">
+                  <div className="d-flex justify-content-center align-items-center ps-lg-3">
                     <img
                       style={{
                         borderRadius: '50%',
@@ -230,15 +240,6 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     />
                   </div>
                 )}
-
-                <Link
-                  to="/Favourites"
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  <FontAwesomeIcon icon={faBookmark} className="shoppingCart" />
-                </Link>
               </div>
             </div>
           </div>
