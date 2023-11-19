@@ -1,4 +1,4 @@
-import logo from './logo.jpg';
+import logo from './logo.png';
 import './navbar.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useState, useEffect } from 'react';
