@@ -49,6 +49,9 @@ const Favourites = () => {
                       category="thingsToDo"
                       tours={favorite.tours}
                       rank={favorite.about}
+                      description={favorite.description}
+                      phone={favorite.phone}
+                      locationName={favorite.location?.locationName}
                     />
                     <div className="deleteFavoritebBtn deleteFavourite">
                       <svg
