@@ -156,9 +156,6 @@ button:hover {
   }
 }
 @media (width<991px) {
-  /* .upper-nav{
-    display: none;
-  } */
   /* .navbar-container {
     justify-content: flex-start !important;
     align-items: flex-start !important;
@@ -186,5 +183,5 @@ button:hover {
   .nav-inner-side,
   .nav-right-side {
     justify-content: flex-start !important;
-  } */
+  } */
 }
