@@ -1,0 +1,14 @@
+.videoSection-main-container {
+  background-color: bisque;
+  padding: 3rem;
+  /* display: flex !important;
+  justify-content: center !important;
+  align-items: center !important; */
+  margin: 2rem 0;
+  z-index: -100;
+}
+
+.videoSection-row {
+  margin-bottom: 2rem;
+  justify-content: center;
+}

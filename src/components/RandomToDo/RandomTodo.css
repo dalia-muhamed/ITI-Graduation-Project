@@ -5,6 +5,9 @@
 .randomToDoContainer h4 {
   padding-left: 5rem;
 }
+.randomTodo-row {
+  max-width: 90%;
+}
 .randomToDo .card {
   height: 400px;
   position: relative;
@@ -38,8 +41,8 @@
   transition: 0.3s;
   z-index: 15;
 }
-.randomToDo .LikeRounded:hover .likeImage{
-fill: red;
+.randomToDo .LikeRounded:hover .likeImage {
+  fill: red;
 }
 .LikeRounded .likeImage {
   width: 100%;

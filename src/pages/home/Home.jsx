@@ -10,6 +10,7 @@ import Donate from '../../components/Adds/Donate/Donate';
 import FoodAdd from '../../components/Adds/Food/FoodAdd';
 import RandomToDo from '../../components/RandomToDo/RandomToDo';
 import NearbyPlaces from '../../components/NearbyPlaces/NearbyPlaces';
+import VideoSection from '../../components/videoSection/VideoSection';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <SearchComponent />
         <Owl />
         <Donate />
+        <VideoSection />
         <SlickComponent />
         <RandomToDo />
         <FoodAdd />

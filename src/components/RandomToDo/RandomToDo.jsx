@@ -54,7 +54,7 @@ const RandomToDo = () => {
         >
           More Things to do
         </h4>
-        <div className="row" style={{ maxWidth: '90%', margin: '0 auto' }}>
+        <div className="row randomTodo-row" style={{ margin: '0 auto' }}>
           {todos &&
             todos.map(todo => (
               <div className="RandomTodoRalative col-md-4 " key={todo.id}>
