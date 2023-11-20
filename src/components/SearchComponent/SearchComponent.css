@@ -100,7 +100,7 @@
   background-color: #34e0a1d0;
 }
 
-video {
+.SearchComponent video {
   position: absolute;
   top: 0;
   left: 0;
