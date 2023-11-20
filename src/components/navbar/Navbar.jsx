@@ -104,6 +104,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                     onClick={handleLinkClick}
                     className="navbar-brand"
                   >
+                    {/* Right logo */}
                     <div className="d-flex align-items-center">
                       <div className="nav-logo-container">
                         <img src={logo} className="logo" alt="logo" />
