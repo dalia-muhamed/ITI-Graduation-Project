@@ -16,6 +16,7 @@ const Favourites = () => {
   return (
     <div className="matched-hotels-component">
       <Navbar navbarItem="" sticky={true} myClass="sticky" />
+      <div style={{ marginBottom: '70px' }}></div>
       <div
         className="w-100"
         style={{ backgroundColor: '#F2F2F2', padding: '1px' }}
@@ -26,7 +27,7 @@ const Favourites = () => {
               className="d-flex justify-content-between align-items-center matchedHeaders"
               style={{ flex: '0 0 auto' }}
             >
-              <h5 className="fw-bolder my-0">Favorite Items :</h5>
+              <h5 className="fw-bolder my-0">Favorite Items </h5>
             </div>
             {favorites.length === 0 ? (
               <div

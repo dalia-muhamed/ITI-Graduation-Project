@@ -1,0 +1,20 @@
+.video-container video {
+  height: 300px !important;
+  width: 300px;
+  object-fit: cover;
+}
+/* .dark-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease;
+} */
+
+.video-container {
+  display: flex;
+  padding: 0 !important;
+  margin-right: 2rem;
+  margin-top: 7.4rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 20rem;
+}
