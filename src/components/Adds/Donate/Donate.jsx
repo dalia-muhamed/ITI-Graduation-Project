@@ -1,7 +1,7 @@
 import React from "react";
 import "./Donate.css";
 import donate from "./donate.jpg";
-import logo2 from "./logo.jpg";
+import logo2 from "./logo.png";
 
 function Donate() {
   return (
