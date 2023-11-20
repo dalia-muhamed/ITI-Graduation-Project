@@ -13,6 +13,7 @@
   transition: 1s ease;
   position: fixed;
   border: none;
+
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 .offcanvas.offcanvas-end {
@@ -162,6 +163,9 @@ button:hover {
 }
 }
 @media (width<991px) {
+  /* .upper-nav{
+    display: none;
+  } */
   /* .navbar-container {
     justify-content: flex-start !important;
     align-items: flex-start !important;

@@ -44,9 +44,9 @@ const RestrauntReservation = () => {
     checkInErr: '',
   });
 
+
   const newSelectedData = useSelector(state => state.selectedData.data);
   console.log(newSelectedData);
-
   const navigate = useNavigate();
   const handleChange = e => {
     if (e.target.type === 'checkbox') {
@@ -661,7 +661,7 @@ const RestrauntReservation = () => {
                   </li>
                   <li className="fs-5">$5</li>
                   <li className="text-muted">Total:</li>
-                  <li className="fs-5">
+                  < li className="fs-5">
                     ${formInputs.table * 25 + formInputs.guest * 25 + 15}
                   </li>
                 </ul>
