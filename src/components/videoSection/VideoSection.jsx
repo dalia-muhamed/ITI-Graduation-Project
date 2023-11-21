@@ -13,6 +13,7 @@ import video11 from './media/video11.mp4';
 import video12 from './media/video12.mp4';
 import './videoSection.css';
 import VideoContainer from './VideoContainer';
+import './VideoContainer.css';
 
 function VideoSection() {
   const videos = [
@@ -38,9 +39,9 @@ function VideoSection() {
           <VideoContainer video={video9} />
           <VideoContainer video={video7} />
           <VideoContainer video={video1} />
-          <VideoContainer video={video2} />
-          <VideoContainer video={video4} />
           <VideoContainer video={video10} />
+          <VideoContainer video={video4} />
+          <VideoContainer video={video2} />
           <VideoContainer video={video12} />
           <VideoContainer video={video11} />
         </div>
