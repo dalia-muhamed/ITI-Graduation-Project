@@ -5,8 +5,8 @@
   flex-direction: column;
   /* padding: 5rem 0rem; */
   height: 100vh;
-  overflow: hidden;
   position: relative;
+  z-index: 200;
 }
 
 .content {

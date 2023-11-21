@@ -159,6 +159,7 @@ const SearchComponent = () => {
             onKeyDown={handleEnterKey}
             onChange={handleInputChange}
             value={searchVal}
+            autoComplete="off"
           />
           {showDropdown && data.length > 0 && (
             <SearchDropdown

@@ -20,7 +20,7 @@ const Home = () => {
         <SearchComponent />
         <Owl />
         <Donate />
-        <VideoSection />
+        {/* <VideoSection /> */}
         <SlickComponent />
         <RandomToDo />
         <FoodAdd />

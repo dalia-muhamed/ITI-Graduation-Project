@@ -65,6 +65,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
         className={`navbar navbar-expand-lg fixed-top ${
           isSticky ? 'sticky' : ''
         } ${navbarItem} ${myClass}`}
+        style={{height:"60px"}}
       >
         <div className="container-fluid">
           <nav class="navbar bg-transparent fixed-top d-lg-none NavbarItems-container">
