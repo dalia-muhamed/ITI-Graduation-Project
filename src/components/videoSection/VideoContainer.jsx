@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react";
-import "./VideoContainer.css";
-import video2 from "./media/partyVideo.mp4";
+import React, { useRef, useState } from 'react';
+import './VideoContainer.css';
+// import video2 from "./media/partyVideo.mp4";
 
-function VideoContainer({}) {
+function VideoContainer({ video }) {
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
   const handleMouseEnter = () => {
     if (videoRef.current.paused) {
-      videoContainerRef.current.classList.remove("dark-overlay");
-      videoRef.current.play().catch((error) => {
+      videoContainerRef.current.classList.remove('dark-overlay');
+      videoRef.current.play().catch(error => {
         // Handle play promise rejection, if needed
-        console.error("Play failed:", error);
+        console.error('Play failed:', error);
       });
     }
   };
 
   const handleMouseLeave = () => {
     videoRef.current.pause();
-    videoContainerRef.current.classList.add("dark-overlay");
+    videoContainerRef.current.classList.add('dark-overlay');
   };
   return (
     <div
@@ -26,7 +26,7 @@ function VideoContainer({}) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="dark-overlay" ref={videoContainerRef}></div>
-      <video src={video2} ref={videoRef} loop muted />
+      <video src={video} ref={videoRef} loop muted />
     </div>
   );
 }

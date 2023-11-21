@@ -1,10 +1,14 @@
 .videoSection-main-container {
-  background-color: bisque;
-  padding: 3rem;
-  margin: 2rem 0;
+  background-color: #fdf2e9;
+  padding: 5rem 3rem;
+  margin: 9.6rem 0;
 }
-
+.video-section-header {
+  font-weight: 900;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+}
 .videoSection-row {
-  margin-bottom: 2rem;
+  flex-wrap: wrap;
   justify-content: center;
 }

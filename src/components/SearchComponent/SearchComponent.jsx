@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -10,14 +10,15 @@ import { Axios } from '../../axios';
 import video from './icon/video5.mp4';
 import { useDispatch } from 'react-redux';
 import { getData } from '../../app/apiDataSlice';
+import SearchDropdown from './SearchDropdown/SearchDropdown';
 const SearchComponent = () => {
   const [activeTab, setActiveTab] = useState('Hotels');
   const [searchPlaceholder, setSearchPlaceholder] = useState('');
-  const [searchPath, setSearchPath] = useState('');
   const [searchVal, setSearchVal] = useState('');
-  const [category, setCategory] = useState('');
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleTabClick = tabId => {
     setActiveTab(tabId);
@@ -28,15 +29,12 @@ const SearchComponent = () => {
     switch (tabId) {
       case 'Hotels':
         setSearchPlaceholder('Hotel name or destination');
-        setCategory('hotels');
         break;
       case 'Restaurants':
         setSearchPlaceholder('Attraction, activity, or destination');
-        setCategory('thingsToDo');
         break;
       case 'ThingsToDo':
         setSearchPlaceholder('Restaurant or destination');
-        setCategory('restaurants');
         break;
       default:
         setSearchPlaceholder('');
@@ -50,14 +48,46 @@ const SearchComponent = () => {
 
   const navigate = useNavigate();
 
-  const handleInputChange = e => {
+  const handleInputChange = async e => {
     setSearchVal(e.target.value);
+    if (e.target.value.trim() === '') {
+      setShowDropdown(false);
+    } else {
+      try {
+        const searchData = await Axios(activeTab, e.target.value);
+        setData(searchData);
+        setShowDropdown(true);
+        if (showDropdown) {
+          window.onclick();
+        }
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    }
   };
 
+  const handleClickOutside = event => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowDropdown(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+  const handleDropdownItemClick = item => {
+    setSearchVal(item.name);
+    setShowDropdown(false);
+    fetchData();
+  };
   const fetchData = async () => {
     try {
       const data = await Axios(activeTab, searchVal);
       setData(data);
+      setShowDropdown(true);
       data.length > 0
         ? navigate(`/get/${activeTab}?queryName=${searchVal}`)
         : navigate('*');
@@ -124,11 +154,19 @@ const SearchComponent = () => {
           <input
             id="searchComponentInut"
             type="text"
+            ref={dropdownRef}
             placeholder={searchPlaceholder}
             onKeyDown={handleEnterKey}
             onChange={handleInputChange}
             value={searchVal}
           />
+          {showDropdown && data.length > 0 && (
+            <SearchDropdown
+              data={data}
+              category={activeTab}
+              onItemClick={handleDropdownItemClick}
+            />
+          )}
           <button
             className="searchLink"
             onClick={searchBtn}
