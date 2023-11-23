@@ -1,6 +1,5 @@
 .user-comment {
-  padding: 30px;
-  margin: 4rem 0 5rem;
+  padding:0px 30px;
 }
 .img-user {
   border-radius: 50%;
@@ -19,4 +18,5 @@
 .comments-header {
   font-weight: 800;
   text-align: center;
+  margin-bottom: 50px;
 }

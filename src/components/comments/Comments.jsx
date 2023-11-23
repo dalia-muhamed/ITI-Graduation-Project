@@ -45,12 +45,12 @@ function Comments() {
   };
   return (
     <div
-      className="container"
+      className="container py-5"
       style={{ maxWidth: '70%', marginBottom: '4rem' }}
     >
       <h2 className="comments-header">Our Sutisfied Customers</h2>
       <Slider {...settings}>
-        <div className="user-comment ">
+        <div className="user-comment">
           <div className="img-comment-container">
             <img src={user1} alt="user" className="img-user" />
           </div>
