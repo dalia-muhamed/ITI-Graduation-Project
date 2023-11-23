@@ -1,6 +1,6 @@
 .falafel-container {
   background-color: #e0d3ee;
-  margin: 8rem 0rem;
+  margin: 13rem 0rem 8rem;
   position: relative;
 }
 .ads-content {
@@ -74,14 +74,14 @@ link {
   }
 }
 @media (width<400px) {
-    .falafel-right-side {
-        height: 200px;
-        justify-content: center;
-        display: flex;
-      }
-    .ads-image img {
-        height: 250px;
-        width: 280px;
-        position: static;
-      }
+  .falafel-right-side {
+    height: 200px;
+    justify-content: center;
+    display: flex;
+  }
+  .ads-image img {
+    height: 250px;
+    width: 280px;
+    position: static;
+  }
 }
