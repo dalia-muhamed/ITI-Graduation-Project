@@ -11,6 +11,7 @@ import FoodAdd from '../../components/Adds/Food/FoodAdd';
 import RandomToDo from '../../components/RandomToDo/RandomToDo';
 import NearbyPlaces from '../../components/NearbyPlaces/NearbyPlaces';
 import VideoSection from '../../components/videoSection/VideoSection';
+import Reviews from '../../components/reviews/Reviews';
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
         <SlickComponent />
         <RandomToDo />
         <FoodAdd />
+        <Reviews />
         <NearbyPlaces />
         <Footer />
       </GoogleOAuthProvider>

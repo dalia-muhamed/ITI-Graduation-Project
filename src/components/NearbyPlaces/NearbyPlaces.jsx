@@ -103,7 +103,7 @@ const NearbyPlaces = () => {
       console.log(nearCity);
       const fetchHotels = async () => {
         const data = await Axios('Hotels', nearCityName);
-        const randomHotels = getRandomHotels(data, 3);
+        const randomHotels = getRandomHotels(data, 6);
         setHotels(randomHotels);
       };
       fetchHotels();

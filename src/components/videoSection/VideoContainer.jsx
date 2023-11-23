@@ -21,7 +21,7 @@ function VideoContainer({ video }) {
   };
   return (
     <div
-      className="col-lg-3 video-section-container"
+      className="col-lg-3 mb-lg-0 col-md-1 video-section-container"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
