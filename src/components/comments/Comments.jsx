@@ -7,7 +7,6 @@ import user4 from './media/user4.jpeg';
 import user5 from './media/user5.jpeg';
 import user7 from './media/user7.jpeg';
 import user6 from './media/user6.jpeg';
-import user8 from './media/user8.jpeg';
 
 function Comments() {
   const settings = {
