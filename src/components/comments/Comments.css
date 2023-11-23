@@ -1,3 +1,22 @@
 .user-comment {
-  border-left: 2px solid #00aa6c;
+  padding: 30px;
+  margin: 5rem 0;
+}
+.img-user {
+  border-radius: 50%;
+  width: 100px;
+}
+.img-comment-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.comment-text {
+  border-left: 3px solid #00aa6c;
+  padding: 0 1.5em;
+  text-align: justify;
+}
+.comments-header {
+  font-weight: 800;
+  text-align: center;
 }
