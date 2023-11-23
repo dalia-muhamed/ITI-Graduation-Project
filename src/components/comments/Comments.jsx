@@ -1,5 +1,6 @@
 import React from 'react';
 import './Comments.css';
+import Slider from 'react-slick';
 
 function Comments() {
   const settings = {
