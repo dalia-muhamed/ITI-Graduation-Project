@@ -10,9 +10,13 @@ function Reviews() {
       onExit={() => setCounterOn(false)}
     >
       <div className="reviews-component">
+        <h1>Numbers of this Month</h1>
         <div className="container">
-          <div className="row">
-            <div className="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+          <div className="row gap-4 justify-content-center">
+            <div
+              className="reviews-counter-item col-lg-3 d-flex justify-content-center align-items-center flex-column"
+    
+            >
               <p className="counting-number">
                 {counterOn && (
                   <CountUp start={0} end={4500} duration={2} delay={0} />
@@ -20,7 +24,10 @@ function Reviews() {
               </p>
               <p className="review-paragraph">Travellers</p>
             </div>
-            <div className="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+            <div
+              className="reviews-counter-item col-lg-3 d-flex justify-content-center align-items-center flex-column"
+             
+            >
               <p className="counting-number">
                 {counterOn && (
                   <CountUp start={0} end={3600} duration={1} delay={0} />
@@ -28,7 +35,10 @@ function Reviews() {
               </p>
               <p className="review-paragraph">Reviews</p>
             </div>
-            <div className="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+            <div
+              className="reviews-counter-item col-lg-3 d-flex justify-content-center align-items-center flex-column"
+            
+            >
               <p className="counting-number">
                 {counterOn && (
                   <CountUp start={0} end={5700} duration={3} delay={0} />
