@@ -4,6 +4,7 @@ import './things-reservation.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import emailjs from 'emailjs-com';
 import Navbar from '../../../components/navbar/Navbar';
 import Footer from '../../../footer/Footer';
 
@@ -54,6 +55,38 @@ const ThingsToDoReservation = () => {
     }
   };
 
+  emailjs.init('SH6vVPq0np3hs37kv'); 
+  const sendEmail = async () => {
+    try {
+      // Prepare the email parameters with form input details
+      const emailParams = {
+        mailto: formInputs.email,
+        subject: 'Congratulations! Booking Successful',
+        message:`
+        Congratulations! Your booking has been successful.
+          
+        Booking Details:
+        - Check-In Date: ${formInputs.checkIn}
+        - Check-Out Date: ${formInputs.checkOut}
+        - Room Type: ${formInputs.room}
+        - Bed Type: ${formInputs.bed}
+        - Smoking Preference: ${formInputs.smoking}
+        - Number of Guests: ${formInputs.guest}
+    
+        Thank you for choosing our services!`,
+        to_name: formInputs.firstNameGuest,
+        from_name: "Travelia",
+        reply_to: formInputs.email
+      };
+  
+      // Send the email using Email.js
+      await emailjs.send('service_rna51rk', 'template_qkiwwum', emailParams);
+      console.log(formInputs.email)
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
   const validateErrors = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
@@ -111,13 +144,17 @@ const ThingsToDoReservation = () => {
         : '',
     });
   };
-
+  const[formSubmitted, setFormSubmitted]= useState(false)
   const handleSubmit = e => {
     e.preventDefault();
     validateErrors();
+    setFormSubmitted(true);
   };
 
   useEffect(() => {
+    if (formSubmitted) {
+      // Reset the formSubmitted flag
+      setFormSubmitted(false);
     // Check if there are any form errors
     const hasErrors = Object.values(formErrs).some(error => error !== '');
 
@@ -155,10 +192,12 @@ const ThingsToDoReservation = () => {
 
         // Save the updated data to local storage
         localStorage.setItem('formData', JSON.stringify(newData));
+        sendEmail();
         navigate('/reservation/successfully');
       }
     }
-  }, [formErrs]);
+    }
+  }, [formSubmitted, formErrs]);
 
   return (
     <div className="">
