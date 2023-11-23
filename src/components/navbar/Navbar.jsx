@@ -69,7 +69,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
       >
         <div className="container-fluid">
           <nav class="navbar bg-transparent fixed-top d-lg-none NavbarItems-container">
-            <div class="container-fluid">
+            <div className="container-fluid">
               <button
                 class="navbar-toggler"
                 type="button"
@@ -93,12 +93,13 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                 </div>
               )}
               <div
-                class="offcanvas offcanvas-start"
+                className="offcanvas offcanvas-start"
                 tabindex="-1"
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
-                <div class="offcanvas-header">
+                <div className="offcanvas-header">
+                  <div className='d-flex'>
                   <Link
                     to="/"
                     style={{ color: 'black', textDecoration: 'none' }}
@@ -113,6 +114,20 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                       <h3 className="navbar-logo px-1 my-0">Travellia</h3>
                     </div>
                   </Link>
+                  <Link
+                  to="/Favourites"
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <MdBookmarkAdded
+                    color="#00AA6C"
+                    size={40}
+                    style={{ marginRight: '10px',marginTop:'6px' }}
+                  />
+                  {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
+                </Link>
+                </div>
                   <button
                     type="button"
                     class="btn-close"
