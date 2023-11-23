@@ -1,9 +1,8 @@
 .SlickContainer {
   height: 450px;
-  margin: 20px 0;
   width: 50%;
   padding: 3rem 0rem;
-  margin: 3rem 0rem;
+  margin: 2rem 0rem;
 }
 .SlickItem {
   height: 300px; /* Set the height you prefer */

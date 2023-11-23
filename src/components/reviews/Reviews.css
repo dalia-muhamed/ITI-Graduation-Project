@@ -1,0 +1,12 @@
+.reviews-component{
+    background-color: #F1F1F2;
+    padding: 2rem 0;
+}
+.reviews-component .counting-number{
+    font-weight: bolder;
+    font-size: 3rem;
+}
+.reviews-component .review-paragraph{
+    font-weight: 600;
+    font-size: 1.4rem;
+}

@@ -16,17 +16,7 @@ import VideoContainer from './VideoContainer';
 import './VideoContainer.css';
 
 function VideoSection() {
-  const videos = [
-    video1,
-    video2,
-    video3,
-    video4,
-    video5,
-    video6,
-    video7,
-    video8,
-    video9,
-  ];
+
   return (
     <div className="container-fluid videoSection-main-container">
       <div className="container  ">
