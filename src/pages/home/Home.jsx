@@ -21,7 +21,7 @@ const Home = () => {
         <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
         <SearchComponent />
         <Owl />
-        <Comments />
+
         <Donate />
         <VideoSection />
         <SlickComponent />
@@ -29,6 +29,7 @@ const Home = () => {
         <FoodAdd />
         <Reviews />
         <NearbyPlaces />
+        <Comments />
         <Footer />
       </GoogleOAuthProvider>
     </div>

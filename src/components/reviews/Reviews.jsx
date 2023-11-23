@@ -10,7 +10,6 @@ function Reviews() {
       onExit={() => setCounterOn(false)}
     >
       <div className="reviews-component">
-        <h1>Numbers of this Month</h1>
         <div className="container">
           <div className="row">
             <div className="col-lg-4 d-flex justify-content-center align-items-center flex-column">
