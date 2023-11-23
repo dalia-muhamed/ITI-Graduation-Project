@@ -12,6 +12,7 @@ import RandomToDo from '../../components/RandomToDo/RandomToDo';
 import NearbyPlaces from '../../components/NearbyPlaces/NearbyPlaces';
 import VideoSection from '../../components/videoSection/VideoSection';
 import Reviews from '../../components/reviews/Reviews';
+import Comments from '../../components/comments/Comments';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
         <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
         <SearchComponent />
         <Owl />
+        <Comments />
         <Donate />
         <VideoSection />
         <SlickComponent />

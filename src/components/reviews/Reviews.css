@@ -1,82 +1,17 @@
-/* .reviews-component{
-    background-color: #F1F1F2;
-    padding: 5rem 0;
-}
-.reviews-component .counting-number{
-    font-weight: bolder;
-    font-size: 3rem;
-    color: #00AA6C;
-}
-.reviews-component .review-paragraph{
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: #00AA6C;
-}
-.reviews-component .reviews-counter-item{
-    background-color: rgb(87, 62, 94);
-    border-radius: 10px;
-    padding: 15px;
-}
-.reviews-component h1{
-    text-align: center;
-    font-weight: 700;
-} */
-
-/* Reviews.css */
 .reviews-component {
-  background-color: #f5f5f5;
-  padding: 5rem;
+  background-color: #fff7e1;
+  margin: 12rem 0 6.4rem;
+  padding: 3rem 0;
 }
-
-.reviews-component h1 {
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 30px;
+.reviews-component .counting-number {
+  font-weight: bolder;
+  font-size: 3rem;
 }
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
+.reviews-component .review-paragraph {
+  font-weight: 600;
+  font-size: 1.4rem;
 }
-
-.reviews-counter-item {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  position: relative;
+.svg-counter {
+  width: 70px;
+  height: 70px;
 }
-.reviews-counter-item::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0px;
-  height: 7px;
-  width: 100%;
-  background-color: #00AA6C;
-  border-radius:0px 0px 8px 8px;
-}
-.counting-number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #00AA6C;
-}
-
-.review-paragraph {
-  font-size: 1.3rem;
-  color: #666;
-  margin-top: 10px;
-}
-
-/* @media (min-width: 768px) {
-    .reviews-counter-item {
-      flex-basis: calc(33.3333% - 20px);
-      margin-right: 20px;
-    }
-  
-    .reviews-counter-item:last-child {
-      margin-right: 0;
-    }
-  } */
