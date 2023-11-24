@@ -22,7 +22,7 @@ const SlickComponent = () => {
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -41,9 +41,9 @@ const SlickComponent = () => {
       {
         breakpoint: 770,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 2,
-          initialSlide: 0,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
         },
       },
       {
@@ -51,7 +51,6 @@ const SlickComponent = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 4,
         },
       },
     ],
