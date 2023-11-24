@@ -90,7 +90,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                   <div className="nav-logo-container">
                     <img src={logo} className="logo" alt="logo" />
                   </div>
-                  <h3 className="navbar-logo px-1 my-0">Travellia</h3>
+                  {/* <h3 className="navbar-logo px-1 my-0">Travellia</h3> */}
                 </div>
               </Link>
               {/* {hasLogged && (

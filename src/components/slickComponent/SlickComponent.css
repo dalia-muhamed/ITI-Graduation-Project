@@ -84,7 +84,8 @@
     right: -13px !important;
     z-index: 20;
   }
-  .slick-track{
-    /* transform: translate3d(0,0,0) !important; */
+  .SlickItem {
+    width: 90% !important;
+    margin: auto;
   }
 }
