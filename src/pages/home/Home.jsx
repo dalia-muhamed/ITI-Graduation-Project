@@ -20,11 +20,10 @@ const Home = () => {
       <GoogleOAuthProvider clientId="165093153283-shjo35g4u2vh5tughu7i1ei04eaq4urc.apps.googleusercontent.com">
         <Navbar sticky={false} myClass="" navbarItem="NavbarItems-container" />
         <SearchComponent />
-        <Owl />
-
+        <SlickComponent />
         <Donate />
         <VideoSection />
-        <SlickComponent />
+        <Owl />
         <RandomToDo />
         <FoodAdd />
         <Reviews />
