@@ -30,8 +30,8 @@ const Owl = () => {
       const screenWidth = window.innerWidth;
       const dragConstraints =
         screenWidth < 770
-          ? { right: 0, left: -2800 }
-          : { right: 0, left: -2000 };
+          ? { right: 1330, left: -1330 }
+          : { right: 1100, left: -1100 };
       setDragConstraints(dragConstraints);
     };
 
