@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   /* padding: 5rem 0rem; */
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   z-index: 200;
 }

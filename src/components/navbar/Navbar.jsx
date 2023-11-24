@@ -79,64 +79,42 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <Link
-                to="/"
-                style={{ color: "black", textDecoration: "none" }}
-                onClick={handleLinkClick}
-                className="navbar-brand"
-              >
-                {/* Right logo */}
-                <div className="d-flex align-items-center">
-                  <div className="nav-logo-container">
-                    <img src={logo} className="logo" alt="logo" />
-                  </div>
-                  {/* <h3 className="navbar-logo px-1 my-0">Travellia</h3> */}
-                </div>
-              </Link>
-              {/* {hasLogged && (
-                <div className="d-flex justify-content-center align-items-center pe-3">
-                  <img
-                    style={{
-                      borderRadius: '50%',
-                      width: '45px',
-                      height: '45px',
-                    }}
-                    src={imageSrc}
-                    alt="dad"
+              <div className="d-flex">
+                <Link
+                  to="/Favourites"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  <MdBookmarkAdded
+                    color="#00AA6C"
+                    size={40}
+                    style={{ marginRight: "10px", marginTop: "6px" }}
                   />
-                </div>
-              )} */}
+                  {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
+                </Link>
+                <Link
+                  to="/"
+                  style={{ color: "black", textDecoration: "none" }}
+                  onClick={handleLinkClick}
+                  className="navbar-brand"
+                >
+                  <div className="d-flex align-items-center">
+                    <div className="nav-logo-container">
+                      <img src={logo} className="logo" alt="logo" />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
               <div
                 className="offcanvas offcanvas-start"
                 tabindex="-1"
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
-                <div className="offcanvas-header">
-                  <div className="d-flex">
-                    <Link
-                      to="/Favourites"
-                      onClick={() =>
-                        window.scrollTo({ top: 0, behavior: "smooth" })
-                      }
-                    >
-                      <MdBookmarkAdded
-                        color="#00AA6C"
-                        size={40}
-                        style={{ marginRight: "10px", marginTop: "6px" }}
-                      />
-                      {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
-                    </Link>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <div class="offcanvas-body d-flex">
+                  <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="#">
                         Discover
@@ -184,6 +162,12 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                       </ul>
                     </li>
                   </ul>
+                  <button
+                    type="button"
+                    class="btn-close mt-2"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
                 </div>
               </div>
             </div>
