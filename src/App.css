@@ -8,7 +8,9 @@
   /* overflow-x: hidden; */
 }
 
-
+.App{
+  overflow-x: hidden;
+}
 @font-face {
   font-family: 'TripRegular';
   src: local('TripRegular'), url(./Trip-Sans-Font/trip-sans.otf);

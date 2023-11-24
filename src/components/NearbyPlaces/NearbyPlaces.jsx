@@ -130,7 +130,7 @@ const NearbyPlaces = () => {
           {nearestCity ? (
             <h4
               className="mb-4"
-              style={{ color: 'black', fontWeight: '700' }}
+              style={{ color: 'black', fontWeight: '700',paddingLeft:"25px"  }}
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
