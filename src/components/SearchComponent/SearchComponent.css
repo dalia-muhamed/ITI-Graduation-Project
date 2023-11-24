@@ -13,7 +13,6 @@
   padding: 20px 10px 0;
   text-align: center;
 }
-
 .content-primaryHeading {
   font-weight: 900;
   font-family: Arial, Tahoma, sans-serif;
@@ -114,6 +113,9 @@
 }
 
 @media(width<770px){
+  .tabsContainer .tab{
+    padding: 10px 5px;
+  }
   .search-bar{
     width: 95%;
   }
@@ -124,4 +126,8 @@
   .tabSearch{
     font-size: 12px;
   }
+  .content h1{
+  font-size: 1.4rem;
+  }
 }
+

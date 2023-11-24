@@ -52,7 +52,7 @@ const Owl = () => {
       {restaurants && (
         <div className="container owl">
           <h4>Worldwide Top Rated Restaurants</h4>
-          <motion.div className="carousel">
+          <motion.div className="carousel d-flex justify-content-center align-items-center flex-column">
             <motion.div
               drag="x"
               dragConstraints={dragConstraints}

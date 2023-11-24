@@ -125,8 +125,6 @@ const NearbyPlaces = () => {
 
   return (
     <div className="">
-      {/* <button onClick={() => getCurrentLocation()}>Nearby Places ...</button> */}
-
       <div className="randomToDo " style={{ backgroundColor: 'white',padding:"30px 0px",margin:"30px 0px" }}>
         <div className="container randomToDoContainer">
           {nearestCity ? (

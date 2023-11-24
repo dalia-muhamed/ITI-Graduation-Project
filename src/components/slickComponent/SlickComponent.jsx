@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { axiosInstance } from '../../axios';
-import Slider from 'react-slick';
-import './SlickComponent.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { axiosInstance } from "../../axios";
+import Slider from "react-slick";
+import "./SlickComponent.css";
+import { useNavigate } from "react-router-dom";
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axiosInstance.get('/hotels');
+        const response = await axiosInstance.get("/hotels");
         const allHotels = response.data.hotels;
         const randomHotels = getRandomHotels(allHotels, 12);
         setHotels(randomHotels);
       } catch (error) {
-        console.log('Error while fetching hotels:', error);
+        console.log("Error while fetching hotels:", error);
       }
     };
     fetchHotels();
@@ -26,13 +26,14 @@ const SlickComponent = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 5,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          initialSlide: 5,
           infinite: true,
           dots: true,
         },
@@ -42,7 +43,7 @@ const SlickComponent = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          initialSlide: 0,
         },
       },
       {
@@ -50,6 +51,7 @@ const SlickComponent = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 7,
         },
       },
     ],
@@ -72,12 +74,12 @@ const SlickComponent = () => {
       </h4>
       <Slider {...settings}>
         {hotels &&
-          hotels.map(hotel => (
+          hotels.map((hotel) => (
             <div
               key={hotel.id}
               onClick={() => {
                 navigate(`/get/Hotels/details/${hotel.id}`);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className="SlickItem"
               data-aos="fade-up"
