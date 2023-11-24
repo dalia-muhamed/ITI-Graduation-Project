@@ -79,28 +79,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              {hasLogged && (
-                <div className="d-flex justify-content-center align-items-center pe-3">
-                  <img
-                    style={{
-                      borderRadius: '50%',
-                      width: '45px',
-                      height: '45px',
-                    }}
-                    src={imageSrc}
-                    alt="dad"
-                  />
-                </div>
-              )}
-              <div
-                className="offcanvas offcanvas-start"
-                tabindex="-1"
-                id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel"
-              >
-                <div className="offcanvas-header">
-                  <div className='d-flex'>
-                  <Link
+              <Link
                     to="/"
                     style={{ color: 'black', textDecoration: 'none' }}
                     onClick={handleLinkClick}
@@ -114,6 +93,28 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                       <h3 className="navbar-logo px-1 my-0">Travellia</h3>
                     </div>
                   </Link>
+              {/* {hasLogged && (
+                <div className="d-flex justify-content-center align-items-center pe-3">
+                  <img
+                    style={{
+                      borderRadius: '50%',
+                      width: '45px',
+                      height: '45px',
+                    }}
+                    src={imageSrc}
+                    alt="dad"
+                  />
+                </div>
+              )} */}
+              <div
+                className="offcanvas offcanvas-start"
+                tabindex="-1"
+                id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel"
+              >
+                <div className="offcanvas-header">
+                  <div className='d-flex'>
+           
                   <Link
                   to="/Favourites"
                   onClick={() => {
