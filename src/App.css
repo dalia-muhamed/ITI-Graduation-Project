@@ -7,7 +7,20 @@
   user-select: none;
 }
 
-
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(181, 180, 180);
+  border-radius: 4px;
+}
 @font-face {
   font-family: 'TripRegular';
   src: local('TripRegular'), url(./Trip-Sans-Font/trip-sans.otf);
