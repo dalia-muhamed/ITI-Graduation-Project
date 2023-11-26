@@ -12,3 +12,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+@media(width<770px){
+  .videoSection-main-container{
+    display: none;
+  }
+}

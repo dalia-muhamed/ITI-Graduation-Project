@@ -1,5 +1,6 @@
 .owl-container {
   padding: 5rem 0rem;
+  overflow: hidden;
 }
 .owl-container h4 {
   font-family: TripBold-700;
@@ -13,7 +14,7 @@
   font-family: TripBold-700;
 }
 .carousel {
-  overflow: hidden;
+  overflow: hidden !important;
   cursor: grab;
 }
 .inner-carousel {
@@ -42,7 +43,7 @@
   margin: 0%;
 }
 @media(width<770px){
-  .inner-carousel{
-    
-  }
+  /* .owl-container{
+    display: none;
+  } */
 }

@@ -30,8 +30,8 @@ const Owl = () => {
       const screenWidth = window.innerWidth;
       const dragConstraints =
         screenWidth < 770
-          ? { right: 0, left: -2800 }
-          : { right: 0, left: -2000 };
+          ? { right: 1330, left: -1330 }
+          : { right: 1100, left: -1100 };
       setDragConstraints(dragConstraints);
     };
 
@@ -52,7 +52,7 @@ const Owl = () => {
       {restaurants && (
         <div className="container owl">
           <h4>Worldwide Top Rated Restaurants</h4>
-          <motion.div className="carousel">
+          <motion.div className="carousel d-flex justify-content-center align-items-center flex-column">
             <motion.div
               drag="x"
               dragConstraints={dragConstraints}

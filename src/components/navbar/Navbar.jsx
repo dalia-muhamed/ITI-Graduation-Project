@@ -1,16 +1,16 @@
-import logo from './logo.png';
-import './navbar.css';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { useState, useEffect } from 'react';
-import GoogleLogin from '../GoogleLogin/GoogleLogin';
-import { jwtDecode } from 'jwt-decode';
-import { Link } from 'react-router-dom';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { MdBookmarkAdded } from 'react-icons/md';
+import logo from "./logo.png";
+import "./navbar.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useState, useEffect } from "react";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MdBookmarkAdded } from "react-icons/md";
 
 const Navbar = ({ sticky, myClass, navbarItem }) => {
-  const [imageSrc, setImageSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState("");
   const [hasLogged, setHasLogged] = useState(false);
 
   // useEffect(() => {
@@ -30,32 +30,32 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
       setIsSticky(scrollPosition > 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
-    const hasLoggedValue = localStorage.getItem('hasLogged');
-    if (hasLoggedValue === 'true') {
+    const hasLoggedValue = localStorage.getItem("hasLogged");
+    if (hasLoggedValue === "true") {
       setHasLogged(true);
-      const userImage = localStorage.getItem('userImage');
+      const userImage = localStorage.getItem("userImage");
       if (userImage) {
         setImageSrc(userImage);
       }
     }
   }, []);
 
-  const handleLoginSuccess = credentialResponse => {
+  const handleLoginSuccess = (credentialResponse) => {
     const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
     setImageSrc(credentialResponseDecoded.picture);
-    localStorage.setItem('hasLogged', 'true');
-    localStorage.setItem('userImage', credentialResponseDecoded.picture);
+    localStorage.setItem("hasLogged", "true");
+    localStorage.setItem("userImage", credentialResponseDecoded.picture);
     setHasLogged(true);
   };
   const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -63,9 +63,9 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
       <nav
         id="navbar"
         className={`navbar navbar-expand-lg fixed-top ${
-          isSticky ? 'sticky' : ''
+          isSticky ? "sticky" : ""
         } ${navbarItem} ${myClass}`}
-        style={{height:"60px"}}
+        style={{ height: "60px" }}
       >
         <div className="container-fluid">
           <nav class="navbar bg-transparent fixed-top d-lg-none NavbarItems-container">
@@ -79,64 +79,42 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              {hasLogged && (
-                <div className="d-flex justify-content-center align-items-center pe-3">
-                  <img
-                    style={{
-                      borderRadius: '50%',
-                      width: '45px',
-                      height: '45px',
-                    }}
-                    src={imageSrc}
-                    alt="dad"
+              <div className="d-flex">
+                <Link
+                  to="/Favourites"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  <MdBookmarkAdded
+                    color="#00AA6C"
+                    size={40}
+                    style={{ marginRight: "10px", marginTop: "6px" }}
                   />
-                </div>
-              )}
+                  {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
+                </Link>
+                <Link
+                  to="/"
+                  style={{ color: "black", textDecoration: "none" }}
+                  onClick={handleLinkClick}
+                  className="navbar-brand"
+                >
+                  <div className="d-flex align-items-center">
+                    <div className="nav-logo-container">
+                      <img src={logo} className="logo" alt="logo" />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
               <div
                 className="offcanvas offcanvas-start"
                 tabindex="-1"
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
-                <div className="offcanvas-header">
-                  <div className='d-flex'>
-                  <Link
-                    to="/"
-                    style={{ color: 'black', textDecoration: 'none' }}
-                    onClick={handleLinkClick}
-                    className="navbar-brand"
-                  >
-                    {/* Right logo */}
-                    <div className="d-flex align-items-center">
-                      <div className="nav-logo-container">
-                        <img src={logo} className="logo" alt="logo" />
-                      </div>
-                      <h3 className="navbar-logo px-1 my-0">Travellia</h3>
-                    </div>
-                  </Link>
-                  <Link
-                  to="/Favourites"
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  <MdBookmarkAdded
-                    color="#00AA6C"
-                    size={40}
-                    style={{ marginRight: '10px',marginTop:'6px' }}
-                  />
-                  {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
-                </Link>
-                </div>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <div class="offcanvas-body d-flex">
+                  <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="#">
                         Discover
@@ -184,6 +162,12 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                       </ul>
                     </li>
                   </ul>
+                  <button
+                    type="button"
+                    class="btn-close mt-2"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
                 </div>
               </div>
             </div>
@@ -197,7 +181,7 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
               <div className="nav-left-side col-md-4  my-1">
                 <Link
                   to="/"
-                  style={{ color: 'black', textDecoration: 'none' }}
+                  style={{ color: "black", textDecoration: "none" }}
                   onClick={handleLinkClick}
                   className="navbar-brand"
                 >
@@ -237,13 +221,13 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                 <Link
                   to="/Favourites"
                   onClick={() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                 >
                   <MdBookmarkAdded
                     color="#00AA6C"
                     size={40}
-                    style={{ marginRight: '10px' }}
+                    style={{ marginRight: "10px" }}
                   />
                   {/* <FontAwesomeIcon icon={faBookmark} className="shoppingCart" /> */}
                 </Link>
@@ -252,9 +236,9 @@ const Navbar = ({ sticky, myClass, navbarItem }) => {
                   <div className="d-flex justify-content-center align-items-center ps-lg-3">
                     <img
                       style={{
-                        borderRadius: '50%',
-                        width: '45px',
-                        height: '45px',
+                        borderRadius: "50%",
+                        width: "45px",
+                        height: "45px",
                       }}
                       src={imageSrc}
                       alt="dad"

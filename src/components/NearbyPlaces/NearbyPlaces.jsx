@@ -125,14 +125,12 @@ const NearbyPlaces = () => {
 
   return (
     <div className="">
-      {/* <button onClick={() => getCurrentLocation()}>Nearby Places ...</button> */}
-
       <div className="randomToDo " style={{ backgroundColor: 'white',padding:"30px 0px",margin:"30px 0px" }}>
         <div className="container randomToDoContainer">
           {nearestCity ? (
             <h4
               className="mb-4"
-              style={{ color: 'black', fontWeight: '700' }}
+              style={{ color: 'black', fontWeight: '700',paddingLeft:"25px"  }}
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
