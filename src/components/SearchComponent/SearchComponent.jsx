@@ -160,6 +160,11 @@ const SearchComponent = () => {
             onChange={handleInputChange}
             value={searchVal}
             autoComplete="off"
+            className={
+              showDropdown && data.length > 0
+                ? 'showDropdownClass'
+                : 'hideDropdownwnClass'
+            }
           />
           {showDropdown && data.length > 0 && (
             <SearchDropdown
@@ -169,9 +174,13 @@ const SearchComponent = () => {
             />
           )}
           <button
-            className="searchLink"
             onClick={searchBtn}
             disabled={isButtonDisabled}
+            className={
+              showDropdown && data.length > 0
+                ? 'hideSearchButton'
+                : 'searchLink'
+            }
           >
             Search
           </button>
