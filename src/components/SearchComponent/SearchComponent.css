@@ -38,7 +38,7 @@
 }
 .search-bar input {
   width: 100%;
-  z-index: 10;
+  z-index: 1;
   height: 3.5rem;
   padding: 1.8rem 3rem;
   border: 1px solid #ccc;
