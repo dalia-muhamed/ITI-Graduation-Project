@@ -14,6 +14,12 @@ function App() {
         const data = await Axios('Hotels', 'Cairo');
         console.log(data);
         setApiData(data);
+        if (loader) {
+          setTimeout(() => {
+            loader.style.display = 'none';
+            setLoading(false);
+          }, 3000);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -21,12 +27,6 @@ function App() {
     fetchData();
   }, []);
 
-  if (loader) {
-    setTimeout(() => {
-      loader.style.display = 'none';
-      setLoading(false);
-    }, 3000);
-  }
   return <div className="App">{!loading && apiData && <AppRoutes />}</div>;
 }
 

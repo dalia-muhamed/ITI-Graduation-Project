@@ -62,14 +62,23 @@
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div style="position: relative; width: 100%" id="loader">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: '#FCFBFC';
+        height: 100vh;
+      "
+      id="loader"
+    >
       <img
         class="logo-img"
         src="Logo.webp"
-        width="200px"
-        height="200px"
+        width="15%"
+        height="25%"
         alt="logo"
-        style="position: absolute; top: 200px; left: 45%"
       />
     </div>
     <div id="root"></div>
