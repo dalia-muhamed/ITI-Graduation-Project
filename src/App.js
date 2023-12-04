@@ -1,7 +1,6 @@
 import './App.css';
 import AppRoutes from './Approuter/AppRoutes';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Axios } from './axios';
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
           setTimeout(() => {
             loader.style.display = 'none';
             setLoading(false);
-          }, 3000);
+          }, 0);
         }
       } catch (err) {
         console.log(err);
