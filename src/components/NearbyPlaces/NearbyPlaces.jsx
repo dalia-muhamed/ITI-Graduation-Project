@@ -7,6 +7,7 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../pages/Favourites/FavouriteSlice';
+import './NearbyPlaces.css';
 
 const NearbyPlaces = () => {
   const [location, setLocation] = useState(null);
@@ -124,12 +125,18 @@ const NearbyPlaces = () => {
 
   return (
     <div className="">
-      <div className="randomToDo " style={{ backgroundColor: 'white',padding:"30px 0px",margin:"30px 0px" }}>
+      <div
+        className="randomToDo "
+        style={{
+          backgroundColor: 'white',
+          padding: '30px 0px',
+          margin: '30px 0px',
+        }}
+      >
         <div className="container randomToDoContainer">
           {nearestCity ? (
             <h4
-              className="mb-4"
-              style={{ color: 'black', fontWeight: '700',paddingLeft:"25px"  }}
+              className="nearbyHeader"
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
@@ -138,8 +145,7 @@ const NearbyPlaces = () => {
             </h4>
           ) : (
             <h4
-              className="mb-4"
-              style={{ color: 'black', fontWeight: '700' }}
+              className="nearbyHeader"
               data-aos="fade-right"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"

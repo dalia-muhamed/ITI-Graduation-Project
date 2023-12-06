@@ -44,10 +44,46 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Travelia</title>
+    <!-- <style>
+      @keyframes loading {
+        0% {
+          transform: scale(0.5);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+      }
+      .logo-img {
+        animation-name: loading;
+      }
+    </style> -->
+    <style>
+      .htmlContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color:#FCFBFC ;
+        height: 100vh;
+      }
+    </style>
   </head>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div
+    class="htmlContainer"
+      id="loader"
+    >
+      <img
+        class="logo-img"
+        src="Logo.webp"
+        width="15%"
+        height="25%"
+        alt="logo"
+      />
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

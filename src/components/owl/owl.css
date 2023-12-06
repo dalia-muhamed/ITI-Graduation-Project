@@ -1,5 +1,4 @@
 .owl-container {
-  padding: 5rem 0rem;
   overflow: hidden;
 }
 .owl-container h4 {
@@ -42,7 +41,7 @@
   padding: 10px 0px;
   margin: 0%;
 }
-@media(width<770px){
+@media (width<770px) {
   /* .owl-container{
     display: none;
   } */

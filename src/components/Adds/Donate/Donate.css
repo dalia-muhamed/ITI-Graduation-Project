@@ -1,17 +1,15 @@
 .container-donate {
   max-width: 90%;
-  padding: 2rem 0rem;
+  padding: 3rem 1rem;
 }
 .parent-img {
   width: 50%;
   display: flex;
-  padding: 0.2rem;
 }
 
 .donate-img {
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
 }
 
 .donate-details {

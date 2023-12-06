@@ -1,11 +1,13 @@
 .scrollbar-cyan::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #f5f5f5;
+  margin: 3px 0;
   border-radius: 10px;
 }
 
 .scrollbar-cyan::-webkit-scrollbar {
   width: 12px;
+  height: 10px;
   background-color: #f5f5f5;
 }
 
@@ -20,23 +22,24 @@
 }
 .bordered-cyan::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
-  border: 1px solid #9f9d9d;
+  /* border: 1px solid #9f9d9d; */
 }
 .bordered-cyan::-webkit-scrollbar-thumb {
   -webkit-box-shadow: none;
 }
 
 .search-dropdown {
-  padding: 0.9rem 0;
-  border-radius: 0.3rem;
-  max-width: 85%;
+  padding: 0.5rem 0;
   background-color: white;
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
-  margin-left: 2rem;
+  margin-top: 0.02rem;
   max-height: 350px;
+  border-radius: 0 0 1rem 1rem;
   overflow-y: scroll;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
   box-shadow: 0 5px 6px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -45,16 +48,20 @@
   color: black;
   margin: 0 0.3rem;
   font-size: 1.1rem;
+  padding: 0.6rem;
+  background-color: white;
+}
+.dropdown-item-search:not(:last-of-type) {
+  border-bottom: 1px solid rgb(197, 194, 194);
 }
 .paragraph-drop-search {
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid rgb(197, 194, 194);
   margin-bottom: 0 !important;
   padding: 10px 0px;
 }
-.paragraph-drop-search:hover {
+.dropdown-item-search:hover {
   background-color: rgba(84, 224, 30, 0.1);
+  box-shadow: inset 6px 0 0 0px #00aa6c;
 }
 
 .dropdown-item img {
