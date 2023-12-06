@@ -7,7 +7,6 @@
 //     useGoogleOneTapLogin({
 //         onSuccess: credentialResponse => {
 //             var credentialResponseDecoded = jwtDecode(credentialResponse.credential)
-//             console.log(credentialResponseDecoded);
 //         },
 //         onError: () => {
 //           console.log('Login Failed');
@@ -27,7 +26,6 @@
 //     useGoogleOneTapLogin({
 //         onSuccess: credentialResponse => {
 //             var credentialResponseDecoded = jwtDecode(credentialResponse.credential)
-//             console.log(credentialResponseDecoded);
 //         },
 //         onError: () => {
 //           console.log('Login Failed');

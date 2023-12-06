@@ -44,7 +44,6 @@ const ThingsToDoReservation = () => {
   });
 
   const newSelectedData = useSelector(state => state.selectedData.data);
-  console.log(newSelectedData);
 
   const navigate = useNavigate();
   const handleChange = e => {
@@ -81,8 +80,6 @@ const ThingsToDoReservation = () => {
   
       // Send the email using Email.js
       await emailjs.send('service_rna51rk', 'template_qkiwwum', emailParams);
-      console.log(formInputs.email)
-      console.log('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -185,6 +182,7 @@ const ThingsToDoReservation = () => {
           time: formInputs.time,
           guest: formInputs.guest,
           checkIn: formInputs.checkIn,
+          duration:newSelectedData[3].duration
         };
 
         // Add the new entry to the existing data array
@@ -293,7 +291,7 @@ const ThingsToDoReservation = () => {
 
                     <div className="inputs-modify mb-3">
                       <div className="form-group pe-lg-3">
-                        <label for="formGroupExampleInput">Time</label>
+                        <label for="formGroupExampleInput">Time(pm)</label>
                         <select
                           className="form-select"
                           aria-label="Default select example"
@@ -584,7 +582,7 @@ const ThingsToDoReservation = () => {
                   <div className=" d-flex justify-content-center">
                     <button
                       type="submit"
-                      className="btn bg-dark text-bold fs-4 shadow text-white mx-auto btn-form"
+                      className="btn bg-primary fw-bold fs-4 shadow text-white mx-auto btn-form"
                       onClick={handleSubmit}
                     >
                       Confirm Booking
@@ -596,7 +594,7 @@ const ThingsToDoReservation = () => {
           </div>
           <div className="col-md-4 ps-md-5 pe-lg-5">
             <div className="border rounded-2 flex-column shadow">
-              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-2">
+              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-0">
                 Best Rates Guaranteed
               </p>
               <img
@@ -611,7 +609,7 @@ const ThingsToDoReservation = () => {
                 </p>
                 <p className="px-lg-2 fw-bold">
                   <span className="text-muted">Duration: </span>
-                  {newSelectedData[1].duration}
+                  {newSelectedData[3].duration}
                 </p>
                 <hr />
                 <ul
