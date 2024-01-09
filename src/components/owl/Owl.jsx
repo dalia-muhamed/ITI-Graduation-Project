@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import "./owl.css";
-import Rating from "./Rating";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../../axios";
+import React, { useState, useEffect } from 'react';
+import './owl.css';
+import Rating from './Rating';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../../axios';
 
 const Owl = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axiosInstance.get("/restaurants");
+        const response = await axiosInstance.get('/restaurants');
         const allRestaurants = response.data.restaurants;
         const randomRestaurants = getRandomRestaurants(allRestaurants, 10);
         setRestaurants(randomRestaurants);
       } catch (error) {
-        console.log("Error while fetching restaurants:", error);
+        console.log('Error while fetching restaurants:', error);
       }
     };
     fetchRestaurants();
@@ -37,9 +37,9 @@ const Owl = () => {
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -58,14 +58,15 @@ const Owl = () => {
               dragConstraints={dragConstraints}
               className="inner-carousel"
             >
-              {restaurants.map((restaurant) => (
+              {restaurants.map(restaurant => (
                 <motion.div className="item" key={restaurant.id}>
                   <img
                     src={restaurant.images[0]}
                     alt="Restaurant-img"
+                    style={{ objectFit: 'cover' }}
                     onClick={() => {
                       navigate(`/get/Restaurants/details/${restaurant.id}`);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                   />
 
@@ -78,7 +79,7 @@ const Owl = () => {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>{" "}
+          </motion.div>{' '}
         </div>
       )}
     </div>

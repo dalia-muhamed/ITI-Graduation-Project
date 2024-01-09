@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { axiosInstance } from "../../axios";
-import Slider from "react-slick";
-import "./SlickComponent.css";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { axiosInstance } from '../../axios';
+import Slider from 'react-slick';
+import './SlickComponent.css';
+import { useNavigate } from 'react-router-dom';
 const SlickComponent = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axiosInstance.get("/hotels");
+        const response = await axiosInstance.get('/hotels');
         const allHotels = response.data.hotels;
         const randomHotels = getRandomHotels(allHotels, 12);
         setHotels(randomHotels);
       } catch (error) {
-        console.log("Error while fetching hotels:", error);
+        console.log('Error while fetching hotels:', error);
       }
     };
     fetchHotels();
@@ -73,18 +73,22 @@ const SlickComponent = () => {
       </h4>
       <Slider {...settings}>
         {hotels &&
-          hotels.map((hotel) => (
+          hotels.map(hotel => (
             <div
               key={hotel.id}
               onClick={() => {
                 navigate(`/get/Hotels/details/${hotel.id}`);
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="SlickItem"
               data-aos="fade-up"
               data-aos-duration="1800"
             >
-              <img src={hotel.images[1]} alt={hotel.name} />
+              <img
+                src={hotel.images[1]}
+                alt={hotel.name}
+                style={{ objectFit: 'cover' }}
+              />
               <div className="overlay"></div>
               <h5 className="text-white">{hotel.name}</h5>
             </div>
