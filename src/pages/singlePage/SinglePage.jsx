@@ -17,7 +17,6 @@ import {
   faLocationDot,
   faPersonRunning,
   faTicketSimple,
-  faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Ads from '../../components/Adds/ads/Ads';
@@ -92,6 +91,7 @@ const SinglePage = () => {
     { name },
     category === 'thingsToDo' ? { duration } : { locationName },
     { images },
+    {duration}
   ];
 
   const handleClick = () => {

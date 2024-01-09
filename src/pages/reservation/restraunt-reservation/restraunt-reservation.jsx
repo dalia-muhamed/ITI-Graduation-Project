@@ -47,7 +47,6 @@ const RestrauntReservation = () => {
 
 
   const newSelectedData = useSelector(state => state.selectedData.data);
-  console.log(newSelectedData);
   const navigate = useNavigate();
   const handleChange = e => {
     if (e.target.type === 'checkbox') {
@@ -83,8 +82,6 @@ const RestrauntReservation = () => {
   
       // Send the email using Email.js
       await emailjs.send('service_rna51rk', 'template_qkiwwum', emailParams);
-      console.log(formInputs.email)
-      console.log('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -96,14 +93,7 @@ const RestrauntReservation = () => {
     const [selectedYear, selectedMonth] = formInputs.month.split('-');
     const [checkedYear, checkedMonth, checkedDay] =
       formInputs.checkIn.split('-');
-    const [checkedOutYear, checkedOutMonth, checkedOutDay] =
-      formInputs.checkOut.split('-');
     const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
-    const checkOutDate = new Date(
-      checkedOutYear,
-      checkedOutMonth - 1,
-      checkedOutDay
-    );
 
     setFormErrs({
       firstNameGuestErr: !formInputs.firstNameGuest.length
@@ -631,7 +621,7 @@ const RestrauntReservation = () => {
                   <div className=" d-flex justify-content-center">
                     <button
                       type="submit"
-                      className="btn bg-dark text-bold fs-4 shadow text-white mx-auto btn-form"
+                      className="btn bg-primary fw-bold fs-4 shadow text-white mx-auto btn-form"
                       onClick={handleSubmit}
                     >
                       Confirm Booking
@@ -643,7 +633,7 @@ const RestrauntReservation = () => {
           </div>
           <div className="col-md-4 ps-md-5 pe-lg-5">
             <div className="border rounded-2 flex-column shadow">
-              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-2">
+              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-0">
                 Best Rates Guaranteed
               </p>
               <img

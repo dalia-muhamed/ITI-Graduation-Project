@@ -1,64 +1,62 @@
-import React from 'react';
-import InputHolder from '../../../components/input/input';
-import './hotel-reservation.css';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import emailjs from 'emailjs-com';
-import { useSelector } from 'react-redux';
-import Navbar from '../../../components/navbar/Navbar';
-import Footer from '../../../footer/Footer';
-
+import React from "react";
+import InputHolder from "../../../components/input/input";
+import "./hotel-reservation.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import emailjs from "emailjs-com";
+import { useSelector } from "react-redux";
+import Navbar from "../../../components/navbar/Navbar";
+import Footer from "../../../footer/Footer";
 const HotelReservation = () => {
   const [formInputs, setFormInputs] = useState({
-    firstNameGuest: '',
-    lastNameGuest: '',
-    firstNameBilling: '',
-    lastNameBilling: '',
-    email: '',
-    phone: '',
-    city: '',
-    postalCode: '',
-    cardNumber: '',
-    csv: '',
-    month: '',
+    firstNameGuest: "",
+    lastNameGuest: "",
+    firstNameBilling: "",
+    lastNameBilling: "",
+    email: "",
+    phone: "",
+    city: "",
+    postalCode: "",
+    cardNumber: "",
+    csv: "",
+    month: "",
     check: false,
-    bed: 'King size',
-    smoking: 'Non-smoking',
-    room: '1',
-    guest: '1',
-    checkIn: '',
-    checkOut: '',
+    bed: "King size",
+    smoking: "Non-smoking",
+    room: "1",
+    guest: "1",
+    checkIn: "",
+    checkOut: "",
   });
 
   const [formErrs, setFormErrs] = useState({
-    firstNameGuestErr: '',
-    lastNameGuestErr: '',
-    firstNameBillingErr: '',
-    lastNameBillingErr: '',
-    emailErr: '',
-    phoneErr: '',
-    cityErr: '',
-    postalCodeErr: '',
-    cardNumberErr: '',
-    csvErr: '',
-    checkErr: '',
-    monthErr: '',
-    checkInErr: '',
-    checkOutErr: '',
+    firstNameGuestErr: "",
+    lastNameGuestErr: "",
+    firstNameBillingErr: "",
+    lastNameBillingErr: "",
+    emailErr: "",
+    phoneErr: "",
+    cityErr: "",
+    postalCodeErr: "",
+    cardNumberErr: "",
+    csvErr: "",
+    checkErr: "",
+    monthErr: "",
+    checkInErr: "",
+    checkOutErr: "",
   });
 
-  const newSelectedData = useSelector(state => state.selectedData.data);
+  const newSelectedData = useSelector((state) => state.selectedData.data);
 
   const navigate = useNavigate();
-  emailjs.init('SH6vVPq0np3hs37kv'); 
+  emailjs.init("SH6vVPq0np3hs37kv");
   const sendEmail = async () => {
     try {
-      // Prepare the email parameters with form input details
       const emailParams = {
         mailto: formInputs.email,
-        subject: 'Congratulations! Booking Successful',
-        message:`
-        Congratulations! Your booking has been successful.
+        subject: "Congratulations! Booking Successful",
+        message: `
+         Successful Booking
           
         Booking Details:
         - Check-In Date: ${formInputs.checkIn}
@@ -71,20 +69,20 @@ const HotelReservation = () => {
         Thank you for choosing our services!`,
         to_name: formInputs.firstNameGuest,
         from_name: "Travelia",
-        reply_to: formInputs.email
+        reply_to: formInputs.email,
       };
-  
+
       // Send the email using Email.js
-      await emailjs.send('service_rna51rk', 'template_qkiwwum', emailParams);
-      console.log(formInputs.email)
-      console.log('Email sent successfully');
+      await emailjs.send("service_rna51rk", "template_qkiwwum", emailParams);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
     }
   };
-  
-  const handleChange = e => {
-    if (e.target.type === 'checkbox') {
+
+ 
+
+  const handleChange = (e) => {
+    if (e.target.type === "checkbox") {
       setFormInputs({ ...formInputs, [e.target.name]: e.target.checked });
     } else {
       setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
@@ -95,11 +93,11 @@ const HotelReservation = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1;
-    const [selectedYear, selectedMonth] = formInputs.month.split('-');
+    const [selectedYear, selectedMonth] = formInputs.month.split("-");
     const [checkedYear, checkedMonth, checkedDay] =
-      formInputs.checkIn.split('-');
+      formInputs.checkIn.split("-");
     const [checkedOutYear, checkedOutMonth, checkedOutDay] =
-      formInputs.checkOut.split('-');
+      formInputs.checkOut.split("-");
     const checkInDate = new Date(checkedYear, checkedMonth - 1, checkedDay);
     const checkOutDate = new Date(
       checkedOutYear,
@@ -109,116 +107,114 @@ const HotelReservation = () => {
 
     setFormErrs({
       firstNameGuestErr: !formInputs.firstNameGuest.length
-        ? 'This field is required!'
-        : '',
+        ? "This field is required!"
+        : "",
       lastNameGuestErr: !formInputs.lastNameGuest.length
-        ? 'This field is required!'
-        : '',
+        ? "This field is required!"
+        : "",
       firstNameBillingErr: !formInputs.firstNameBilling.length
-        ? 'This field is required!'
-        : '',
+        ? "This field is required!"
+        : "",
       lastNameBillingErr: !formInputs.lastNameBilling.length
-        ? 'This field is required!'
-        : '',
-        emailErr: !formInputs.email.length
-        ? 'This field is required!'
+        ? "This field is required!"
+        : "",
+      emailErr: !formInputs.email.length
+        ? "This field is required!"
         : !/^\w+([.-]?\w+)@\w+([.-]?\w+)(\.\w{2,3})+$/.test(formInputs.email)
-        ? 'Invalid email format!'
-        : '', 
-      cityErr: !formInputs.city.length ? 'This field is required!' : '',
-      phoneErr: !formInputs.phone.length ? 'This field is required!' : '',
+        ? "Invalid email format!"
+        : "",
+      cityErr: !formInputs.city.length ? "This field is required!" : "",
+      phoneErr: !formInputs.phone.length ? "This field is required!" : "",
       postalCodeErr: !formInputs.postalCode.length
-        ? 'This field is required!'
-        : '',
+        ? "This field is required!"
+        : "",
       cardNumberErr: !formInputs.cardNumber.length
-        ? 'This field is required!'
+        ? "This field is required!"
         : !/^\d{16}$/.test(formInputs.cardNumber)
-        ? 'Invalid card number format! (16 Digits)'
-        : '',
+        ? "Invalid card number format! (16 Digits)"
+        : "",
       csvErr: !formInputs.csv.length
-        ? 'This field is required!'
+        ? "This field is required!"
         : !/^\d{3}$/.test(formInputs.csv)
-        ? 'It should be 3 digits only!'
-        : '',
+        ? "It should be 3 digits only!"
+        : "",
       monthErr: !formInputs.month.length
-        ? 'This field is required!'
+        ? "This field is required!"
         : `${selectedYear}-${selectedMonth}` < `${currentYear}-${currentMonth}`
         ? "Sorry, can't complete with expired card"
-        : '',
+        : "",
       checkInErr: !formInputs.checkIn.length
-        ? 'This field is required!'
+        ? "This field is required!"
         : checkInDate < currentDate
-        ? 'Sorry, this date is invalid'
-        : '',
+        ? "Sorry, this date is invalid"
+        : "",
       checkOutErr: !formInputs.checkOut.length
-        ? 'This field is required!'
+        ? "This field is required!"
         : checkOutDate < checkInDate
-        ? 'Sorry, this date is invalid'
-        : '',
+        ? "Sorry, this date is invalid"
+        : "",
       checkErr: !formInputs.check
-        ? 'You must confirm the terms and conditions'
-        : '',
+        ? "You must confirm the terms and conditions"
+        : "",
     });
   };
 
-  const[formSubmitted, setFormSubmitted]= useState(false)
-  const handleSubmit = e => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const handleSubmit = (e) => {
     e.preventDefault();
     validateErrors();
     setFormSubmitted(true);
   };
   useEffect(() => {
-
     if (formSubmitted) {
       // Reset the formSubmitted flag
       setFormSubmitted(false);
-    // Check if there are any form errors
-    const hasErrors = Object.values(formErrs).some(error => error !== '');
+      // Check if there are any form errors
+      const hasErrors = Object.values(formErrs).some((error) => error !== "");
 
-    if (!hasErrors) {
-      // Retrieve existing data from local storage or initialize an empty array
-      const existingData = JSON.parse(localStorage.getItem('formData')) || [];
+      if (!hasErrors) {
+        // Retrieve existing data from local storage or initialize an empty array
+        const existingData = JSON.parse(localStorage.getItem("formData")) || [];
 
-      // Check if the new entry already exists in the array
-      const isDuplicate = existingData.some(entry =>
-        Object.keys(entry).every(key => entry[key] === formInputs[key])
-      );
+        // Check if the new entry already exists in the array
+        const isDuplicate = existingData.some((entry) =>
+          Object.keys(entry).every((key) => entry[key] === formInputs[key])
+        );
 
-      if (!isDuplicate) {
-        // Create a new entry with the current form inputs
-        const newEntry = {
-          firstNameGuest: formInputs.firstNameGuest,
-          lastNameGuest: formInputs.lastNameGuest,
-          firstNameBilling: formInputs.firstNameBilling,
-          lastNameBilling: formInputs.lastNameBilling,
-          email: formInputs.email,
-          phone: formInputs.phone,
-          city: formInputs.city,
-          postalCode: formInputs.postalCode,
-          cardNumber: formInputs.cardNumber,
-          csv: formInputs.csv,
-          month: formInputs.month,
-          check: formInputs.check,
-          bed: formInputs.bed,
-          smoking: formInputs.smoking,
-          room: formInputs.room,
-          guest: formInputs.guest,
-          checkIn: formInputs.checkIn,
-          checkOut: formInputs.checkOut,
-        };
+        if (!isDuplicate) {
+          // Create a new entry with the current form inputs
+          const newEntry = {
+            firstNameGuest: formInputs.firstNameGuest,
+            lastNameGuest: formInputs.lastNameGuest,
+            firstNameBilling: formInputs.firstNameBilling,
+            lastNameBilling: formInputs.lastNameBilling,
+            email: formInputs.email,
+            phone: formInputs.phone,
+            city: formInputs.city,
+            postalCode: formInputs.postalCode,
+            cardNumber: formInputs.cardNumber,
+            csv: formInputs.csv,
+            month: formInputs.month,
+            check: formInputs.check,
+            bed: formInputs.bed,
+            smoking: formInputs.smoking,
+            room: formInputs.room,
+            guest: formInputs.guest,
+            checkIn: formInputs.checkIn,
+            checkOut: formInputs.checkOut,
+          };
 
-        // Add the new entry to the existing data array
-        const newData = [...existingData, newEntry];
+          // Add the new entry to the existing data array
+          const newData = [...existingData, newEntry];
 
-        // Save the updated data to local storage
-        localStorage.setItem('formData', JSON.stringify(newData));
-        sendEmail();
-        navigate('/reservation/successfully');
+          // Save the updated data to local storage
+          localStorage.setItem("formData", JSON.stringify(newData));
+          sendEmail();
+          navigate("/reservation/successfully");
+        }
       }
     }
-    }
-  }, [formSubmitted, formErrs]);
-
+  }, [formSubmitted, formErrs,formInputs]);
   return (
     <div className="">
       <Navbar sticky={true} myClass="sticky" navbarItem="" />
@@ -655,7 +651,7 @@ const HotelReservation = () => {
                   <div className=" d-flex justify-content-center">
                     <button
                       type="submit"
-                      className="btn bg-dark text-bold fs-4 shadow text-white mx-auto btn-form"
+                      className="btn bg-primary fw-bold fs-4 shadow text-white mx-auto btn-form"
                       onClick={handleSubmit}
                     >
                       Confirm Booking
@@ -665,9 +661,9 @@ const HotelReservation = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 ps-md-5 pe-lg-5">
+          <div className="col-md-4 ps-md-5 pe-lg-5 mx-auto">
             <div className="border rounded-2 flex-column shadow">
-              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-2">
+              <p className="bg-black text-center text-white rounded-top-2 fs-6 mb-0">
                 Best Rates Guaranteed
               </p>
               <img

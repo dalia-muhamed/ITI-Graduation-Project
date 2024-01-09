@@ -101,7 +101,6 @@ const NearbyPlaces = () => {
     if (nearestCity) {
       const nearCity = nearestCity.name;
       nearCityName = nearCity;
-      console.log(nearCity);
       const fetchHotels = async () => {
         const data = await Axios('Hotels', nearCityName);
         const randomHotels = getRandomHotels(data, 6);

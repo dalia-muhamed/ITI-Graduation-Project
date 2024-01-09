@@ -5,7 +5,6 @@ import todo from '../icon/ticket.png';
 import Restaurants from '../icon/fork.png';
 import { Link } from 'react-router-dom';
 function SearchDropdown({ data, category }) {
-  console.log(category);
   return (
     <div className="search-dropdown  scrollbar-cyan bordered-cyan">
       {data.map(item => (
