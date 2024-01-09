@@ -251,8 +251,8 @@ const SinglePage = () => {
                       <div className="col-md-8 px-0 mb-1">
                         <img
                           src={images[0]}
-                          alt="singlePage-main-imag"
-                          className="w-100 h-100"
+                          alt="singlePage-main-image"
+                          className="w-100 h-100 singlePage-images"
                         />
                       </div>
                       <div className="col-md-4 h-100 single-hotels-left-images">
@@ -262,6 +262,7 @@ const SinglePage = () => {
                               src={img}
                               alt={index}
                               style={{ height: '100%', width: '100%' }}
+                              className="singlePage-images"
                             />
                           </div>
                         ))}

@@ -26,7 +26,11 @@
 .singlePageRatingReviews {
   margin-bottom: -1.7rem;
 }
-
+.singlePage-images {
+  object-fit: cover;
+  aspect-ratio: 3/2;
+  background-position: top;
+}
 .singlePage-main-image-container .single-hotels-left-images {
   padding-right: 0;
 }
